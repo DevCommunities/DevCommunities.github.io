@@ -723,7 +723,7 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
   },
   {
-    slug: "dev7",
+    slug: "dev9",
     title: "Machine Learning Bootcamp | Intro to Image Processing",
     type: "DATA BOOTCAMP",
     images: {
