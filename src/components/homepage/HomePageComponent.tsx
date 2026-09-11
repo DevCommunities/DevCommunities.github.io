@@ -23,7 +23,7 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
   return (
     <section id="Home" className="flex flex-col items-center">
       <section className="dc-main-hero w-full flex flex-col items-center">
-        <div className="h-16 w-32 bg-no-repeat  bg-[url('/images/DarkDevCommuWord.webp')] bg-center bg-contain"></div>
+        <div className="h-16 w-32 bg-no-repeat  bg-[url('/images/branding/devcommu-word-dark.webp')] bg-center bg-contain"></div>
         <section className="dc-main-title font-lineSansTH_XB text-center text-cutoff">
           <h1>
             {text1}
@@ -56,15 +56,15 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
         {/*SideBar effect Scrolling */}
         <motion.section
           style={{ x: side1 }}
-          className={`  pointer-events-none hidden fixed top-[13%] w-[50%] h-96 bg-[url('/images/keyboard1.webp')] bg-contain bg-no-repeat md:block`}
+          className={`  pointer-events-none hidden fixed top-[13%] w-[50%] h-96 bg-[url('/images/decor/keyboard.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
         <motion.section
           style={{ x: side2 }}
-          className={` pointer-events-none hidden fixed top-[25%] h-96 w-[50%] bg-[url('/images/arduino1.webp')] bg-contain bg-no-repeat md:block`}
+          className={` pointer-events-none hidden fixed top-[25%] h-96 w-[50%] bg-[url('/images/decor/arduino.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
         <motion.section
           style={{ x: side3 }}
-          className={` pointer-events-none hidden fixed top-[20%] h-20 w-[50%] bg-[url('/images/python.webp')] bg-contain bg-no-repeat md:block`}
+          className={` pointer-events-none hidden fixed top-[20%] h-20 w-[50%] bg-[url('/images/decor/python.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
       </section>
     </section>
@@ -176,7 +176,7 @@ export function MoreDetail() {
           <div className=" mb-4 font-lineSansTH font-bold text-[30px]">
             สร้างสื่อการสอนการเขียน<br></br>เข้าถึงการสอนได้ทุกที่
           </div>
-          <section className=" absolute w-full h-full mx-auto rounded-xl bg-[url('/images/pictureExample1.webp')] bg-cover bg-center bg-no-repeat ">
+          <section className=" absolute w-full h-full mx-auto rounded-xl bg-[url('/images/home/picture-example.webp')] bg-cover bg-center bg-no-repeat ">
             <video controls width="100%" className="rounded-xl">
               <source
                 src="/videos/campPromote1/campPromote1.mp4#t=0.1"
@@ -186,7 +186,7 @@ export function MoreDetail() {
             </video>
           </section>
         </section>
-        <section className=" relative overflow-hidden w-[50%] min-h-[50vh] bg-[#E2E8F0] bg-[url('/images/BackgroundWeAre.webp')] bg-cover bg-center py-10 px-10 text-start rounded-lg items-start">
+        <section className=" relative overflow-hidden w-[50%] min-h-[50vh] bg-[#E2E8F0] bg-[url('/images/decor/background-we-are.webp')] bg-cover bg-center py-10 px-10 text-start rounded-lg items-start">
           <div className=" mb-4 font-lineSansTH font-bold text-[30px] h-full w-full ">
             สร้างคอมมูนิตี้แบบไฮบริดจ์ <br></br>ในการเรียนรู้ร่วมกัน
           </div>
@@ -307,7 +307,7 @@ const DataFB: FBPage[] = [
     name: "น้องจิวเวอรี่",
     social:
       "1st Place Change Innovation Award 2026 · เหรียญทอง Young Innovator Hackathon 2025",
-    image: "/images/students/Njew.webp",
+    image: "/images/students/njew.webp",
   },
   {
     feedback:

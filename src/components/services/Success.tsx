@@ -418,7 +418,7 @@ export function HomeAdditions() {
               <span>Web · AI · IoT</span>
               <strong>สำรวจค่าย →</strong>
             </div>
-            <img src="/images/arduino1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <img src="/images/decor/arduino.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           </motion.a>
           <motion.a
             whileHover={{ y: -6 }}
@@ -441,7 +441,7 @@ export function HomeAdditions() {
               <span>พื้นฐาน · AI · Web · สอวน. · Project</span>
               <strong>ค้นหาผู้สอน →</strong>
             </div>
-            <img src="/images/keyboard1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <img src="/images/decor/keyboard.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           </motion.a>
         </div>
       </section>

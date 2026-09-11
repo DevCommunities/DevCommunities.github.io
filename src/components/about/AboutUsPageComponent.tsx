@@ -32,21 +32,21 @@ export default function AboutUsPageComponent(props: AboutUsPageComponentProps) {
     <div>
       <section id="Home" className=" h-10"></section>
       <section className="mt-20">
-        <div className=" h-4 max-w-80 bg-no-repeat mb-6 mx-auto bg-[url('/images/DarkDevCommuWord.webp')] bg-center bg-contain"></div>
+        <div className=" h-4 max-w-80 bg-no-repeat mb-6 mx-auto bg-[url('/images/branding/devcommu-word-dark.webp')] bg-center bg-contain"></div>
         <section className="font-lineSansTH_XB text-[60px]">
           <h1>{text1}</h1>
         </section>
         <motion.section
           style={{ x: side1 }}
-          className={`fixed top-[13%] hidden md:block  w-[50%] h-96  bg-20 bg-[url('/images/keyboard1.webp')] bg-contain bg-no-repeat`}
+          className={`fixed top-[13%] hidden md:block  w-[50%] h-96  bg-20 bg-[url('/images/decor/keyboard.webp')] bg-contain bg-no-repeat`}
         ></motion.section>
         <motion.section
           style={{ x: side2 }}
-          className={`fixed top-[25%] hidden md:block h-96 w-full bg-20 bg-[url('/images/arduino1.webp')] bg-contain bg-no-repeat`}
+          className={`fixed top-[25%] hidden md:block h-96 w-full bg-20 bg-[url('/images/decor/arduino.webp')] bg-contain bg-no-repeat`}
         ></motion.section>
         <motion.section
           style={{ x: side3 }}
-          className={`fixed hidden md:block top-[20%] h-20 w-full bg-20 bg-[url('/images/python.webp')] bg-contain bg-no-repeat`}
+          className={`fixed hidden md:block top-[20%] h-20 w-full bg-20 bg-[url('/images/decor/python.webp')] bg-contain bg-no-repeat`}
         ></motion.section>
       </section>
     </div>
@@ -131,14 +131,14 @@ export function MaskEffectDevCommu() {
     <MaskContainer
       revealText={
         <img
-          src="/images/branding/DarkSideDevCommu.webp"
+          src="/images/branding/devcommu-dark-side.webp"
           alt="logo"
           className="h-1/2"
         />
       }
       className="h-[40rem] md:block"
     >
-      <div className="w-full h-52 bg-[url('/images/about/bg_word.webp')] bg-center bg-cover bg-no-repeat">
+      <div className="w-full h-52 bg-[url('/images/about/bg-word.webp')] bg-center bg-cover bg-no-repeat">
         <Quote />
       </div>
     </MaskContainer>

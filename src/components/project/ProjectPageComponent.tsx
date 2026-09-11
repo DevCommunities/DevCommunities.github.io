@@ -34,7 +34,7 @@ export default function ProjectPageComponent(props: ProjectPageComponentProps) {
     <section>
       <section className="mt-20">
         <img
-          src="/images/DarkDevCommuWord.webp"
+          src="/images/branding/devcommu-word-dark.webp"
           alt="DarkDevCommuWord"
           className="h-4 max-w-80 mb-6 mx-auto"
         />
@@ -182,7 +182,7 @@ export function SlideProjectCard(props: { project: SlideProjectProps }) {
               {/* <a href={`/project/${Slug(props.project.slug)}`}> */}
               <a>
                 <div className="flex items-center space-x-3">
-                  <div className="h-4 w-3 bg-[url('/images/works/utils/arrow.png')] bg-contain bg-center bg-no-repeat"></div>
+                  <div className="h-4 w-3 bg-[url('/images/icons/arrow.png')] bg-contain bg-center bg-no-repeat"></div>
                   <p className=" font-lineSansTH font-bold text-[17px]">
                     อ่านเพิ่มเติม
                   </p>

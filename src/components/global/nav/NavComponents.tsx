@@ -19,7 +19,7 @@ export default function NavContainer({ children }: { children: ReactNode }) {
             height="34"
             className="transition-transform group-hover:scale-105"
           />
-          <div className="h-8 w-28 md:w-32 bg-no-repeat bg-[url('/images/DarkDevCommuWord.webp')] bg-center bg-contain transition-opacity group-hover:opacity-80"></div>
+          <div className="h-8 w-28 md:w-32 bg-no-repeat bg-[url('/images/branding/devcommu-word-dark.webp')] bg-center bg-contain transition-opacity group-hover:opacity-80"></div>
         </a>
         {children}
       </div>
