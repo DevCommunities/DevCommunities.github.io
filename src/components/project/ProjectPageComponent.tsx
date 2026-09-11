@@ -166,7 +166,8 @@ export function SlideProjectCard(props: { project: SlideProjectProps }) {
         <motion.div className="md:flex md:space-x-12 w md:max-w-full overflow-hidden  space-x-3 mb-10 snap-center">
           <img
             src={props.project.images.horizontal}
-            alt="project"
+            alt={props.project.title || "ผลงานค่ายกิจกรรม DevCommu"}
+            loading="lazy"
             className="md:h-56 md:max-w-96 h-32 sm:h-52  w-full  rounded-lg bg-center bg-cover bg-no-repeat object-fill"
           />
           <div className="py-3">

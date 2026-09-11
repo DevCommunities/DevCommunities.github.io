@@ -9,7 +9,19 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        const url = new URL(page);
+        const p = url.pathname;
+        if (p.startsWith("/learning")) return false;
+        if (p.includes("/404")) return false;
+        if (p.includes("story-proj-")) return false;
+        if (p.includes("thai-ai-lens")) return false;
+        if (p === "/project/sabaijai/") return false;
+        if (p === "/project/thaiailens/") return false;
+        return true;
+      },
+    }),
     robotsTxt(),
   ],
 });

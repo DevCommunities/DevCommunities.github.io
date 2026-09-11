@@ -4,11 +4,31 @@ import { CampDetail } from '../../components/services/Camps';
 import { camps } from '../../lib/content';
 export function getStaticPaths(){return camps.map(camp=>({params:{slug:camp.id},props:{camp}}))}
 const {camp}=Astro.props;
+const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommunities.github.io';
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: camp.title,
+  description: camp.description,
+  provider: {
+    '@type': 'Organization',
+    name: 'DevCommu',
+    sameAs: siteUrl,
+  },
+  offers: {
+    '@type': 'Offer',
+    category: camp.category || 'Technology',
+    price: camp.price?.includes('ฟรี') ? '0' : camp.price?.replace(/[^\d]/g, '') || undefined,
+    priceCurrency: 'THB',
+    availability: camp.status === 'open' ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut'
+  }
+};
 ---
 <ServiceLayout
   title={camp.title}
   description={camp.description}
   image={camp.image || undefined}
+  schema={courseSchema}
 >
   <CampDetail camp={camp} client:load />
 </ServiceLayout>

@@ -24,12 +24,29 @@ export function getStaticPaths() {
 }
 
 const { story } = Astro.props;
+const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommunities.github.io';
+const creativeWorkSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: story.name,
+  description: story.quote,
+  author: {
+    '@type': 'Person',
+    name: story.institution ? story.institution.split('·')[0].trim() : story.name,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevCommu',
+    sameAs: siteUrl,
+  },
+};
 ---
 
 <ServiceLayout
   title={story.name}
   description={story.quote}
   image={story.image || undefined}
+  schema={creativeWorkSchema}
 >
   <ProjectDetail story={story} client:load />
 </ServiceLayout>

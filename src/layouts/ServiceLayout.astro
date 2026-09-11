@@ -6,10 +6,11 @@ interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  schema?: Record<string, any> | Record<string, any>[];
 }
-const {title, description, image, noindex} = Astro.props;
+const {title, description, image, noindex, schema} = Astro.props;
 ---
-<Layout title={title + ' | DevCommu'} description={description} image={image} noindex={noindex}>
+<Layout title={title + ' | DevCommu'} description={description} image={image} noindex={noindex} schema={schema}>
 <main class="dc" id="Home"><div class="dc-wrap"><slot/></div></main>
 <footer class="dc-footer">
   <div class="dc-footer-links flex flex-wrap gap-4 items-center">

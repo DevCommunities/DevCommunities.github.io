@@ -103,10 +103,9 @@ export function MarqueePoster() {
               key={index}
               className=" md:h-96 md:w-96 h-60 w-60 mx-3 bg-white"
             >
-              {/* Optimize Image */}
               <img
-                alt={`poster_${index}`}
-                loading="eager"
+                alt={`ภาพบรรยากาศค่ายกิจกรรม DevCommu ที่ ${index + 1}`}
+                loading={index < 2 ? "eager" : "lazy"}
                 height={"300px"}
                 width={"300px"}
                 src={poster.img}

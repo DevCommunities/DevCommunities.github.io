@@ -4,6 +4,7 @@ interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  schema?: Record<string, any> | Record<string, any>[];
 }
 import Navbar from '~/components/global/NavBar.astro';
 import Analytics from '../components/services/Analytics.astro';
@@ -14,25 +15,48 @@ const {
   description = 'DevCommu — เรียนเขียนโปรแกรมผ่านการลงมือทำ ค่าย Bootcamp และเรียนส่วนตัว 1 ต่อ 1 กับนิสิตและบัณฑิต CEDT จุฬาฯ เพื่อพัฒนาทักษะและสร้างผลงาน',
   image = '/images/campPromote1Thumb.png',
   noindex = false,
+  schema: pageSchema,
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.href : 'https://devcommunities.github.io';
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommunities.github.io';
+const pathname = Astro.url.pathname.endsWith('/') || Astro.url.pathname.includes('.')
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
 const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).href;
 
-const schema = {
+const baseOrgSchema = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
   name: 'DevCommu',
   description,
   url: siteUrl,
   logo: new URL('/favicon.svg', siteUrl).href,
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'Solveserve Group',
+  },
   sameAs: [
+    'https://www.facebook.com/DevCommu',
     'https://www.instagram.com/DevCommu',
     'https://www.tiktok.com/@devcommu',
+    'https://www.youtube.com/@DevCommu',
+    'https://github.com/DevCommunities',
     'https://line.me/R/ti/p/@468httmq'
-  ]
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    url: 'https://line.me/R/ti/p/@468httmq',
+    availableLanguage: ['Thai', 'English']
+  }
 };
+
+const allSchemas = pageSchema
+  ? Array.isArray(pageSchema)
+    ? [baseOrgSchema, ...pageSchema]
+    : [baseOrgSchema, pageSchema]
+  : [baseOrgSchema];
 ---
 <!doctype html>
 <html lang="th">
@@ -42,8 +66,14 @@ const schema = {
 <title>{title}</title>
 <meta name="description" content={description}/>
 <meta name="theme-color" content="#E57192"/>
-{noindex && <meta name="robots" content="noindex,nofollow"/>}
+{noindex ? (
+  <meta name="robots" content="noindex,nofollow"/>
+) : (
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+)}
 {canonical && <link rel="canonical" href={canonical}/>}
+{canonical && <link rel="alternate" hreflang="th" href={canonical}/>}
+{canonical && <link rel="alternate" hreflang="x-default" href={canonical}/>}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website"/>
@@ -61,7 +91,9 @@ const schema = {
 <meta name="twitter:image" content={ogImage}/>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2"/>
-<script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
+{allSchemas.map((s) => (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(s).replace(/</g,'\\u003c')}/>
+))}
 </head>
 <body class="scroll-smooth"><Navbar/><slot/><FloatingContacts/><Analytics/></body>
 </html>
