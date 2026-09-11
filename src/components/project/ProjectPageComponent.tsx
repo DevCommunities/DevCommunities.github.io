@@ -34,7 +34,7 @@ export default function ProjectPageComponent(props: ProjectPageComponentProps) {
     <section>
       <section className="mt-20">
         <img
-          src="/images/DarkDevCommuWord.png"
+          src="/images/DarkDevCommuWord.webp"
           alt="DarkDevCommuWord"
           className="h-4 max-w-80 mb-6 mx-auto"
         />

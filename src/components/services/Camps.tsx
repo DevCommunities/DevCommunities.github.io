@@ -26,6 +26,7 @@ function CampCard({ camp }: { camp: Camp }) {
               src={safeUrl(camp.image)}
               alt={camp.title}
               loading="lazy"
+              decoding="async"
             />
           ) : (
             <div
@@ -218,6 +219,7 @@ export function Bootcamps() {
                     src={safeUrl(camp.image)}
                     alt={camp.title}
                     loading="lazy"
+                    decoding="async"
                   />
                 </a>
                 <div>
@@ -267,6 +269,8 @@ export function CampDetail({ camp }: { camp: Camp }) {
           className="dc-detail-poster"
           src={safeUrl(camp.image)}
           alt={camp.title}
+          loading="lazy"
+          decoding="async"
         />
       )}
       <div className="dc-grid">

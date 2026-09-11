@@ -105,6 +105,7 @@ function StoryArt({
           src={safeUrl(story.image)}
           alt={story.name}
           loading="lazy"
+          decoding="async"
           style={
             story.objectPosition
               ? ({
@@ -417,7 +418,7 @@ export function HomeAdditions() {
               <span>Web · AI · IoT</span>
               <strong>สำรวจค่าย →</strong>
             </div>
-            <img src="/images/arduino1.png" alt="" aria-hidden="true" />
+            <img src="/images/arduino1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           </motion.a>
           <motion.a
             whileHover={{ y: -6 }}
@@ -440,14 +441,14 @@ export function HomeAdditions() {
               <span>พื้นฐาน · AI · Web · สอวน. · Project</span>
               <strong>ค้นหาผู้สอน →</strong>
             </div>
-            <img src="/images/keyboard1.png" alt="" aria-hidden="true" />
+            <img src="/images/keyboard1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           </motion.a>
         </div>
       </section>
       <section className="dc-mentor-strip">
         <div className="dc-mentor-faces">
           {tutors.slice(0, 5).map((t) => (
-            <img src={t.image} alt={t.name} key={t.id} loading="lazy" />
+            <img src={t.image} alt={t.name} key={t.id} loading="lazy" decoding="async" />
           ))}
         </div>
         <div>

@@ -13,7 +13,7 @@ import FloatingContacts from '../components/global/FloatingContacts.astro';
 const {
   title,
   description = 'DevCommu — เรียนเขียนโปรแกรมผ่านการลงมือทำ ค่าย Bootcamp และเรียนส่วนตัว 1 ต่อ 1 กับนิสิตและบัณฑิต CEDT จุฬาฯ เพื่อพัฒนาทักษะและสร้างผลงาน',
-  image = '/images/campPromote1Thumb.png',
+  image = '/images/campPromote1Thumb.webp',
   noindex = false,
   schema: pageSchema,
 } = Astro.props;
@@ -89,6 +89,16 @@ const allSchemas = pageSchema
 <meta name="twitter:title" content={title}/>
 <meta name="twitter:description" content={description}/>
 <meta name="twitter:image" content={ogImage}/>
+
+<!-- Font preloading -->
+<link rel="preload" href="/fonts/LINESeedSansTH_W_Rg.woff" as="font" type="font/woff" crossorigin/>
+<link rel="preload" href="/fonts/LINESeedSansTH_W_XBd.woff" as="font" type="font/woff" crossorigin/>
+
+<!-- Resource hints for third-party origins -->
+<link rel="preconnect" href="https://www.youtube.com"/>
+<link rel="preconnect" href="https://i.ytimg.com"/>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com"/>
+<link rel="dns-prefetch" href="https://connect.facebook.net"/>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2"/>
 {allSchemas.map((s) => (

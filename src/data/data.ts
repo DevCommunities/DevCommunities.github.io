@@ -21,14 +21,14 @@ export const About: AboutUs[] = [
         description:
           "จบการศึกษาจากคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย · Managing Director ของ DevCommu รวมถึงเป็น CEO บริษัท Startup 'Remetrix' ที่ Spin-off จากจุฬาฯ",
         role: "Managing Director / ติวเตอร์ Web Dev, Data Science & AI",
-        img: "/images/about/Mookrob.png",
+        img: "/images/about/Mookrob.webp",
       },
       {
         name: "พี่โชคดี",
         description:
           "จบการศึกษาจากคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย · เหรียญทองแดงคอมพิวเตอร์โอลิมปิกระดับชาติ (TOI) · เชี่ยวชาญการพัฒนาเว็บไซต์ สร้างเกม และการให้คำปรึกษาทำโปรเจกต์",
         role: "Head of Tutors / ติวเตอร์ Web Dev, Game Dev & Consult Project",
-        img: "/images/about/Chokdee.png",
+        img: "/images/about/Chokdee.webp",
       },
     ],
   },
@@ -39,14 +39,14 @@ export const About: AboutUs[] = [
         description:
           "จบการศึกษาจากคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย · เจ้าของ Software House เชี่ยวชาญงานพัฒนาซอฟต์แวร์ เว็บไซต์ และระบบ AI อย่างลึกซึ้ง",
         role: "ติวเตอร์ Web Dev, AI & Consult Project / เจ้าของ Software House",
-        img: "/images/about/Guide.png",
+        img: "/images/about/Guide.webp",
       },
       {
         name: "พี่เซย์ไฮ",
         description:
           "นิสิตคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย (CEDT) · ตัวแทนศูนย์ สอวน. มจพ. ในการแข่งขัน Thailand Olympiad in Informatics ครั้งที่ 19 (TOI 19th) และ Achieved Global Rank 35 จาก 8,000 ทีมในการแข่งขัน IEEEXtreme (19 Oct 2025)",
         role: "ติวเตอร์ สอวน. คอมพิวเตอร์ & Competitive Programming",
-        img: "/images/about/SayHi.png",
+        img: "/images/about/SayHi.webp",
       },
     ],
   },
@@ -57,7 +57,7 @@ export const About: AboutUs[] = [
         description:
           "นิสิตคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย (CEDT) · มีประสบการณ์ด้าน Competitive Programming เข้าร่วมค่าย สอวน.คอมพิวเตอร์ 3 ปีซ้อน ตั้งแต่ปี 2564 (ค่าย 2) และได้เป็นผู้แทนศูนย์ในการแข่งขัน TOI 19-20 (ปี 2565-2566) พร้อมประสบการณ์ติวนักเรียนเตรียมสอบโอลิมปิกวิชาการคอมพิวเตอร์โดยตรง",
         role: "ติวเตอร์ สอวน. คอมพิวเตอร์ & Competitive Programming",
-        img: "/images/about/Gigi.png",
+        img: "/images/about/Gigi.webp",
       },
     ],
   },
@@ -70,8 +70,8 @@ export const SlideProjectList: SlideProjectProps[] = [
     title: "ค่าย DevCommu x โรงเรียนนวมิทร์ทราชูทิศ สตรีวิทยา 2",
     type: "DATA BOOTCAMP",
     images: {
-      horizontal: "/images/works/camps/001_data_boot_camp/thumbnail/horizon.png",
-      vertical: "/images/works/camps/001_data_boot_camp/thumbnail/horizon.png",
+      horizontal: "/images/works/camps/001_data_boot_camp/thumbnail/horizon.webp",
+      vertical: "/images/works/camps/001_data_boot_camp/thumbnail/horizon.webp",
     },
     description:"ค่ายปููพื้นฐานภาษา Python และ Data Analytics, สำหรับน้องๆ ที่สนใจเรียนรู้เกี่ยวกับการวิเคราะห์ข้อมูลด้วย Python โดยจัดร่วมกับโรงเรียนนวมิทร์ทราชูทิศ สตรีวิทยา 2",
     date: "12",
@@ -142,17 +142,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -163,8 +163,8 @@ export const SlideProjectList: SlideProjectProps[] = [
     title: "ค่าย DevCommu x โรงเรียนนวมิทร์ทราชูทิศ สตรีวิทยา 2",
     type: "PYTHON BOOTCAMP",
     images: {
-      horizontal: "/images/works/camps/002_python_boot_camp/thumbnail/horizon.png",
-      vertical: "/images/works/camps/002_python_boot_camp/thumbnail/horizon.png",
+      horizontal: "/images/works/camps/002_python_boot_camp/thumbnail/horizon.webp",
+      vertical: "/images/works/camps/002_python_boot_camp/thumbnail/horizon.webp",
     },
     description:
       "ค่ายปูพื้นฐานภาษา Python และการทำ Event Based UI ด้วย Custom Tkinter กับน้องๆชั้นมัธยมปลายโดยได้รับการสนับสนุนจาก โรงเรียนนวมิทร์ทราชูทิศ สตรีวิทยา 2",
@@ -236,17 +236,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -330,17 +330,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -424,17 +424,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -445,8 +445,8 @@ export const SlideProjectList: SlideProjectProps[] = [
     title: "POSN Camp at PCSHS PL",
     type: "POSN CAMP",
     images: {
-      horizontal: "/images/works/camps/005_pcshs_pl_posn_camp/thumbnail/horizon.jpeg",
-      vertical: "/images/works/camps/005_pcshs_pl_posn_camp/thumbnail/horizon.jpeg",
+      horizontal: "/images/works/camps/005_pcshs_pl_posn_camp/thumbnail/horizon.webp",
+      vertical: "/images/works/camps/005_pcshs_pl_posn_camp/thumbnail/horizon.webp",
     },
     description:
       "ค่ายพื้นฐานการเขียนโปรแกรมสำหรับการสอบเข้า ค่ายสอวนคอมพิเตอร์ค่าย 2  จัดให้กับนักเรียนโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก",
@@ -518,17 +518,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -612,17 +612,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -706,17 +706,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -800,17 +800,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -894,17 +894,17 @@ export const SlideProjectList: SlideProjectProps[] = [
     ],
     constructor: [
       {
-        img: "/images/project/camp/instructor/guide.png",
+        img: "/images/works/instructor/guide.webp",
         name: "พี่ไกด์",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/mookrob.png",
+        img: "/images/works/instructor/mookrob.webp",
         name: "พี่หมูกรอบ",
         describtion: "Chula CEDT",
       },
       {
-        img: "/images/project/camp/instructor/tak.png",
+        img: "/images/works/instructor/tak.webp",
         name: "พี่แท็ค",
         describtion: "Chula CEDT",
       },
@@ -914,14 +914,14 @@ export const SlideProjectList: SlideProjectProps[] = [
 
 // --------- Course Data ------------
 export const posterData = [
-  // { img: "/images/homepage/poster/poster0.png" }, // We Off Poster that shown the price
-  { img: "/images/homepage/poster/poster1.png" },
-  { img: "/images/homepage/poster/poster2.png" },
-  { img: "/images/homepage/poster/poster3.png" },
-  // { img: "/images/homepage/poster/poster4.png" },
-  // { img: "/images/homepage/poster/poster5.png" },
-  { img: "/images/homepage/poster/poster6.png" },
-  { img: "/images/homepage/poster/poster7.png" },
+  // { img: "/images/homepage/poster/poster0.webp" }, // We Off Poster that shown the price
+  { img: "/images/homepage/poster/poster1.webp" },
+  { img: "/images/homepage/poster/poster2.webp" },
+  { img: "/images/homepage/poster/poster3.webp" },
+  // { img: "/images/homepage/poster/poster4.webp" },
+  // { img: "/images/homepage/poster/poster5.webp" },
+  { img: "/images/homepage/poster/poster6.webp" },
+  { img: "/images/homepage/poster/poster7.webp" },
 ];
 
 export const MoreDetailList: DetailProps[] = [
@@ -929,28 +929,28 @@ export const MoreDetailList: DetailProps[] = [
     title: "วางแผนและคิดอย่างเป็นระบบ",
     description:
       "กระตุ้นให้นักเรียนคิดวิเคราะห์และวางแผนการทำงาน เพื่อพัฒนาทักษะการแก้ปัญหาอย่างมีประสิทธิภาพ",
-    image: "/images/homepageStand1.png",
+    image: "/images/homepageStand1.webp",
     title2: "Thinking and Planning",
   },
   {
     title: "ค้นคว้าและเรียนรู้",
     description:
       "ให้นักเรียนหาข้อมูลและเรียนรู้เกี่ยวกับโครงการที่ต้องการทำ ฝึกการวิจัยและการเรียนรู้อย่างลึกซึ้ง",
-    image: "/images/homepageStand2.png",
+    image: "/images/homepageStand2.webp",
     title2: "Research and Learning",
   },
   {
     title: "ลงมือทำและพัฒนา",
     description:
       "ให้นักเรียนลงมือปฏิบัติและพัฒนาผลงานของตนเอง ฝึกการทำงานเป็นขั้นตอนและการแก้ปัญหาที่เกิดขึ้น",
-    image: "/images/homepageStand3.png",
+    image: "/images/homepageStand3.webp",
     title2: "Implementation and Development",
   },
   {
     title: "สร้างสรรค์ผลงาน",
     description:
       "ผ่านการฝึกฝนและทดลองต่างๆ จนสร้างขึ้นมาเป็นผลงานหรือวิธีการแก้ปัญหาที่ถูกต้องและพัฒนาผลงานชิ้นใหม่ของตัวเอง",
-    image: "/images/homepageStand4.png",
+    image: "/images/homepageStand4.webp",
     title2: "Create and Innovate",
   },
 ];

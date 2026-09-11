@@ -10,7 +10,7 @@ export default function HomePageContainer(props: {
     <section>
       <section id="Home" className=" h-10 origin-top"></section>
       <section className=" md:w-[80%] w-full mx-auto  font-lineSansTH">
-        <div className=" h-4 max-w-80 bg-no-repeat mb-6 mx-auto bg-[url('/images/DarkDevCommuWord.png')] bg-center bg-contain"></div>
+        <div className=" h-4 max-w-80 bg-no-repeat mb-6 mx-auto bg-[url('/images/DarkDevCommuWord.webp')] bg-center bg-contain"></div>
         <div
           className=" md:h-[70vh] h-32 w-full bg-cover rounded-lg bg-center bg-no-repeat my-5"
           style={{ backgroundImage: `url(${props.project.images.horizontal})` }}
@@ -30,7 +30,7 @@ export default function HomePageContainer(props: {
         <div className="mt-3 text-start text-lg flex space-x-3 items-center">
           <button className="h-7 w-16 hover:scale-105 bg-white border-red-500 border-2 rounded-lg transition-all duration-200">
             <div className="flex space-x-1 justify-center">
-              <div className="h-4 w-4 my-1 bg-[url('/images/project/pdf.png')] bg-contain bg-center bg-no-repeat"></div>
+              <div className="h-4 w-4 my-1 bg-[url('/images/works/utils/pdf.webp')] bg-contain bg-center bg-no-repeat"></div>
               <div className="text-sm text-red-600">pdf</div>
             </div>
           </button>

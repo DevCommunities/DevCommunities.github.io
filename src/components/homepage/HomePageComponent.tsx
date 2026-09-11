@@ -23,7 +23,7 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
   return (
     <section id="Home" className="flex flex-col items-center">
       <section className="dc-main-hero w-full flex flex-col items-center">
-        <div className="h-16 w-32 bg-no-repeat  bg-[url('/images/DarkDevCommuWord.png')] bg-center bg-contain"></div>
+        <div className="h-16 w-32 bg-no-repeat  bg-[url('/images/DarkDevCommuWord.webp')] bg-center bg-contain"></div>
         <section className="dc-main-title font-lineSansTH_XB text-center text-cutoff">
           <h1>
             {text1}
@@ -56,15 +56,15 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
         {/*SideBar effect Scrolling */}
         <motion.section
           style={{ x: side1 }}
-          className={`  pointer-events-none hidden fixed top-[13%] w-[50%] h-96 bg-[url('/images/keyboard1.png')] bg-contain bg-no-repeat md:block`}
+          className={`  pointer-events-none hidden fixed top-[13%] w-[50%] h-96 bg-[url('/images/keyboard1.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
         <motion.section
           style={{ x: side2 }}
-          className={` pointer-events-none hidden fixed top-[25%] h-96 w-[50%] bg-[url('/images/arduino1.png')] bg-contain bg-no-repeat md:block`}
+          className={` pointer-events-none hidden fixed top-[25%] h-96 w-[50%] bg-[url('/images/arduino1.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
         <motion.section
           style={{ x: side3 }}
-          className={` pointer-events-none hidden fixed top-[20%] h-20 w-[50%] bg-[url('/images/python.png')] bg-contain bg-no-repeat md:block`}
+          className={` pointer-events-none hidden fixed top-[20%] h-20 w-[50%] bg-[url('/images/python.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
       </section>
     </section>
@@ -72,17 +72,45 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
 }
 
 export function VideoExample() {
+  const [showVideo, setShowVideo] = useState(false);
+  const videoId = "rVpOLKC47aA";
+
   return (
     <section className="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 lg:my-4 md:mx-auto rounded-xl flex flex-col items-center justify-center">
       <div className="relative w-full pb-[56.25%]">
-        <iframe
-          src="https://www.youtube.com/embed/rVpOLKC47aA?si=BE_O4EPijalJKa5G"
-          title="YouTube video player"
-          className="absolute top-0 left-0 w-full h-full rounded-xl"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
+        {showVideo ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&si=BE_O4EPijalJKa5G`}
+            title="YouTube video player"
+            className="absolute top-0 left-0 w-full h-full rounded-xl"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <button
+            type="button"
+            aria-label="เล่นวิดีโอแนะนำ DevCommu"
+            onClick={() => setShowVideo(true)}
+            className="absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden cursor-pointer group border-0 p-0 bg-black"
+          >
+            <img
+              src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+              alt="ภาพปกวิดีโอ DevCommu"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            {/* Play button overlay */}
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-10 md:h-10 fill-white ml-1">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </button>
+        )}
       </div>
     </section>
   );
@@ -148,7 +176,7 @@ export function MoreDetail() {
           <div className=" mb-4 font-lineSansTH font-bold text-[30px]">
             สร้างสื่อการสอนการเขียน<br></br>เข้าถึงการสอนได้ทุกที่
           </div>
-          <section className=" absolute w-full h-full mx-auto rounded-xl bg-[url('/images/pictureExample1.png')] bg-cover bg-center bg-no-repeat ">
+          <section className=" absolute w-full h-full mx-auto rounded-xl bg-[url('/images/pictureExample1.webp')] bg-cover bg-center bg-no-repeat ">
             <video controls width="100%" className="rounded-xl">
               <source
                 src="/videos/campPromote1/campPromote1.mp4#t=0.1"
@@ -158,7 +186,7 @@ export function MoreDetail() {
             </video>
           </section>
         </section>
-        <section className=" relative overflow-hidden w-[50%] min-h-[50vh] bg-[#E2E8F0] bg-[url('/images/BackgroundWeAre.png')] bg-cover bg-center py-10 px-10 text-start rounded-lg items-start">
+        <section className=" relative overflow-hidden w-[50%] min-h-[50vh] bg-[#E2E8F0] bg-[url('/images/BackgroundWeAre.webp')] bg-cover bg-center py-10 px-10 text-start rounded-lg items-start">
           <div className=" mb-4 font-lineSansTH font-bold text-[30px] h-full w-full ">
             สร้างคอมมูนิตี้แบบไฮบริดจ์ <br></br>ในการเรียนรู้ร่วมกัน
           </div>
@@ -231,7 +259,7 @@ const DataFB: FBPage[] = [
     name: "น้องแซน",
     social:
       "เหรียญทองแดง Data Science Contest 2025 · ติด 4 มหาวิทยาลัย (มจธ. / สจล. / มธ. / มก.)",
-    image: "/images/students/sannn.jpeg",
+    image: "/images/students/sannn.webp",
   },
   {
     feedback:
@@ -239,7 +267,7 @@ const DataFB: FBPage[] = [
     name: "โปกัส",
     social:
       "ติด CEDT จุฬาฯ · รองชนะเลิศอันดับ 3 Siriraj Hackathon · เหรียญทอง Super AI Season 5",
-    image: "/images/students/pogas.jpeg",
+    image: "/images/students/pogas.webp",
   },
   {
     feedback:
@@ -247,7 +275,7 @@ const DataFB: FBPage[] = [
     name: "น้องวิน",
     social:
       "สอวน.คอม ค่าย 2 · ผ่านคัดเลือกระดับภาค NSC · ผู้พัฒนา ThaiAI Lens",
-    image: "/images/students/win.png",
+    image: "/images/students/win.webp",
   },
   {
     feedback:
@@ -255,7 +283,7 @@ const DataFB: FBPage[] = [
     name: "น้องข้าวปั้น",
     social:
       "The University of Hong Kong (HKU) · Faculty of Engineering (Computer Engineering)",
-    image: "/images/students/khaopan.jpeg",
+    image: "/images/students/khaopan.webp",
   },
   {
     feedback:
@@ -263,7 +291,7 @@ const DataFB: FBPage[] = [
     name: "น้องเคน",
     social:
       "คณะเทคโนโลยีสารสนเทศ (IT ลาดกระบัง) · สอวน. คอมพิวเตอร์ ค่าย 2",
-    image: "/images/students/ken.png",
+    image: "/images/students/ken.webp",
   },
   {
     feedback:
@@ -271,7 +299,7 @@ const DataFB: FBPage[] = [
     name: "น้องอัส",
     social:
       "เหรียญทองแดง Super AI Engineer Season 5 · ศึกษาต่อ สจล. (ลาดกระบัง)",
-    image: "/images/students/us.jpeg",
+    image: "/images/students/us.webp",
   },
   {
     feedback:
@@ -279,7 +307,7 @@ const DataFB: FBPage[] = [
     name: "น้องจิวเวอรี่",
     social:
       "1st Place Change Innovation Award 2026 · เหรียญทอง Young Innovator Hackathon 2025",
-    image: "/images/students/Njew.jpg",
+    image: "/images/students/Njew.webp",
   },
   {
     feedback:
@@ -287,7 +315,7 @@ const DataFB: FBPage[] = [
     name: "น้องทีม",
     social:
       "สอวน. คอมพิวเตอร์ ค่าย 2 · สอบติด CEDT จุฬาลงกรณ์มหาวิทยาลัย",
-    image: "/images/students/tim.jpg",
+    image: "/images/students/tim.webp",
   },
   {
     feedback:
@@ -295,14 +323,14 @@ const DataFB: FBPage[] = [
     name: "น้องโอ๊ต",
     social:
       "วิศวกรรมคอมพิวเตอร์และความปลอดภัยไซเบอร์ (KMITL)",
-    image: "/images/students/oat.png",
+    image: "/images/students/oat.webp",
   },
   {
     feedback:
       '"ผมยังจำได้อยู่เลย วันแรกที่เรียนกับพี่คอร์ส Computer Vision พี่เอารูปเกม XO มาแล้วถามว่าเราจะแยก X กับ O ยังไง ผมตอบว่า Object Detection พี่บอกมันเวอร์เกินไป ดูสีก็ดูได้แล้ว มันทำให้ผมชอบ Computer Vision ขึ้นมาเลย"',
     name: "น้องพร้อม",
     social: "สอบติด CEDT จุฬาลงกรณ์มหาวิทยาลัย",
-    image: "/images/students/prom.png",
+    image: "/images/students/prom.webp",
   },
 ];
 
@@ -396,8 +424,12 @@ export function FeedBackCard({ feedback, name, social, image }: FBPage) {
           <img
             src={image}
             alt={name}
+            loading="lazy"
+            decoding="async"
+            width="80"
+            height="80"
             className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover shrink-0 border-2 border-primary/20 shadow-md"
-            style={image.includes("us.jpeg") ? { objectPosition: "center top" } : { objectPosition: "center 18%" }}
+            style={image.includes("us.") ? { objectPosition: "center top" } : { objectPosition: "center 18%" }}
           />
         ) : (
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-primary/10 text-primary font-bold flex items-center justify-center text-2xl shrink-0 border-2 border-primary/20 shadow-md">

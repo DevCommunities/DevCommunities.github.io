@@ -32,7 +32,7 @@ export default function Footer() {
           onClick={handleClickScrollHome}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className=" mx-auto  md:h-36 md:w-36 h-20 w-20 bg-[url('/images/footer/DevKey.png')] bg-contain bg-no-repeat bg-center"
+          className=" mx-auto  md:h-36 md:w-36 h-20 w-20 bg-[url('/images/footer/DevKey.webp')] bg-contain bg-no-repeat bg-center"
         ></motion.button>
         <section className="font-lineSansTH font-bold md:text-5xl md:space-y-3 text-3xl">
           <p>สนใจกิจกรรมหรอ?</p>
@@ -43,23 +43,23 @@ export default function Footer() {
       </section>
       <motion.section
         style={{ x: side1 }}
-        className={`pointer-events-none fixed hidden md:block top-[30%]  h-[45%] w-[50%] bg-20 bg-[url('/images/footer/arduino2.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden md:block top-[30%]  h-[45%] w-[50%] bg-20 bg-[url('/images/footer/arduino2.webp')] bg-contain bg-no-repeat`}
       ></motion.section>
       <motion.section
         style={{ x: side2 }}
-        className={`pointer-events-none fixed hidden md:block top-[20%] h-[70%] w-[100%] bg-20 bg-[url('/images/footer/keyboard2.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden md:block top-[20%] h-[70%] w-[100%] bg-20 bg-[url('/images/footer/keyboard2.webp')] bg-contain bg-no-repeat`}
       ></motion.section>
       <motion.section
         style={{ x: side3 }}
-        className={`pointer-events-none fixed hidden md:block top-[70%]  h-16 w-full bg-20 bg-[url('/images/python.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden md:block top-[70%]  h-16 w-full bg-20 bg-[url('/images/python.webp')] bg-contain bg-no-repeat`}
       ></motion.section>
       <motion.section
         style={{ y: side4 }}
-        className={`pointer-events-none fixed hidden  md:block top-[3%] left-[20%]  h-[70%] w-full bg-20 bg-[url('/images/footer/devCommuPage.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden  md:block top-[3%] left-[20%]  h-[70%] w-full bg-20 bg-[url('/images/footer/devCommuPage.webp')] bg-contain bg-no-repeat`}
       ></motion.section>
       <motion.section
         style={{ y: side5 }}
-        className={`pointer-events-none fixed hidden md:block top-[3%] left-[47%]  h-[20%] w-full bg-20 bg-[url('/images/footer/macTerminal.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden md:block top-[3%] left-[47%]  h-[20%] w-full bg-20 bg-[url('/images/footer/macTerminal.webp')] bg-contain bg-no-repeat`}
       ></motion.section>
       <section className="flex flex-col md:flex-row justify-between items-center pb-5 px-5 gap-4">
         <div className="h-24 w-32 bg-[url('/images/footer/pagename.png')] bg-no-repeat bg-center bg-contain"></div>
