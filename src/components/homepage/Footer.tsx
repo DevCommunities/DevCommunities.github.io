@@ -28,52 +28,65 @@ export default function Footer() {
     <div>
       <section className="md:mb-32 mb-16  md:mt-24 mt-5">
         <motion.button
+          aria-label="กลับไปด้านบน"
           onClick={handleClickScrollHome}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           className=" mx-auto  md:h-36 md:w-36 h-20 w-20 bg-[url('/images/footer/DevKey.png')] bg-contain bg-no-repeat bg-center"
         ></motion.button>
         <section className="font-lineSansTH font-bold md:text-5xl md:space-y-3 text-3xl">
-          <h1>สนใจกิจกรรมหรอ?</h1>
-          <h1 className="text-primary">
+          <p>สนใจกิจกรรมหรอ?</p>
+          <p className="text-primary">
             กดปุ่มข้างบน<span className="text-black"> ได้เลย!</span>
-          </h1>
+          </p>
         </section>
       </section>
       <motion.section
         style={{ x: side1 }}
-        className={`fixed hidden md:block top-[30%]  h-[45%] w-[50%] bg-20 bg-[url('/images/footer/arduino2.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden md:block top-[30%]  h-[45%] w-[50%] bg-20 bg-[url('/images/footer/arduino2.png')] bg-contain bg-no-repeat`}
       ></motion.section>
       <motion.section
         style={{ x: side2 }}
-        className={`fixed hidden md:block top-[20%] h-[70%] w-[100%] bg-20 bg-[url('/images/footer/keyboard2.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden md:block top-[20%] h-[70%] w-[100%] bg-20 bg-[url('/images/footer/keyboard2.png')] bg-contain bg-no-repeat`}
       ></motion.section>
       <motion.section
         style={{ x: side3 }}
-        className={`fixed hidden md:block top-[70%]  h-16 w-full bg-20 bg-[url('/images/python.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden md:block top-[70%]  h-16 w-full bg-20 bg-[url('/images/python.png')] bg-contain bg-no-repeat`}
       ></motion.section>
       <motion.section
         style={{ y: side4 }}
-        className={`fixed hidden  md:block top-[3%] left-[20%]  h-[70%] w-full bg-20 bg-[url('/images/footer/devCommuPage.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden  md:block top-[3%] left-[20%]  h-[70%] w-full bg-20 bg-[url('/images/footer/devCommuPage.png')] bg-contain bg-no-repeat`}
       ></motion.section>
       <motion.section
         style={{ y: side5 }}
-        className={`fixed hidden md:block top-[3%] left-[47%]  h-[20%] w-full bg-20 bg-[url('/images/footer/macTerminal.png')] bg-contain bg-no-repeat`}
+        className={`pointer-events-none fixed hidden md:block top-[3%] left-[47%]  h-[20%] w-full bg-20 bg-[url('/images/footer/macTerminal.png')] bg-contain bg-no-repeat`}
       ></motion.section>
-      <section className="flex justify-between items-center pb-5">
-        <div className="h-24 w-32  mx-5   bg-[url('images/footer/pagename.png')] bg-no-repeat bg-center bg-contain"></div>
-        <div className="flex mx-5 space-x-3 md:space-x-0 items-center">
+      <section className="flex flex-col md:flex-row justify-between items-center pb-5 px-5 gap-4">
+        <div className="h-24 w-32 bg-[url('/images/footer/pagename.png')] bg-no-repeat bg-center bg-contain"></div>
+        <div className="text-xs text-slate-500 font-lineSansTH text-center">
+          Solveserve Group all right reserved
+        </div>
+        <div className="flex space-x-3 md:space-x-0 items-center">
           <a
-            href=""
-            className="bg-[url('/images/footer/youtube.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1"
+            href="https://www.youtube.com/@DevCommu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="DevCommu YouTube"
+            className="bg-[url('/images/footer/youtube.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1 hover:opacity-80 transition-opacity"
           ></a>
           <a
-            href=""
-            className="bg-[url('/images/footer/github.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1"
+            href="https://github.com/DevCommunities"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="DevCommu GitHub"
+            className="bg-[url('/images/footer/github.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1 hover:opacity-80 transition-opacity"
           ></a>
           <a
-            href=""
-            className="bg-[url('/images/footer/facebook.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1"
+            href="https://www.facebook.com/DevCommu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="DevCommu Facebook"
+            className="bg-[url('/images/footer/facebook.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1 hover:opacity-80 transition-opacity"
           ></a>
         </div>
       </section>

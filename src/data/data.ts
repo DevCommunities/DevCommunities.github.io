@@ -4,10 +4,12 @@ import { type DetailProps } from "~/components/homepage/HomePageComponent";
 import type { NavData } from "./data.type";
 
 export const navdata: NavData[] = [
-  { title: "หน้าหลัก", href: "/" },
-  { title: "โครงการ", href: "/project" },
-  // { title: "ความรู้", href: "/learning" },
-  { title: "เกี่ยวกับเรา", href: "/about", low_priority: false },
+  { title: "หน้าแรก", href: "/" },
+  { title: "ค่ายกิจกรรม", href: "/bootcamps" },
+  { title: "เรียนส่วนตัว", href: "/tutoring" },
+  { title: "ความสำเร็จ", href: "/success" },
+  { title: "ทีมงาน", href: "/team" },
+
 ];
 
 // ------- Founders, Mentors, and Tutors Details -------
@@ -15,17 +17,17 @@ export const About: AboutUs[] = [
   {
     people: [
       {
-        name: "พี่แท็ค",
+        name: "พี่หมูกรอบ",
         description:
-          "นักศึกษาจุฬาลงกรณ์มหาวิทยาลัย คณะวิศวกรรมศาสตร์ สาขาคอมพิวเตอร์เทคโนโลยีดิจิทัลและเทคโนโลยี",
-        role: "ติวเตอร์ Competitive Programming",
-        img: "/images/about/Tak.jpeg",
+          "จบการศึกษาจากคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย · Managing Director ของ DevCommu รวมถึงเป็น CEO บริษัท Startup 'Remetrix' ที่ Spin-off จากจุฬาฯ",
+        role: "Managing Director / ติวเตอร์ Web Dev, Data Science & AI",
+        img: "/images/about/Mookrob.png",
       },
       {
         name: "พี่โชคดี",
         description:
-          "นักศึกษาจุฬาลงกรณ์มหาวิทยาลัย คณะวิศวกรรมศาสตร์ สาขาคอมพิวเตอร์เทคโนโลยีดิจิทัลและเทคโนโลยี",
-        role: "ติวเตอร์ Competitive Programming",
+          "จบการศึกษาจากคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย · เหรียญทองแดงคอมพิวเตอร์โอลิมปิกระดับชาติ (TOI) · เชี่ยวชาญการพัฒนาเว็บไซต์ สร้างเกม และการให้คำปรึกษาทำโปรเจกต์",
+        role: "Head of Tutors / ติวเตอร์ Web Dev, Game Dev & Consult Project",
         img: "/images/about/Chokdee.png",
       },
     ],
@@ -35,27 +37,27 @@ export const About: AboutUs[] = [
       {
         name: "พี่ไกด์",
         description:
-          "นักศึกษาจุฬาลงกรณ์มหาวิทยาลัย คณะวิศวกรรมศาสตร์ สาขาคอมพิวเตอร์เทคโนโลยีดิจิทัลและเทคโนโลยี",
-        role: "กรรมการบริหาร และติวเตอร์ Python & MachineLearning",
+          "จบการศึกษาจากคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย · เจ้าของ Software House เชี่ยวชาญงานพัฒนาซอฟต์แวร์ เว็บไซต์ และระบบ AI อย่างลึกซึ้ง",
+        role: "ติวเตอร์ Web Dev, AI & Consult Project / เจ้าของ Software House",
         img: "/images/about/Guide.png",
       },
       {
-        name: "พี่หมูกรอบ",
+        name: "พี่เซย์ไฮ",
         description:
-          "นักศึกษาจุฬาลงกรณ์มหาวิทยาลัย คณะวิศวกรรมศาสตร์ สาขาคอมพิวเตอร์เทคโนโลยีดิจิทัลและเทคโนโลยี",
-        role: "กรรมการบริหาร และติวเตอร์ Python & MachineLearning",
-        img: "/images/about/Mookrob.jpeg",
+          "นิสิตคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย (CEDT) · ตัวแทนศูนย์ สอวน. มจพ. ในการแข่งขัน Thailand Olympiad in Informatics ครั้งที่ 19 (TOI 19th) และ Achieved Global Rank 35 จาก 8,000 ทีมในการแข่งขัน IEEEXtreme (19 Oct 2025)",
+        role: "ติวเตอร์ สอวน. คอมพิวเตอร์ & Competitive Programming",
+        img: "/images/about/SayHi.png",
       },
     ],
   },
   {
     people: [
       {
-        name: "พี่ธาร",
+        name: "พี่จีจี้",
         description:
-          "นักศึกษาจุฬาลงกรณ์มหาวิทยาลัย คณะวิศวกรรมศาสตร์ สาขาคอมพิวเตอร์เทคโนโลยีดิจิทัลและเทคโนโลยี",
-        role: "หัวหน้าฝ่ายสื่อและการโฆษณา และติวเตอร์ IOS App Development",
-        img: "/images/about/Tan.jpeg",
+          "นิสิตคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย (CEDT) · มีประสบการณ์ด้าน Competitive Programming เข้าร่วมค่าย สอวน.คอมพิวเตอร์ 3 ปีซ้อน ตั้งแต่ปี 2564 (ค่าย 2) และได้เป็นผู้แทนศูนย์ในการแข่งขัน TOI 19-20 (ปี 2565-2566) พร้อมประสบการณ์ติวนักเรียนเตรียมสอบโอลิมปิกวิชาการคอมพิวเตอร์โดยตรง",
+        role: "ติวเตอร์ สอวน. คอมพิวเตอร์ & Competitive Programming",
+        img: "/images/about/Gigi.png",
       },
     ],
   },
@@ -259,7 +261,7 @@ export const SlideProjectList: SlideProjectProps[] = [
       vertical: "/images/works/camps/003_ai_boot_camp/thumbnail/vertical.webp",
     },
     description:
-      "ค่าย DEVCOMMU ที่ในครั้งนี้จะพาน้องๆ ไปพบการทำ AI แบบ Project based learning ที่จะทำให้น้องๆได้ลงมือทำโปรเจคต์ AI ของตัวเอง ที่คิดขึ้นมาเอง ด้วยตัวเอง ให้กลายเป็นโปรเจ็คคุณภาพ.",
+      "ค่าย DEVCOMMU ที่ในครั้งนี้จะพาน้องๆ ไปพบการทำ AI แบบ Project based learning ที่จะทำให้น้องๆได้ลงมือทำโปรเจคต์ AI ของตัวเอง ที่คิดขึ้นมาเอง ด้วยตัวเอง ให้กลายเป็นโปรเจ็คคุณภาพ",
     date: "28",
     month: "ตุลาคม",
     year: "2566",

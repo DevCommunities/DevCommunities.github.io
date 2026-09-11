@@ -1,0 +1,14 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import { CampDetail } from '../../components/services/Camps';
+import { camps } from '../../lib/content';
+export function getStaticPaths(){return camps.map(camp=>({params:{slug:camp.id},props:{camp}}))}
+const {camp}=Astro.props;
+---
+<ServiceLayout
+  title={camp.title}
+  description={camp.description}
+  image={camp.image || undefined}
+>
+  <CampDetail camp={camp} client:load />
+</ServiceLayout>

@@ -15,52 +15,49 @@ export default function HomePageContainer(props: {
           className=" md:h-[70vh] h-32 w-full bg-cover rounded-lg bg-center bg-no-repeat my-5"
           style={{ backgroundImage: `url(${props.project.images.horizontal})` }}
         ></div>
-        <div className=" font-bold font-lineSansTH_XB md:text-3xl text-xl text-start">
+        <h1 className="font-bold font-lineSansTH_XB md:text-3xl text-xl text-start">
           {props.project.title}
-        </div>
-        <div className=" md:mt-10 mt-5 text-start font-bold md:text-2xl">
-          {" "}
+        </h1>
+        <h2 className="md:mt-10 mt-5 text-start font-bold md:text-2xl">
           รายละเอียด
-        </div>
-        <div className=" mt-1 text-start md:text-lg text-sm ">
-          {" "}
+        </h2>
+        <div className="mt-1 text-start md:text-lg text-sm">
           {props.project.description}
         </div>
-        <div className=" mt-10 text-start font-bold md:text-2xl">
-          {" "}
+        <h2 className="mt-10 text-start font-bold md:text-2xl">
           เนื้อหาการสอน
-        </div>
-        <div className=" mt-3 text-start text-lg flex space-x-3 items-center ">
-          <button className="h-7 w-16 hover:scale-105 bg-white border-red-500 border-2 rounded-lg transition-all duration-200 ">
+        </h2>
+        <div className="mt-3 text-start text-lg flex space-x-3 items-center">
+          <button className="h-7 w-16 hover:scale-105 bg-white border-red-500 border-2 rounded-lg transition-all duration-200">
             <div className="flex space-x-1 justify-center">
               <div className="h-4 w-4 my-1 bg-[url('/images/project/pdf.png')] bg-contain bg-center bg-no-repeat"></div>
-              <div className=" text-sm text-red-600">pdf</div>
+              <div className="text-sm text-red-600">pdf</div>
             </div>
           </button>
-          <div className=" text-red-500 font-bold text-sm ">Course Sylybus</div>
+          <div className="text-red-500 font-bold text-sm">Course Sylybus</div>
         </div>
-        <div className=" mt-4 md:flex md:h-[60vh] w-full md:space-x-5 space-y-4  md:space-y-0">
+        <div className="mt-4 md:flex md:h-[60vh] w-full md:space-x-5 space-y-4 md:space-y-0">
           {props.project.schedule.map((schedule, index) => {
             return <ScheduleCard schedule={schedule} index={index} />;
           })}
         </div>
-        <div className=" mt-10 text-start font-bold text-2xl"> สอนโดย</div>
-        <div className="flex  w-full space-x-4 mt-5 overflow-x-scroll overflow-y-hidden ">
+        <h2 className="mt-10 text-start font-bold text-2xl">สอนโดย</h2>
+        <div className="flex w-full space-x-4 mt-5 overflow-x-scroll overflow-y-hidden">
           {props.project.constructor.map((constructor, index) => {
             return (
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="h-[6rem] space-y-1 flex items-center space-x-4 text-start p-3 rounded-md md:w-[20rem] min-w-48  bg-white shadow-md"
+                className="h-[6rem] space-y-1 flex items-center space-x-4 text-start p-3 rounded-md md:w-[20rem] min-w-48 bg-white shadow-md"
               >
                 <div
-                  className=" md:mx-2  min-w-14 min-h-14 rounded-full  bg-cover bg-center bg-no-repeat"
+                  className="md:mx-2 min-w-14 min-h-14 rounded-full bg-cover bg-center bg-no-repeat"
                   style={{ backgroundImage: `url(${constructor.img})` }}
                 ></div>
-                <div className=" w-[60%] ">
+                <div className="w-[60%]">
                   <div className="md:text-lg text-sm font-bold">
                     {constructor.name}
                   </div>
-                  <div className="text-md  md:text-xs font-bold text-primary">
+                  <div className="text-md md:text-xs font-bold text-primary">
                     {constructor.describtion}
                   </div>
                 </div>
@@ -68,7 +65,7 @@ export default function HomePageContainer(props: {
             );
           })}
         </div>
-        <div className=" mt-10 text-start font-bold text-2xl"> ภาพบรรยากาศ</div>
+        <h2 className="mt-10 text-start font-bold text-2xl">ภาพบรรยากาศ</h2>
         <Marquee
           gradient={false}
           speed={50}
@@ -79,10 +76,9 @@ export default function HomePageContainer(props: {
             return <SlidePicture img={img} />;
           })}
         </Marquee>
-        <div className=" mt-10 text-start font-bold text-2xl">
-          {" "}
+        <h2 className="mt-10 text-start font-bold text-2xl">
           ตัวอย่างผลงานของน้อง ๆ
-        </div>
+        </h2>
         <Marquee
           gradient={false}
           speed={50}

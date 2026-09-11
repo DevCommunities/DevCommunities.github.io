@@ -1,24 +1,67 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
 }
+import Navbar from '~/components/global/NavBar.astro';
+import Analytics from '../components/services/Analytics.astro';
+import FloatingContacts from '../components/global/FloatingContacts.astro';
 
-import Navbar from "~/components/global/NavBar.astro";
-const { title } = Astro.props;
+const {
+  title,
+  description = 'DevCommu — เรียนเขียนโปรแกรมผ่านการลงมือทำ ค่าย Bootcamp และเรียนส่วนตัว 1 ต่อ 1 กับนิสิตและบัณฑิต CEDT จุฬาฯ เพื่อพัฒนาทักษะและสร้างผลงาน',
+  image = '/images/campPromote1Thumb.png',
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.href : 'https://devcommunities.github.io';
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'DevCommu',
+  description,
+  url: siteUrl,
+  logo: new URL('/favicon.svg', siteUrl).href,
+  sameAs: [
+    'https://www.instagram.com/DevCommu',
+    'https://www.tiktok.com/@devcommu',
+    'https://line.me/R/ti/p/@468httmq'
+  ]
+};
 ---
-
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={'"Simplify Learning, Amplify Building"'} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body class="scroll-smooth">
-    <Navbar />
-    <slot />
-  </body>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{title}</title>
+<meta name="description" content={description}/>
+<meta name="theme-color" content="#E57192"/>
+{noindex && <meta name="robots" content="noindex,nofollow"/>}
+{canonical && <link rel="canonical" href={canonical}/>}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DevCommu"/>
+<meta property="og:title" content={title}/>
+<meta property="og:description" content={description}/>
+<meta property="og:image" content={ogImage}/>
+<meta property="og:locale" content="th_TH"/>
+{canonical && <meta property="og:url" content={canonical}/>}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content={title}/>
+<meta name="twitter:description" content={description}/>
+<meta name="twitter:image" content={ogImage}/>
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2"/>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
+</head>
+<body class="scroll-smooth"><Navbar/><slot/><FloatingContacts/><Analytics/></body>
 </html>

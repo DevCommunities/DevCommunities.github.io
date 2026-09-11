@@ -1,0 +1,11 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { PrivacyPolicy } from '../components/services/PrivacyPolicy';
+---
+
+<ServiceLayout
+  title="นโยบายความเป็นส่วนตัว (Privacy Policy)"
+  description="นโยบายความเป็นส่วนตัวและการจัดการข้อมูลของผู้ใช้งานบนเว็บไซต์ DevCommu ตามมาตรฐาน PDPA เพื่อความโปร่งใส ปลอดภัย และการคุ้มครองข้อมูลส่วนบุคคลของนักเรียนและผู้ปกครอง"
+>
+  <PrivacyPolicy client:load />
+</ServiceLayout>

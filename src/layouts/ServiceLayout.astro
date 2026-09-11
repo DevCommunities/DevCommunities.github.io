@@ -1,0 +1,27 @@
+---
+import Layout from './Layout.astro';
+import '../components/services/services.css';
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+const {title, description, image, noindex} = Astro.props;
+---
+<Layout title={title + ' | DevCommu'} description={description} image={image} noindex={noindex}>
+<main class="dc" id="Home"><div class="dc-wrap"><slot/></div></main>
+<footer class="dc-footer">
+  <div class="dc-footer-links flex flex-wrap gap-4 items-center">
+    <a href="/" class="hover:text-slate-900 transition-colors">DevCommu</a>
+    <a href="/bootcamps" class="hover:text-slate-900 transition-colors">ค่ายกิจกรรม</a>
+    <a href="/tutoring" class="hover:text-slate-900 transition-colors">เรียนส่วนตัว</a>
+    <a href="/success" class="hover:text-slate-900 transition-colors">ความสำเร็จ</a>
+    <a href="/team" class="hover:text-slate-900 transition-colors">ทีมงาน</a>
+    <a href="/privacy" class="hover:text-slate-900 transition-colors">ความเป็นส่วนตัว</a>
+  </div>
+  <div class="dc-footer-copy text-xs text-slate-500">
+    Solveserve Group all right reserved
+  </div>
+</footer>
+</Layout>

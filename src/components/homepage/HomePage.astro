@@ -1,27 +1,25 @@
 ---
-import HomePageComponent from "./HomePageComponent";
-import {
-  VideoExample,
-  MoreDetail,
-  FeedBackPage,
-  MoreDetailPopup,
-  MarqueePoster,
-} from "./HomePageComponent";
-import Footer from "./Footer";
+import HomePageComponent, { FeedBackPage, MoreDetail } from "./HomePageComponent";
+import { HomeAdditions, NextStep } from "../services/Success";
+import "../services/services.css";
 ---
-
 <section class="bg-secondary overflow-hidden pt-8 text-center rounded-md">
-  <HomePageComponent
-    client:load
-    text1={"ที่ๆคนชอบ"}
-    text2={"เทคโนโลยี"}
-    text3={"มาเจอกันเพื่อพัฒนาตนเอง"}
-  />
-  <VideoExample />
-
-  <MoreDetail client:load />
-  <MarqueePoster client:only="react" />
-  <!-- <MoreDetailPopup client:load /> -->
+  <HomePageComponent client:load text1="ชอบเทคโนโลยี?" text2="ลองสร้างมันเลย" text3="เรียนเขียนโค้ด ให้กลายเป็นผลงานของคุณ" />
+  <div class="dc-opening dc-opening-after-hero"><MoreDetail /></div>
+  <HomeAdditions client:load />
   <FeedBackPage client:load />
-  <Footer client:visible />
+  <div class="dc dc-home"><NextStep /></div>
+  <footer class="dc-footer">
+    <div class="dc-footer-links flex flex-wrap gap-4 items-center">
+      <a href="/" class="hover:text-slate-900 transition-colors">DevCommu</a>
+      <a href="/bootcamps" class="hover:text-slate-900 transition-colors">ค่ายกิจกรรม</a>
+      <a href="/tutoring" class="hover:text-slate-900 transition-colors">เรียนส่วนตัว</a>
+      <a href="/success" class="hover:text-slate-900 transition-colors">ความสำเร็จ</a>
+      <a href="/team" class="hover:text-slate-900 transition-colors">ทีมงาน</a>
+      <a href="/privacy" class="hover:text-slate-900 transition-colors">ความเป็นส่วนตัว</a>
+    </div>
+    <div class="dc-footer-copy text-xs text-slate-500">
+      Solveserve Group all right reserved
+    </div>
+  </footer>
 </section>

@@ -1,26 +1,67 @@
 ---
 import { SlideProjectList } from "../../data/data";
 import Layout from "../../layouts/Layout.astro";
+import ServiceLayout from "../../layouts/ServiceLayout.astro";
 import { type SlideProjectProps } from "../../components/project/ProjectPageComponent";
+import DProjectPage from "../../components/project/Subproject/DProjectPage.astro";
+import { ProjectDetail } from "../../components/services/ProjectDetail";
+import { stories, type Story } from "../../lib/content";
 
 export function getStaticPaths() {
-  const path = SlideProjectList.map((project: SlideProjectProps) => {
-    return {
-      params: { slug: project.slug },
-      props: project,
-    };
-  });
-  console.log(path);
-  return path;
+  const campPaths = SlideProjectList.map((project: SlideProjectProps) => ({
+    params: { slug: project.slug },
+    props: { type: "camp" as const, project, story: null as Story | null },
+  }));
+
+  const projectStories = stories.filter((s) => s.category === "project");
+  const storyPaths: {
+    params: { slug: string };
+    props: { type: "student-project"; project: SlideProjectProps | null; story: Story };
+  }[] = [];
+
+  for (const story of projectStories) {
+    if (story.slug) {
+      storyPaths.push({
+        params: { slug: story.slug },
+        props: { type: "student-project", project: null, story },
+      });
+    }
+    storyPaths.push({
+      params: { slug: story.id },
+      props: { type: "student-project", project: null, story },
+    });
+    if (story.slug === "thaiailens") {
+      storyPaths.push({
+        params: { slug: "thai-ai-lens" },
+        props: { type: "student-project", project: null, story },
+      });
+    }
+  }
+
+  return [...campPaths, ...storyPaths];
 }
 
-const project: SlideProjectProps = Astro.props;
-
-import DProjectPage from "../../components/project/Subproject/DProjectPage.astro";
+const props = Astro.props;
 ---
 
-<Layout title="Projects">
-  <main class="min-h-full bg-isabelline bg-secondary">
-    <DProjectPage {...project} />
-  </main>
-</Layout>
+{
+  props.type === "student-project" && props.story ? (
+    <ServiceLayout
+      title={props.story.name}
+      description={props.story.quote}
+      image={props.story.image || undefined}
+    >
+      <ProjectDetail story={props.story} client:load />
+    </ServiceLayout>
+  ) : props.project ? (
+    <Layout
+      title={`${props.project.title} | ค่ายกิจกรรม DevCommu`}
+      description={props.project.description}
+      image={props.project.images?.horizontal || props.project.images?.vertical}
+    >
+      <main class="min-h-full bg-isabelline bg-secondary">
+        <DProjectPage {...props.project} />
+      </main>
+    </Layout>
+  ) : null
+}

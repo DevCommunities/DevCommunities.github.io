@@ -28,16 +28,17 @@ export default function Footer() {
     <div>
       <section className="mb-28 pt-60">
         <motion.button
+          aria-label="กลับไปด้านบน"
           onClick={handleClickScrollHome}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           className=" mx-auto  md:h-36 md:w-36 h-20 w-20 bg-[url('/images/footer/DevKey.png')] bg-contain bg-no-repeat bg-center"
         ></motion.button>
         <section className="font-lineSansTH font-bold md:text-5xl md:space-x-3 text-3xl   text-white">
-          <h1>สนใจกิจกรรมหรอ?</h1>
-          <h1 className="text-primary">
+          <p>สนใจกิจกรรมหรอ?</p>
+          <p className="text-primary">
             กดปุ่มข้างบน<span className="text-white"> ได้เลย!</span>
-          </h1>
+          </p>
         </section>
       </section>
       <motion.section
@@ -60,20 +61,32 @@ export default function Footer() {
         style={{ y: side5 }}
         className={`fixed top-[3%] hidden md:block left-[47%]  h-[20%] w-full bg-20 bg-[url('/images/footer/macTerminal.png')] bg-contain bg-no-repeat`}
       ></motion.section>
-      <section className="flex justify-between items-center pb-5">
-        <div className="h-24 w-32  mx-5   bg-[url('images/project/WhiteDev.png')] bg-no-repeat bg-center bg-contain"></div>
-        <div className="flex mx-5 items-center">
+      <section className="flex flex-col md:flex-row justify-between items-center pb-5 px-5 gap-4">
+        <div className="h-24 w-32 bg-[url('/images/project/WhiteDev.png')] bg-no-repeat bg-center bg-contain"></div>
+        <div className="text-xs text-slate-400 font-lineSansTH text-center">
+          Solveserve Group all right reserved
+        </div>
+        <div className="flex space-x-3 md:space-x-0 items-center">
           <a
-            href=""
-            className="bg-[url('/images/footer/youtube.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1"
+            href="https://www.youtube.com/@DevCommu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="DevCommu YouTube"
+            className="bg-[url('/images/footer/youtube.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1 hover:opacity-80 transition-opacity"
           ></a>
           <a
-            href=""
-            className="bg-[url('/images/project/WhiteGithub.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1"
+            href="https://github.com/DevCommunities"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="DevCommu GitHub"
+            className="bg-[url('/images/project/WhiteGithub.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1 hover:opacity-80 transition-opacity"
           ></a>
           <a
-            href=""
-            className="bg-[url('/images/footer/facebook.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1"
+            href="https://www.facebook.com/DevCommu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="DevCommu Facebook"
+            className="bg-[url('/images/footer/facebook.png')] bg-center bg-contain h-8 w-8 bg-no-repeat mx-1 hover:opacity-80 transition-opacity"
           ></a>
         </div>
       </section>

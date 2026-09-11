@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
 
 import { MoreDetailList, posterData } from "~/data/data";
@@ -22,33 +22,49 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
 
   return (
     <section id="Home" className="flex flex-col items-center">
-      <section className="mt-20 w-full flex flex-col items-center">
+      <section className="dc-main-hero w-full flex flex-col items-center">
         <div className="h-16 w-32 bg-no-repeat  bg-[url('/images/DarkDevCommuWord.png')] bg-center bg-contain"></div>
-        <section className="font-lineSansTH_XB text-2xl sm:text-3xl md:mb-3 mb-1 md:text-4xl lg:text-5xl text-center text-cutoff">
-          <h1 className="md:mb-5">
-            {text1} <span className="text-primary"> {text2}</span>
+        <section className="dc-main-title font-lineSansTH_XB text-center text-cutoff">
+          <h1>
+            {text1}
+            <br />
+            <span className="text-primary">{text2}</span>
           </h1>
-          <h1 className="">{text3}</h1>
+          <p className="dc-hero-subtitle">{text3}</p>
         </section>
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          className="h-10 p-auto px-7 font-lineSansTH font-bold text-white bg-primary rounded-full my-3 hover:bg-[#c96380] transition-colors duration-200"
-        >
-          สนใจจัดกิจกรรม
-        </motion.button>
+        <p className="font-lineSansTH text-slate-500 max-w-xl mx-4 mt-3">
+          ค่ายกิจกรรมและเรียนตัวต่อตัว สำหรับคนที่อยากเริ่มเขียนโปรแกรม
+          เตรียมสอบ หรือสร้างพอร์ต
+        </p>
+        <div className="relative z-10 flex flex-wrap justify-center gap-3 my-5 font-lineSansTH">
+          <motion.a
+            whileHover={{ scale: 1.04 }}
+            href="/bootcamps"
+            className="dc-btn"
+          >
+            เลือกค่ายที่สนใจ ↗
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.04 }}
+            href="/tutoring"
+            className="dc-btn secondary"
+          >
+            เรียนตัวต่อตัว →
+          </motion.a>
+        </div>
 
         {/*SideBar effect Scrolling */}
         <motion.section
           style={{ x: side1 }}
-          className={`  hidden fixed top-[13%] w-[50%] h-96 bg-[url('/images/keyboard1.png')] bg-contain bg-no-repeat md:block`}
+          className={`  pointer-events-none hidden fixed top-[13%] w-[50%] h-96 bg-[url('/images/keyboard1.png')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
         <motion.section
           style={{ x: side2 }}
-          className={` hidden fixed top-[25%] h-96 w-[50%] bg-[url('/images/arduino1.png')] bg-contain bg-no-repeat md:block`}
+          className={` pointer-events-none hidden fixed top-[25%] h-96 w-[50%] bg-[url('/images/arduino1.png')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
         <motion.section
           style={{ x: side3 }}
-          className={` hidden fixed top-[20%] h-20 w-[50%] bg-[url('/images/python.png')] bg-contain bg-no-repeat md:block`}
+          className={` pointer-events-none hidden fixed top-[20%] h-20 w-[50%] bg-[url('/images/python.png')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
       </section>
     </section>
@@ -209,124 +225,158 @@ export interface DetailProps {
   title2: string;
 }
 
-//generate by Gimini. Gonna Change for sure
-
 const DataFB: FBPage[] = [
   {
     feedback:
-      '"ชอบที่มี project ให้ลองทำ และ\nพี่ทุกคนสอนดี สอนสนุก เข้าใจง่าย"',
-    name: "ทันรวี คำแหงพล",
-    social: "นักเรียนในโครงการค่าย Machine Learning Bootcamp",
-    image: "/reviews/0.png",
-  },
-  {
-    feedback: '"สนุกที่ได้สร้างรถ และ พี่ๆ ta คอยให้ความช่วยเหลือเป็นอย่างดี"',
-    name: "ทันรวี คำแหงพล",
-    social: "นักเรียนในโครงการค่าย Arduino RC camp",
-    image: "/reviews/0.png",
+      '"ขอบคุณมากๆ สำหรับการดูแลแซนตลอด 3 ปี การก่อร่างสร้าง Port มาด้วยกัน น้องอาจจะเบื่อในบางวัน งอแงในบางครั้ง แต่พี่หมูกรอบก็น่ารักกับน้องมาก"',
+    name: "น้องแซน",
+    social:
+      "เหรียญทองแดง Data Science Contest 2025 · ติด 4 มหาวิทยาลัย (มจธ. / สจล. / มธ. / มก.)",
+    image: "/images/students/sannn.jpeg",
   },
   {
     feedback:
-      '"ได้ลองทำโปรเจคที่อยากทำ โดยมีพี่ๆคอยซัพพอร์ต ทำให้การทำโปรเจคต์ไม่น่ากลัว"',
-    name: "ทันรวี คำแหงพล",
+      '"พี่ ๆ ช่วยติวและให้คำปรึกษาทั้งการแข่งขันและการทำโปรเจกต์อย่างเข้มข้น ทำให้กล้าคิดและลงมือทำ จนคว้ารางวัลระดับประเทศและติด CEDT จุฬาฯ ได้สำเร็จ"',
+    name: "โปกัส",
     social:
-      "นักเรียนในโครงการความร่วมมือระหว่าง DevComu และโรงเรียนนวมินทร์ทราชูทิศ สตรีวิทยา2",
-    image: "/reviews/0.png",
+      "ติด CEDT จุฬาฯ · รองชนะเลิศอันดับ 3 Siriraj Hackathon · เหรียญทอง Super AI Season 5",
+    image: "/images/students/pogas.jpeg",
   },
-  // {
-  //   feedback:
-  //     "วิทยากรแสดงความอดทนและเข้าใจตลอดทั้งโปรแกรม สร้างสภาพแวดล้อมการเรียนรู้ที่สนับสนุน",
-  //   name: "John Doe",
-  //   social: "@johndoe",
-  //   image: "",
-  // },
+  {
+    feedback:
+      '"ลุยทั้งสายแข่งโจทย์ สอวน.คอม และการทำโครงงานจริง จนผ่านคัดเลือกระดับภาค NSC และได้รางวัลจาก AI Builders พี่ ๆ ช่วยไกด์วิธีคิดได้ดีมาก"',
+    name: "น้องวิน",
+    social:
+      "สอวน.คอม ค่าย 2 · ผ่านคัดเลือกระดับภาค NSC · ผู้พัฒนา ThaiAI Lens",
+    image: "/images/students/win.png",
+  },
+  {
+    feedback:
+      '"ต่อยอดทักษะสู่เวทีสากลได้อย่างมั่นใจ พี่ ๆ ช่วยปูพื้นฐานการเขียนโค้ดและพัฒนาโปรเจกต์ที่แข็งแกร่งจนสามารถนำไปยื่นมหาวิทยาลัยระดับโลกได้สำเร็จ"',
+    name: "น้องข้าวปั้น",
+    social:
+      "The University of Hong Kong (HKU) · Faculty of Engineering (Computer Engineering)",
+    image: "/images/students/khaopan.jpeg",
+  },
+  {
+    feedback:
+      '"ฝึกการคิดเชิงตรรกะและอัลกอริทึมอย่างเป็นระบบ โจทย์ยาก ๆ ที่เคยกลัวกลายเป็นเรื่องสนุก ผ่านเข้าค่าย 2 สอวน.คอม และสอบติด IT ลาดกระบังตามเป้าหมาย"',
+    name: "น้องเคน",
+    social:
+      "คณะเทคโนโลยีสารสนเทศ (IT ลาดกระบัง) · สอวน. คอมพิวเตอร์ ค่าย 2",
+    image: "/images/students/ken.png",
+  },
+  {
+    feedback:
+      '"เรียนรู้ด้าน AI อย่างจริงจังและเจาะลึก พี่ ๆ คอยไกด์ตั้งแต่การสร้างโมเดลไปจนถึงการแก้ปัญหาจริง จนคว้ารางวัล Super AI Engineer และนำองค์ความรู้ไปต่อยอดในระดับมหาวิทยาลัย"',
+    name: "น้องอัส",
+    social:
+      "เหรียญทองแดง Super AI Engineer Season 5 · ศึกษาต่อ สจล. (ลาดกระบัง)",
+    image: "/images/students/us.jpeg",
+  },
+  {
+    feedback:
+      '"เปลี่ยนไอเดียให้กลายเป็นโซลูชันที่จับต้องได้ พี่ ๆ ช่วยแนะนำกระบวนการคิดและพัฒนาผลงานจนคว้ารางวัลชนะเลิศอันดับ 1 และต่อยอดสู่โปรเจกต์จริง"',
+    name: "น้องจิวเวอรี่",
+    social:
+      "1st Place Change Innovation Award 2026 · เหรียญทอง Young Innovator Hackathon 2025",
+    image: "/images/students/Njew.jpg",
+  },
+  {
+    feedback:
+      '"ปูพื้นฐาน Algorithm และฝึกแก้โจทย์แข่งขันอย่างเป็นขั้นตอน ช่วยให้จับจุดข้อสอบได้แม่นยำ จนผ่านเข้าค่าย 2 สอวน.คอม และสอบติด CEDT จุฬาฯ"',
+    name: "น้องทีม",
+    social:
+      "สอวน. คอมพิวเตอร์ ค่าย 2 · สอบติด CEDT จุฬาลงกรณ์มหาวิทยาลัย",
+    image: "/images/students/tim.jpg",
+  },
+  {
+    feedback:
+      '"เจาะลึกทั้งพื้นฐานคอมพิวเตอร์และด้าน Cybersecurity ได้ลงมือปฏิบัติจริง ช่วยให้มั่นใจทั้งตอนทำผลงานและการสอบสัมภาษณ์เข้ามหาวิทยาลัย"',
+    name: "น้องโอ๊ต",
+    social:
+      "วิศวกรรมคอมพิวเตอร์และความปลอดภัยไซเบอร์ (KMITL)",
+    image: "/images/students/oat.png",
+  },
+  {
+    feedback:
+      '"ผมยังจำได้อยู่เลย วันแรกที่เรียนกับพี่คอร์ส Computer Vision พี่เอารูปเกม XO มาแล้วถามว่าเราจะแยก X กับ O ยังไง ผมตอบว่า Object Detection พี่บอกมันเวอร์เกินไป ดูสีก็ดูได้แล้ว มันทำให้ผมชอบ Computer Vision ขึ้นมาเลย"',
+    name: "น้องพร้อม",
+    social: "สอบติด CEDT จุฬาลงกรณ์มหาวิทยาลัย",
+    image: "/images/students/prom.png",
+  },
 ];
 
 export function FeedBackPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % DataFB.length);
-        setIsTransitioning(false);
-      }, 750); // (transition duration)
-    }, 6000); // Change image every 2 seconds
-
-    return () => clearInterval(interval);
-  }, [DataFB]);
-
-  const number = DataFB.length / 3;
-  var now = 0;
-  console.log(number);
+  const reviews = [DataFB[DataFB.length - 1], ...DataFB, DataFB[0]];
   return (
-    <section className=" mt-10 w-[90%] mx-auto  pt-10 text-start">
-      <div className=" font-lineSansTH text-primary md:text-2xl text-lg">
-        รีวิว
-      </div>
-      <div className=" font-lineSansTH md:space-y-3 font-bold md:text-5xl text-2xl">
-        <p>น้องๆ นักเรียนในโครงการ</p>
-        <p>พูดถึงเราว่ายังไงบ้าง?</p>
-      </div>
-      <section className="md:hidden block min-h-[25vh] mt-5 ">
-        <div
-          className={`${
-            isTransitioning ? "opacity-0" : "opacity-100"
-          } transition-opacity duration-200`}
-        >
-          <FeedBackCard
-            name={DataFB[currentIndex].name}
-            social={DataFB[currentIndex].social}
-            image={DataFB[currentIndex].image}
-            feedback={DataFB[currentIndex].feedback}
-          ></FeedBackCard>
+    <section className="dc-reviews" aria-labelledby="reviews-heading">
+      <div className="dc-reviews-heading">
+        <div>
+          <p className="dc-eyebrow">รีวิวจากน้อง ๆ</p>
+          <h2 id="reviews-heading">
+            น้อง ๆ ในโครงการ
+            <br />
+            พูดถึง DevCommu ว่ายังไงบ้าง?
+          </h2>
         </div>
-      </section>
-      <section className="flex invisible md:visible md:max-h-screen max-h-0 overflow-hidden w-full my-10 space-x-5 justify-center">
-        <section className="w-1/3">
-          {DataFB.map((item, index) => {
-            if (index >= (number % 3 == 0 ? number - 1 : number)) return;
-            now = index;
-            return (
-              <FeedBackCard
-                key={index}
-                name={item.name}
-                social={item.social}
-                image={item.image}
-                feedback={item.feedback}
-              ></FeedBackCard>
-            );
-          })}
-        </section>
-        <section className=" w-1/3 ">
-          {DataFB.map((item, index) => {
-            return index > now && index <= now + number ? (
-              <FeedBackCard
-                key={index}
-                name={item.name}
-                social={item.social}
-                image={item.image}
-                feedback={item.feedback}
-              ></FeedBackCard>
-            ) : null;
-          })}
-        </section>
-        <section className=" w-1/3 ">
-          {DataFB.map((item, index) => {
-            return index >= DataFB.length - number ? (
-              <FeedBackCard
-                key={index}
-                name={item.name}
-                social={item.social}
-                image={item.image}
-                feedback={item.feedback}
-              ></FeedBackCard>
-            ) : null;
-          })}
-        </section>
-      </section>
+        <div className="dc-review-controls">
+          <button
+            aria-label="รีวิวก่อนหน้า"
+            onClick={() =>
+              setCurrentIndex(
+                (currentIndex + DataFB.length - 1) % DataFB.length,
+              )
+            }
+          >
+            ←
+          </button>
+          <span aria-live="polite">
+            {currentIndex + 1} / {DataFB.length}
+          </span>
+          <button
+            aria-label="รีวิวถัดไป"
+            onClick={() => setCurrentIndex((currentIndex + 1) % DataFB.length)}
+          >
+            →
+          </button>
+        </div>
+      </div>
+      <div className="dc-reviews-viewport">
+        <motion.div
+          className="dc-reviews-track"
+          animate={{
+            x: `calc((100% - var(--review-width)) / 2 - ${currentIndex + 1} * (var(--review-width) + 24px))`,
+          }}
+          transition={{ duration: 0.45, ease: "easeInOut" }}
+        >
+          {reviews.map((review, index) => (
+            <div
+              key={index}
+              className="dc-review-slide"
+              aria-hidden={index !== currentIndex + 1}
+              style={{ opacity: index === currentIndex + 1 ? 1 : 0.45 }}
+            >
+              <FeedBackCard {...review} />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+      <div className="flex justify-center items-center gap-2 mt-4">
+        {DataFB.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`ไปที่รีวิวที่ ${idx + 1}`}
+            className={`transition-all duration-300 rounded-full ${
+              currentIndex === idx
+                ? "w-7 h-2 bg-[#e57192] shadow-sm"
+                : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+            }`}
+          />
+        ))}
+      </div>
     </section>
   );
 }
@@ -340,16 +390,24 @@ interface FBPage {
 
 export function FeedBackCard({ feedback, name, social, image }: FBPage) {
   return (
-    <motion.section
-      whileHover={{ scale: 1.05 }}
-      className="w-full h-auto bg-white font-lineSansTH   rounded-xl px-6 py-6 mb-5"
-    >
-      <div className=" mb-5 md:text-xl text-lg">{feedback}</div>
-      <div className="flex space-x-6 items-center ">
-        {/* <img src={image} className="h-20 w-20 rounded-full bg-primary" /> */}
+    <motion.section whileHover={{ y: -4 }} className="dc-review-card text-left">
+      <div className="mb-5 md:text-xl text-lg leading-relaxed text-slate-800">{feedback}</div>
+      <div className="flex space-x-4 items-center">
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover shrink-0 border-2 border-primary/20 shadow-md"
+            style={image.includes("us.jpeg") ? { objectPosition: "center top" } : { objectPosition: "center 18%" }}
+          />
+        ) : (
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-primary/10 text-primary font-bold flex items-center justify-center text-2xl shrink-0 border-2 border-primary/20 shadow-md">
+            {name.slice(0, 1)}
+          </div>
+        )}
         <div>
-          {/* <div className="font-bold md:text-xl text-lg">{name}</div> */}
-          <div className="md:text-lg text-[#989DA5]">{social}</div>
+          <div className="font-bold md:text-xl text-lg text-slate-900">{name}</div>
+          <div className="md:text-sm text-xs text-[#989DA5] leading-snug">{social}</div>
         </div>
       </div>
     </motion.section>

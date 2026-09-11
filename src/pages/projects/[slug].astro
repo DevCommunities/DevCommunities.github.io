@@ -1,0 +1,35 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import { ProjectDetail } from '../../components/services/ProjectDetail';
+import { stories, type Story } from '../../lib/content';
+
+export function getStaticPaths() {
+  const projectStories = stories.filter((s) => s.category === 'project');
+  const paths: { params: { slug: string }; props: { story: Story } }[] = [];
+
+  for (const story of projectStories) {
+    if (story.slug) {
+      paths.push({ params: { slug: story.slug }, props: { story } });
+    }
+    // Also support id (e.g. story-proj-sabaijai) as fallback slug
+    paths.push({ params: { slug: story.id }, props: { story } });
+
+    // Convenience aliases
+    if (story.slug === 'thaiailens') {
+      paths.push({ params: { slug: 'thai-ai-lens' }, props: { story } });
+    }
+  }
+
+  return paths;
+}
+
+const { story } = Astro.props;
+---
+
+<ServiceLayout
+  title={story.name}
+  description={story.quote}
+  image={story.image || undefined}
+>
+  <ProjectDetail story={story} client:load />
+</ServiceLayout>

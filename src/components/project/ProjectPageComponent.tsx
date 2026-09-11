@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import Marquee from "react-fast-marquee";
 import { SlideProjectList } from "~/data/data";
 import Footer from "./Footer";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface ProjectPageComponentProps {
   text1: string;
@@ -42,7 +42,7 @@ export default function ProjectPageComponent(props: ProjectPageComponentProps) {
           <h1>
             {text1} <span className="text-primary"> {text2}</span>
           </h1>
-          <h1>{text3}</h1>
+          <p>{text3}</p>
         </section>
         <motion.button
           whileHover={{ scale: 1.04 }}
@@ -77,9 +77,9 @@ export function ProjectCard(props: {
           className="group-hover:bg-opacity-90 group-hover:block h-full bg-accent-secondary bg-opacity-0 rounded-3xl trasition-all duration-500"
         >
           <div className="flex flex-col justify-center h-full p-5 opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <h1 className="text-2xl font-bold text-primary">
+            <h3 className="text-2xl font-bold text-primary">
               {props.project.title}
-            </h1>
+            </h3>
             <p className="text-cutoff mt-3">{props.project.description}</p>
           </div>
         </a>
@@ -170,12 +170,12 @@ export function SlideProjectCard(props: { project: SlideProjectProps }) {
             className="md:h-56 md:max-w-96 h-32 sm:h-52  w-full  rounded-lg bg-center bg-cover bg-no-repeat object-fill"
           />
           <div className="py-3">
-            <h1 className="font-lineSansTH text-primary font-bold md:text-lg text-sm">
+            <p className="font-lineSansTH text-primary font-bold md:text-lg text-sm">
               {props.project.type}
-            </h1>
-            <h1 className="font-lineSansTH text-white font-bold md:text-2xl text-lg">
+            </p>
+            <h3 className="font-lineSansTH text-white font-bold md:text-2xl text-lg">
               {props.project.title}
-            </h1>
+            </h3>
             <button className="h-8 min-w-24 px-4 bg-[#334155] md:mt-7 mt-2 rounded-full transition-colors hover:bg-[#475d78]">
               {/* TODO: Off Unfinished SLUG page */}
               {/* <a href={`/project/${Slug(props.project.slug)}`}> */}
@@ -197,13 +197,30 @@ export function SlideProjectCard(props: { project: SlideProjectProps }) {
 
 export function SlideBlackArea() {
   const { scrollYProgress } = useScroll();
+  const [showAll, setShowAll] = useState(false);
+  const INITIAL_PROJECTS = 4;
+  const visibleProjects = showAll
+    ? SlideProjectList
+    : SlideProjectList.slice(0, INITIAL_PROJECTS);
+
+  const handleToggle = () => {
+    if (showAll) {
+      setShowAll(false);
+      const el = document.getElementById("past-camps-title");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      setShowAll(true);
+    }
+  };
 
   return (
     <div className="z-40 relative text-white">
       <div className="z-[400]">
         <section className=" bg-gradient-to-t from-[#1E1E1E] to-transparent min-h-[20vh]"></section>
         <section className=" bg-[#1E1E1E]  py-10">
-          <div className="">
+          <div id="past-camps-title">
             <div className="font-bold font-lineSansTH_XB md:text-4xl text-2xl">
               พวกเราผ่านอะไรมาแล้วบ้าง
             </div>
@@ -216,23 +233,10 @@ export function SlideBlackArea() {
           {/* scrolling bar */}
           <div className="w-1/6 relative">
             <div className="bg-[#616161] mx-auto w-1 h-full md:left-24 rounded-full absolute">
-              {/* scale Y scroll */}
-              {/* <motion.div
-                className="h-full"
-                // position scale based on scroll and make it scaled (since the scroll bar isn't scaled)
-                style={{
-                  scaleY: useTransform(scrollYProgress, [0, 1], [0, 1]),
-                }}
-              >
-                <div className="bg-primary h-3 w-3 rounded-sm -mx-[0.23rem] z-50 absolute"></div>
-                <div className="pt-2">
-                  <div className="bg-primary h-10"></div>
-                </div>
-              </motion.div> */}
             </div>
           </div>
           <div className="w-full p-10 text-start">
-            {SlideProjectList.map((project, index) => {
+            {visibleProjects.map((project, index) => {
               return (
                 <SlideProjectCard
                   key={index}
@@ -240,10 +244,30 @@ export function SlideBlackArea() {
                 ></SlideProjectCard>
               );
             })}
+
+            {SlideProjectList.length > INITIAL_PROJECTS && (
+              <div className="flex justify-center mt-10 mb-6">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.96 }}
+                  onClick={handleToggle}
+                  className="px-8 py-3 bg-[#e57192]/20 hover:bg-primary border border-primary/50 text-[#ff9cb7] hover:text-white font-lineSansTH font-bold rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-primary/35 cursor-pointer"
+                >
+                  <span>
+                    {showAll
+                      ? "ย่อกลับ"
+                      : `ดูค่ายที่ผ่านมาเพิ่มเติม (${SlideProjectList.length - INITIAL_PROJECTS} ค่าย)`}
+                  </span>
+                  <span className="text-lg font-bold">
+                    {showAll ? "↑" : "↓"}
+                  </span>
+                </motion.button>
+              </div>
+            )}
           </div>
         </section>
       </div>
-      <div className="bg-[#1E1E1E] pt-96">
+      <div className="bg-[#1E1E1E] pt-24 md:pt-40">
         <Footer></Footer>
       </div>
     </div>

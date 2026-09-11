@@ -1,10 +1,15 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import { defineConfig } from 'astro/config';
-import robotsTxt from 'astro-robots-txt';
-
-// https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+import robotsTxt from "astro-robots-txt";
+const site = process.env.SITE_URL || "https://devcommunities.github.io";
 export default defineConfig({
-  integrations: [react(), tailwind(), robotsTxt()]
+  site,
+  integrations: [
+    react(),
+    tailwind(),
+    sitemap(),
+    robotsTxt(),
+  ],
 });
