@@ -46,31 +46,7 @@ export type Story = {
   objectPosition?: string;
 };
 export type Stat = { id: string; label: string; value: string };
-const upcomingCamps: Camp[] = [
-  {
-    id: "comeng-bootcamp-sep-2026-by-devcommu",
-    title: "Com Engineering Bootcamp | Sep 2026 By Devcommu",
-    description:
-      "เปิดโลกวิศวะคอม พร้อมค้นหาเส้นทางที่ใช่ เรียนรู้ว่าวิศวกรรมคอมพิวเตอร์คืออะไร สำรวจทักษะที่จำเป็น และอาชีพในสายงาน พูดคุยกับ mentor พร้อมรับคำแนะนำส่วนตัว",
-    image: "/images/camps/banners/comeng-bootcamp-sep-2026-by-devcommu.webp",
-    stack: "Computer Engineering, Hardware & Architecture, Software Development, System & Network, AI, Career Pathway",
-    syllabus:
-      "เรียนรู้ว่า วิศวกรรมคอมพิวเตอร์ คืออะไร\nสำรวจทักษะที่จำเป็น และ อาชีพในสายงาน\nพูดคุยกับ mentor พร้อมรับคำแนะนำส่วนตัว\nถาม-ตอบแนวทางการเตรียมตัวและทำพอร์ตเข้าคณะวิศวะคอม",
-    audience: "ม.1 - ม.6 / ปวช., ปวส., บุคคลทั่วไป (ปีการศึกษา 2569)",
-    schedule: "อาทิตย์ 13 กันยายน 2569 (09.00 - 16.00 น.)",
-    location: "กิจกรรมออนไลน์ (เรียน Online ผ่านช่องทาง Zoom)",
-    price: "299 บาท (จ่ายตอนสมัคร)",
-    status: "open",
-    year: 2026,
-    capacity: "ไม่จำกัด",
-    category: "Com Eng",
-    formUrl: "https://forms.gle/ayjdkPbNDJPGfzKGA",
-    notes: "รับสมัครถึงพรุ่งนี้! วันที่รับสมัครวันสุดท้าย เสาร์ 12 กันยายน 2569",
-    instructors: "พี่หมูกรอบ (รุ่นพี่วิศวะคอม จุฬาฯ)",
-    contacts: "กิจกรรมนี้จัดโดย DevCommu (ติดต่อผู้จัด คลิกที่ไอคอนด้านล่าง: LINE @468httmq, Messenger, Instagram)",
-    isMock: false,
-  },
-];
+const upcomingCamps: Camp[] = [];
 export const camps: Camp[] = [...upcomingCamps, ...campArchive];
 export const tutors: Tutor[] = About.flatMap((group) => group.people).map(
   (p, i) => {

@@ -484,6 +484,78 @@ body {
 .dc-path-private .dc-path-bottom {
   border-color: #fff3;
 }
+.dc-path-portfolio {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #241c2c 0%, #1c1825 50%, #151620 100%);
+  color: white;
+  border: 1px solid rgba(229, 113, 146, 0.28);
+  min-height: 310px;
+}
+.dc-path-portfolio .dc-path-top > b {
+  border-color: #fff5;
+}
+.dc-path-portfolio .dc-path-bottom {
+  border-color: #fff3;
+}
+.dc-path-portfolio:hover {
+  border-color: rgba(229, 113, 146, 0.55);
+  box-shadow: 0 16px 36px -8px rgba(229, 113, 146, 0.22);
+}
+.dc-path-portfolio img {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  width: 195px;
+  height: 195px;
+  opacity: 0.65;
+  transform: rotate(-12deg);
+}
+.dc-path-portfolio:hover img {
+  transform: rotate(-5deg) translateY(-8px) scale(1.05);
+}
+.dc-portfolio-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 28px;
+  position: relative;
+  z-index: 1;
+}
+.dc-portfolio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  backdrop-filter: blur(8px);
+}
+@media (max-width: 900px) {
+  .dc-path-portfolio img {
+    right: -25px;
+    bottom: 30px;
+    width: 165px;
+    height: 165px;
+    opacity: 0.4;
+  }
+}
+@media (max-width: 600px) {
+  .dc-path-portfolio {
+    grid-column: auto;
+    min-height: 340px;
+  }
+  .dc-portfolio-badges {
+    margin: 12px 0 20px;
+  }
+  .dc-portfolio-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}
 .dc-proof {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;

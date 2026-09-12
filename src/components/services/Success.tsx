@@ -505,6 +505,37 @@ export function HomeAdditions() {
             </div>
             <img src="/images/decor/keyboard.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           </motion.a>
+          <motion.a
+            whileHover={{ y: -6 }}
+            className="dc-path dc-path-portfolio"
+            href="/tutoring"
+          >
+            <div className="dc-path-top">
+              <span className="inline-flex items-center gap-2 font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#e57192] animate-pulse" />
+                <span>ปรึกษารอบพอร์ต · TCAS รอบ 1</span>
+              </span>
+              <b>↗</b>
+            </div>
+            <h3>
+              Portfolio Consult<span>ปรึกษารอบพอร์ต วางแผนคณะในฝัน</span>
+            </h3>
+            <p className="max-w-2xl text-slate-300">
+              วางแผน Roadmap สะสมผลงาน ออกแบบโครงงาน AI / Web ที่ตอบโจทย์เกณฑ์คณะ และเกลา Storytelling ในเล่มพอร์ต
+              <br className="hidden md:inline" />
+              {" "}ให้คำปรึกษาเจาะลึกแบบตัวต่อตัวกับรุ่นพี่ CEDT และวิศวะคอมฯ จุฬาฯ เตรียมพร้อมยื่น TCAS รอบ 1 อย่างมั่นใจ
+            </p>
+            <div className="dc-portfolio-badges">
+              <span className="dc-portfolio-badge">🎯 วางแผน Roadmap ผลงานรายบุคคล</span>
+              <span className="dc-portfolio-badge">💡 ให้คำปรึกษาไอเดีย & พัฒนาโครงงานเด่น</span>
+              <span className="dc-portfolio-badge">📖 ตรวจเช็ก Storytelling & ซ้อมสัมภาษณ์</span>
+            </div>
+            <div className="dc-path-bottom">
+              <span>TCAS 1 · CEDT จุฬาฯ · วิศวะคอมฯ · IT & นวัตกรรม</span>
+              <strong>ปรึกษาทำพอร์ตกับพี่ ๆ →</strong>
+            </div>
+            <img src="/images/decor/portfolio-doc.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          </motion.a>
         </div>
       </section>
       <section className="dc-mentor-strip">
