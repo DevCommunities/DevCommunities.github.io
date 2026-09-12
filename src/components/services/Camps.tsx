@@ -2,10 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { camps, type Camp, safeUrl } from "../../lib/content";
 import { Card, Heading, Notice } from "./shared";
-import LeadForm from "./LeadForm";
 
 function CampCard({ camp }: { camp: Camp }) {
   const isOpen = camp.status === "open";
+  const formUrl = camp.formUrl || "https://forms.gle/ayjdkPbNDJPGfzKGA";
   const shortLocation =
     camp.location.includes("Zoom") || camp.location.includes("Online")
       ? "เรียน Online ผ่าน Zoom"
@@ -106,27 +106,40 @@ function CampCard({ camp }: { camp: Camp }) {
             <span className="dc-camp-price-val">{cleanPrice}</span>
           </div>
 
-          <a
-            href={"/bootcamps/" + camp.id}
-            className={
-              "dc-camp-btn " +
-              (isOpen ? "dc-camp-btn-primary" : "dc-camp-btn-secondary")
-            }
-          >
-            <span>ดูรายละเอียด</span>
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          <div className="flex items-center gap-2">
+            {isOpen && (
+              <a
+                href={formUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="dc-camp-btn dc-camp-btn-primary whitespace-nowrap"
+                title="สมัครเข้าร่วมผ่าน Google Form ทันที"
+              >
+                <span>สมัครเลย ↗</span>
+              </a>
+            )}
+            <a
+              href={"/bootcamps/" + camp.id}
+              className={
+                "dc-camp-btn " +
+                (isOpen ? "dc-camp-btn-secondary" : "dc-camp-btn-secondary")
+              }
             >
-              <path d="M7 17l9.2-9.2M17 17V8H8" />
-            </svg>
-          </a>
+              <span>ดูรายละเอียด</span>
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M7 17l9.2-9.2M17 17V8H8" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </Card>
@@ -256,6 +269,9 @@ export function Bootcamps() {
   );
 }
 export function CampDetail({ camp }: { camp: Camp }) {
+  const isOpen = camp.status === "open";
+  const formUrl = camp.formUrl || "https://forms.gle/ayjdkPbNDJPGfzKGA";
+
   return (
     <>
       <a className="dc-muted" href="/bootcamps">
@@ -301,38 +317,54 @@ export function CampDetail({ camp }: { camp: Camp }) {
           )}
           {camp.contacts && (
             <>
-              <h3>{camp.status === "open" ? "จัดโดย / ช่องทางติดต่อ" : "ผู้ติดต่อที่ระบุในประกาศ"}</h3>
+              <h3>{isOpen ? "จัดโดย / ช่องทางติดต่อ" : "ผู้ติดต่อที่ระบุในประกาศ"}</h3>
               <p className="dc-muted">{camp.contacts}</p>
             </>
           )}
           <h3>เหมาะกับใคร?</h3>
           <p className="dc-muted">{camp.audience}</p>
         </section>
-        <aside className="dc-card">
-          <h3>รายละเอียดการเรียน</h3>
-          <p className="dc-muted">{camp.schedule}</p>
-          <p className="dc-muted">{camp.location}</p>
-          <p className="dc-small mt-4">
-            {camp.status === "open" ? "ค่าสมัครเข้าร่วม" : "ค่าเข้าร่วมในรอบนั้น"}
-          </p>
-          <h3>{camp.price}</h3>
-          {camp.capacity && (
-            <p className="dc-small mb-4">
-              จำนวนผู้เข้าร่วม:{" "}
-              {camp.capacity === "—"
-                ? "ไม่ระบุ"
-                : camp.capacity === "ไม่จำกัด"
-                  ? "ไม่จำกัด"
-                  : camp.capacity + " คน"}
+        <aside className="dc-card flex flex-col justify-between">
+          <div>
+            <h3>รายละเอียดการเรียน</h3>
+            <p className="dc-muted">{camp.schedule}</p>
+            <p className="dc-muted">{camp.location}</p>
+            <p className="dc-small mt-4">
+              {isOpen ? "ค่าสมัครเข้าร่วม" : "ค่าเข้าร่วมในรอบนั้น"}
             </p>
+            <h3>{camp.price}</h3>
+            {camp.capacity && (
+              <p className="dc-small mb-4">
+                จำนวนผู้เข้าร่วม:{" "}
+                {camp.capacity === "—"
+                  ? "ไม่ระบุ"
+                  : camp.capacity === "ไม่จำกัด"
+                    ? "ไม่จำกัด"
+                    : camp.capacity + " คน"}
+              </p>
+            )}
+            <span className="dc-tag">
+              {isOpen
+                ? "เปิดรับสมัคร"
+                : camp.status === "closed"
+                  ? "ปิดรับสมัคร"
+                  : "รอประกาศรอบเรียน"}
+            </span>
+          </div>
+
+          {isOpen && (
+            <div className="mt-6 pt-5 border-t border-slate-100">
+              <a
+                href={formUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 px-4 rounded-xl bg-[#e57192] hover:bg-[#d65f82] text-white font-bold text-sm text-center shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              >
+                <span>สมัครเข้าร่วมค่าย (Google Form)</span>
+                <span>↗</span>
+              </a>
+            </div>
           )}
-          <span className="dc-tag">
-            {camp.status === "open"
-              ? "เปิดรับสมัคร"
-              : camp.status === "closed"
-                ? "ปิดรับสมัคร"
-                : "รอประกาศรอบเรียน"}
-          </span>
         </aside>
       </div>
       {camp.notes && <Notice>{camp.notes}</Notice>}
@@ -349,7 +381,37 @@ export function CampDetail({ camp }: { camp: Camp }) {
       {camp.status === "closed" ? (
         <Notice>ค่ายนี้ปิดรับสมัครแล้ว ติดตามรอบถัดไปได้ที่หน้ารวมค่าย</Notice>
       ) : (
-        <LeadForm campId={camp.id} />
+        <section className="my-10 p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-pink-50/90 via-white to-rose-50/50 border border-[#e57192]/25 shadow-xl text-center font-lineSansTH">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e57192]/10 text-[#e57192] text-xs font-bold tracking-wide uppercase mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#e57192] animate-pulse" />
+            <span>REGISTRATION OPEN · รับสมัครจำนวนจำกัด</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-lineSansTH_XB mb-3">
+            สมัครเข้าร่วมค่าย {camp.title}
+          </h2>
+          <p className="text-slate-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed mb-6">
+            กรอกข้อมูลการสมัครและสำรองที่นั่งผ่านแบบฟอร์ม Google Form ได้ทันที ทีมงานจะติดต่อกลับพร้อมแจ้งยืนยันสิทธิ์และรายละเอียดการเข้าร่วม
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <a
+              href={formUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#e57192] hover:bg-[#d65f82] text-white font-bold text-base shadow-lg shadow-pink-500/20 hover:shadow-xl hover:-translate-y-0.5 transition-all"
+            >
+              <span>กรอกฟอร์มสมัครเข้าร่วม (Google Form)</span>
+              <span className="text-lg">↗</span>
+            </a>
+            <a
+              href="https://line.me/R/ti/p/@468httmq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-base border border-slate-200 shadow-sm transition-all"
+            >
+              <span>สอบถามเพิ่มเติม LINE: @468httmq</span>
+            </a>
+          </div>
+        </section>
       )}
     </>
   );

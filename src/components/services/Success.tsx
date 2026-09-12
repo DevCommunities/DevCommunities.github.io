@@ -98,8 +98,21 @@ function StoryArt({
             onOpenModal?.(story);
           }
         }}
-        title={`คลิกเพื่อดูหน้าต่างโชว์หน้าน้อง ${story.name} ขนาดใหญ่`}
+        title={`คลิกเพื่อดูหน้าต่างโชว์${isProject ? "ภาพโครงงาน" : "หน้าน้อง"} ${story.name} ขนาดใหญ่`}
       >
+        {isProject && (
+          <div className="dc-project-window-bar">
+            <div className="dc-mockup-dots">
+              <span className="dot dot-red" />
+              <span className="dot dot-yellow" />
+              <span className="dot dot-green" />
+            </div>
+            <span className="dc-project-mockup-url">
+              {story.slug ? `${story.slug}.app` : "project.app"}
+            </span>
+            <span className="dc-project-mockup-tag">WEB APP</span>
+          </div>
+        )}
         <img
           className={`dc-cover ${isProject ? "dc-project-cover" : "dc-student-cover"}`}
           src={safeUrl(story.image)}
@@ -173,36 +186,85 @@ function StoryCard({
   story: Story;
   onOpenModal?: (story: Story) => void;
 }) {
+  const isProject = s.category === "project";
+  const [projectTitle, projectTagline] =
+    isProject && s.name.includes(" - ")
+      ? s.name.split(" - ")
+      : [s.name, ""];
+
   return (
-    <Card>
-      <StoryArt story={s} onOpenModal={onOpenModal} />
-      <span className="dc-story-category">
-        {labels[s.category]}
-      </span>
-      <h3>{s.name}</h3>
-      <p className="dc-story-result">{s.institution}</p>
-      <p className="dc-small">{s.faculty}</p>
-      <p className="dc-muted mt-4">{s.quote}</p>
-      {s.category === "project" ? (
-        <div className="mt-5 pt-4 border-t border-slate-100">
+    <Card className={`dc-story-card flex flex-col justify-between ${isProject ? "dc-story-card-project" : ""}`}>
+      <div>
+        <StoryArt story={s} onOpenModal={onOpenModal} />
+        <div className="flex items-center justify-between gap-2 mb-1.5">
+          <span className="dc-story-category">
+            {labels[s.category]}
+          </span>
+          {isProject && (
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+              Live App
+            </span>
+          )}
+        </div>
+
+        <h3 className="dc-story-title">
+          {isProject ? projectTitle : s.name}
+        </h3>
+
+        {isProject ? (
+          <>
+            <p className="dc-story-result font-semibold text-slate-800">
+              {projectTagline || s.faculty}
+            </p>
+            <p className="dc-small text-slate-500">
+              👤 {s.institution}
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="dc-story-result">{s.institution}</p>
+            <p className="dc-small">{s.faculty}</p>
+          </>
+        )}
+
+        <p className="dc-muted mt-3 text-sm leading-relaxed">
+          {isProject ? s.quote : `“${s.quote}”`}
+        </p>
+      </div>
+
+      {isProject ? (
+        <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between gap-2">
           <a
             href={`/projects/${s.slug || s.id.replace("story-proj-", "")}`}
-            className="w-full text-center py-2.5 px-4 rounded-xl bg-[#e57192] hover:bg-[#d65f82] text-white font-semibold text-sm transition-all shadow-sm hover:shadow flex items-center justify-center gap-2"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#e57192] hover:text-[#d65f82] transition-all group/link"
           >
             <span>ดูรายละเอียดโครงงาน</span>
-            <span>→</span>
+            <span className="transition-transform group-hover/link:translate-x-1">→</span>
           </a>
+          {safeUrl(s.url) && (
+            <a
+              href={safeUrl(s.url)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100/90 text-slate-700 hover:bg-pink-50 hover:text-[#e57192] transition-colors border border-slate-200/60"
+            >
+              <span>เปิดเว็บจริง</span>
+              <span className="text-[10px]">↗</span>
+            </a>
+          )}
         </div>
       ) : (
         safeUrl(s.url) && (
-          <a
-            className="dc-text-link mt-4 inline-block font-semibold"
-            href={safeUrl(s.url)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ดูผลงาน ↗
-          </a>
+          <div className="mt-4 pt-3 border-t border-slate-100/60">
+            <a
+              className="dc-text-link inline-block font-semibold"
+              href={safeUrl(s.url)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ดูผลงาน ↗
+            </a>
+          </div>
         )
       )}
     </Card>

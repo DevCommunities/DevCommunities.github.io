@@ -16,6 +16,7 @@ export type Camp = {
   capacity?: string;
   category?: string;
   sourceUrl?: string;
+  formUrl?: string;
   notes?: string;
   instructors?: string;
   contacts?: string;
@@ -63,6 +64,7 @@ const upcomingCamps: Camp[] = [
     year: 2026,
     capacity: "ไม่จำกัด",
     category: "Com Eng",
+    formUrl: "https://forms.gle/ayjdkPbNDJPGfzKGA",
     notes: "รับสมัครถึงพรุ่งนี้! วันที่รับสมัครวันสุดท้าย เสาร์ 12 กันยายน 2569",
     instructors: "พี่หมูกรอบ (รุ่นพี่วิศวะคอม จุฬาฯ)",
     contacts: "กิจกรรมนี้จัดโดย DevCommu (ติดต่อผู้จัด คลิกที่ไอคอนด้านล่าง: LINE @468httmq, Messenger, Instagram)",
@@ -197,8 +199,9 @@ export const stories: Story[] = [
     faculty: "วิศวกรรมคอมพิวเตอร์และเทคโนโลยีดิจิทัล (CEDT Chula)",
     quote:
       "ได้ฝึกทักษะการทำงานเป็นทีมและพัฒนานวัตกรรมจริง จนได้รางวัลรองชนะเลิศอันดับ 3 Siriraj Hackathon และสอบติด CEDT จุฬาฯ",
-    image: "/images/students/avatar-placeholder.svg",
+    image: "/images/students/shane.webp",
     url: "",
+    objectPosition: "center top",
   },
   {
     id: "story-uni-tim",
@@ -277,8 +280,9 @@ export const stories: Story[] = [
     faculty: "รองชนะเลิศอันดับ 3 Siriraj Hackathon",
     quote:
       "การทำงานเป็นทีมและพัฒนานวัตกรรมที่ตอบโจทย์การแพทย์จริงจนคว้ารางวัลรองชนะเลิศอันดับ 3 ในเวทีระดับชาติ",
-    image: "/images/students/avatar-placeholder.svg",
+    image: "/images/students/shane.webp",
     url: "",
+    objectPosition: "center top",
   },
   {
     id: "story-award-jewelry",
@@ -299,8 +303,9 @@ export const stories: Story[] = [
     faculty: "สอวน.คอม ค่าย 2 · ขวัญใจกรรมการ AI Builders · รางวัลชมเชย CEDT Innovation Summit",
     quote:
       "ลุยทั้งสายแข่งอัลกอริทึม สอวน.คอม และสายทำโปรเจกต์ AI จนผ่านคัดเลือกระดับภาค NSC และได้รางวัลจากเวทีชั้นนำ",
-    image: "/images/students/win.webp",
+    image: "/images/students/win2.webp",
     url: "",
+    objectPosition: "center 22%",
   },
   {
     id: "story-award-tim",
@@ -332,9 +337,9 @@ export const stories: Story[] = [
     name: "Website Sabaijai - พื้นที่ปลอดภัย ให้ใจได้พัก",
     category: "project",
     institution: "น้องจิว · โรงเรียนสวนกุหลาบวิทยาลัย ธนบุรี",
-    faculty: "ระดับโรงเรียน/สถาบัน ไม่มีค่าใช้จ่าย · ร่วมกับ โรงเรียนสวนกุหลาบวิทยาลัย ธนบุรี",
+    faculty: "Next.js · React · Gemini AI · ใช้งานจริงในโรงเรียน",
     quote:
-      "ผลที่ได้รับ: มีผู้ใช้จริงใน phase แรก รวมกันกว่าหลายร้อยคน และได้ถูกนำไปพัฒนาต่อเพื่อใช้เป็นระบบดูแลนักเรียนภายในโรงเรียน 'Sabaijai X SKT Students'",
+      "มีผู้ใช้จริงใน Phase แรกกว่าหลายร้อยคน และได้รับคัดเลือกนำไปพัฒนาต่อเป็นระบบดูแลนักเรียนจริง 'Sabaijai X SKT Students' ภายในโรงเรียน",
     image: "/images/projects/sabaijai-cover.webp",
     url: "https://sabaijai-mentaleddy.vercel.app/",
     details:
@@ -346,9 +351,9 @@ export const stories: Story[] = [
     name: "ThaiAI Lens - ห้องทดลองปัญญาประดิษฐ์ภาษาไทยผ่านสื่อภาพแบบโต้ตอบ",
     category: "project",
     institution: "น้องวิน · สาธิต มศว ประสานมิตร (ฝ่ายมัธยม)",
-    faculty: "NSC ครั้งที่ 28 · Interactive Visualization-based AI Learning",
+    faculty: "NSC ครั้งที่ 28 · Interactive Visualization AI Learning",
     quote:
-      "ผลที่ได้รับ: เว็บแอปพลิเคชันห้องทดลองปัญญาประดิษฐ์ภาษาไทยแบบโต้ตอบครบวงจร 11 หมวด 4 ระดับ พร้อมระบบสำรวจชุดข้อมูลไทย และ AI แนะนำคอนเซ็ปต์ในเบราว์เซอร์",
+      "เว็บแอปพลิเคชันห้องทดลองปัญญาประดิษฐ์ภาษาไทยแบบโต้ตอบครบวงจร 11 หมวด 4 ระดับ พร้อมระบบสำรวจชุดข้อมูลไทย และ AI แนะนำคอนเซ็ปต์ในเบราว์เซอร์",
     image: "/images/projects/thai-ai-lens-cover.webp",
     url: "",
     details:

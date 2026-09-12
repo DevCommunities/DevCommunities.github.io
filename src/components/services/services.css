@@ -44,6 +44,13 @@
   padding: 24px;
   min-width: 0;
   border: 1px solid #e9e9ed;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
 }
 .dc-card img.dc-cover {
   width: 100%;
@@ -1007,8 +1014,10 @@ body {
 }
 
 .dc-student-window.dc-project-window {
-  aspect-ratio: 16 / 10;
-  min-height: 200px;
+  aspect-ratio: 1 / 1;
+  min-height: 280px;
+  background: radial-gradient(circle at center, #fff0f3 0%, #fef3f6 40%, #fdf6f0 100%);
+  border: 1px solid #fce7ec;
 }
 
 .dc-student-cover {
@@ -1034,15 +1043,83 @@ body {
 .dc-project-cover {
   width: 100% !important;
   height: 100% !important;
+  aspect-ratio: 1 / 1 !important;
   object-fit: cover !important;
-  object-position: top center !important;
+  object-position: center !important;
   margin-bottom: 0 !important;
   border-radius: 0 !important;
-  transition: transform 0.4s ease !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: block;
 }
 
 .dc-student-window:hover .dc-project-cover {
-  transform: scale(1.03);
+  transform: scale(1.06);
+}
+
+.dc-project-window-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  z-index: 5;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.dc-mockup-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dc-mockup-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dc-mockup-dots .dot-red {
+  background: #ff5f56;
+}
+
+.dc-mockup-dots .dot-yellow {
+  background: #ffbd2e;
+}
+
+.dc-mockup-dots .dot-green {
+  background: #27c93f;
+}
+
+.dc-project-mockup-url {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b;
+  background: rgba(241, 245, 249, 0.85);
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  letter-spacing: -0.2px;
+}
+
+.dc-project-mockup-tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #e57192;
+  background: #fdf2f4;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(229, 113, 146, 0.25);
 }
 
 .dc-student-window-badge {

@@ -275,7 +275,7 @@ const DataFB: FBPage[] = [
     name: "น้องวิน",
     social:
       "สอวน.คอม ค่าย 2 · ผ่านคัดเลือกระดับภาค NSC · ผู้พัฒนา ThaiAI Lens",
-    image: "/images/students/win.webp",
+    image: "/images/students/win2.webp",
   },
   {
     feedback:
