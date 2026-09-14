@@ -5,6 +5,7 @@ export type BlogPost = {
   content: string;
   author: string;
   authorRole: string;
+  authorImage?: string;
   date: string;
   category: string;
   tags: string[];
@@ -157,6 +158,8 @@ export const blogPosts: BlogPost[] = [
 *DevCommu เป็นหนึ่งในตัวเลือกสำหรับนักเรียนที่ต้องการเรียนเขียนโปรแกรมเชิงลึก ตั้งแต่พื้นฐานจนถึงระดับแข่งขัน สอนโดยนิสิตและบัณฑิตวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย หากสนใจ สามารถดูรายละเอียดได้ที่ [devcommu.org](https://devcommunities.github.io)*`,
     author: "DevCommu",
     authorRole: "ทีม DevCommu",
+    authorImage: "/favicon.svg",
+    image: "/images/camps/banners/roblox-bootcamp-nov2025.webp",
     date: "2026-09-15",
     category: "แนะแนว",
     tags: [
@@ -251,6 +254,10 @@ export const blogPosts: BlogPost[] = [
 
 นักเรียนของ DevCommu หลายคนผ่าน สอวน. คอมพิวเตอร์ ค่าย 2 และเข้าแข่ง TOI สำเร็จ พี่เซย์ไฮ ติวเตอร์ของ DevCommu เป็นตัวแทนศูนย์ สอวน. มจพ. ในการแข่งขัน TOI ครั้งที่ 19 และพี่จีจี้ เป็นผู้แทนศูนย์ สอวน. 2 ปีซ้อน (TOI 19-20)
 
+![พี่เซย์ไฮ ติวเตอร์ DevCommu ตัวแทนศูนย์ สอวน. มจพ. แข่งขัน TOI ครั้งที่ 19](/images/about/sayhi.webp)
+
+![พี่จีจี้ ติวเตอร์ DevCommu ผู้แทนศูนย์ สอวน. 2 ปีซ้อน (TOI 19-20)](/images/about/gigi.webp)
+
 เคล็ดลับที่รุ่นพี่แนะนำ:
 
 - **ฝึกทุกวัน** แม้วันละ 1-2 ข้อ ความสม่ำเสมอสำคัญกว่าการอ่านทฤษฎีอย่างเดียว
@@ -272,6 +279,8 @@ DevCommu มีติวเตอร์ที่เชี่ยวชาญด�
 หากสนใจเตรียมสอบ สอวน. คอมพิวเตอร์ กับติวเตอร์ที่มีประสบการณ์จริง สามารถติดต่อ DevCommu ได้ผ่าน LINE, Messenger หรือ Instagram`,
     author: "DevCommu",
     authorRole: "ทีมติวเตอร์ DevCommu",
+    authorImage: "/favicon.svg",
+    image: "/images/camps/banners/posn-com-crashcourse-bootcamp-june-july-2026-by-devcommu-2.webp",
     date: "2026-09-12",
     category: "แนะแนว",
     tags: [
@@ -346,8 +355,12 @@ DevCommu มีติวเตอร์ที่เชี่ยวชาญด�
 ### Sabaijai — เว็บไซต์ดูแลสุขภาพจิตนักเรียน
 น้องจิว นักเรียนของ DevCommu พัฒนาเว็บไซต์ "Sabaijai" สำหรับให้นักเรียนระบายความรู้สึกโดยไม่ระบุตัวตน พร้อม AI Buddy ที่วิเคราะห์อารมณ์ ผลที่ได้: มีผู้ใช้จริงหลายร้อยคน และถูกนำไปใช้เป็นระบบดูแลนักเรียนในโรงเรียนสวนกุหลาบวิทยาลัย ธนบุรี [ดูรายละเอียดโปรเจกต์](/projects/sabaijai)
 
+![น้องจิว ผู้พัฒนาเว็บไซต์ Sabaijai](/images/students/njew.webp)
+
 ### ThaiAI Lens — ห้องทดลอง AI ภาษาไทย
 น้องวิน พัฒนาเว็บแอปพลิเคชัน "ThaiAI Lens" ห้องทดลองปัญญาประดิษฐ์ภาษาไทยแบบโต้ตอบ ครอบคลุม Machine Learning และ Deep Learning 11 หมวด 4 ระดับ [ดูรายละเอียดโปรเจกต์](/projects/thaiailens)
+
+![ThaiAI Lens ห้องทดลอง AI ภาษาไทย ผลงานน้องวิน](/images/projects/thai-ai-lens-cover.webp)
 
 ### ผลลัพธ์ที่เกิดขึ้นจริง
 นักเรียนของ DevCommu สอบติดมหาวิทยาลัยชั้นนำด้วย Portfolio:
@@ -389,6 +402,8 @@ DevCommu มีบริการ Consult Project ที่ช่วยน้อ
 ติดต่อ DevCommu ผ่าน LINE, Messenger หรือ Instagram เพื่อปรึกษาเรื่องการสร้าง Portfolio`,
     author: "DevCommu",
     authorRole: "ทีมติวเตอร์ DevCommu",
+    authorImage: "/favicon.svg",
+    image: "/images/projects/sabaijai-cover.webp",
     date: "2026-09-10",
     category: "แนะแนว",
     tags: [
@@ -423,6 +438,8 @@ Python เป็นภาษาโปรแกรมที่ได้รับ�
 - **ชุมชนใหญ่**: มีคนใช้ทั่วโลก มีคำตอบให้ทุกปัญหาที่เจอ
 - **ใช้ในการแข่งขัน**: ใช้สอบ สอวน. คอมพิวเตอร์ได้ (บางศูนย์) และใช้ในโปรเจกต์ AI/Data Science
 - **ตลาดงานต้องการ**: อาชีพที่ใช้ Python เช่น Data Scientist, AI Engineer, Backend Developer มีรายได้สูงและเป็นที่ต้องการ
+
+![ค่าย AI/ML ของ DevCommu ตัวอย่างการเรียน Python ผ่านโปรเจกต์จริง](/images/camps/banners/intro-to-ai-ml-bootcamp-may-2026-by-devcommu.webp)
 
 ---
 
@@ -507,6 +524,8 @@ DevCommu สอนเขียนโปรแกรม Python ตั้งแต
 ติดต่อ DevCommu ผ่าน LINE, Messenger หรือ Instagram`,
     author: "DevCommu",
     authorRole: "ทีมติวเตอร์ DevCommu",
+    authorImage: "/favicon.svg",
+    image: "/images/camps/thumbnails/002-python-boot-camp-horizontal.webp",
     date: "2026-09-08",
     category: "บทความสอน",
     tags: [
@@ -612,6 +631,8 @@ DevCommu เป็นสถาบันสอนเขียนโปรแก�
 ติดต่อ DevCommu ผ่าน LINE, Messenger หรือ Instagram`,
     author: "DevCommu",
     authorRole: "ทีม DevCommu",
+    authorImage: "/favicon.svg",
+    image: "/images/camps/banners/devcommu-discover-tech-web-ai-bootcamp.webp",
     date: "2026-09-06",
     category: "แนะแนว",
     tags: [
@@ -745,6 +766,8 @@ DevCommu มีติวเตอร์เฉพาะทางด้าน Comp
 ติดต่อ DevCommu ผ่าน LINE, Messenger หรือ Instagram`,
     author: "DevCommu",
     authorRole: "ทีมติวเตอร์ DevCommu",
+    authorImage: "/favicon.svg",
+    image: "/images/camps/banners/posn-crashcourse-by-devcommu.webp",
     date: "2026-09-04",
     category: "บทความสอน",
     tags: [
@@ -786,6 +809,8 @@ DevCommu Grader คือระบบตรวจโค้ดออนไลน�
 - **เรียนรู้จากข้อผิดพลาด** ระบบจะแจ้งผลลัพธ์ว่าผ่านหรือไม่ผ่าน พร้อมระบุ Test Case ที่ไม่ผ่าน ทำให้สามารถปรับปรุงโค้ดได้อย่างตรงจุด
 - **ติดตามความก้าวหน้า** ดูสถิติการส่งโจทย์ จำนวนข้อที่ผ่าน และพัฒนาการของตัวเอง
 - **เตรียมตัวสอบ** โจทย์ถูกออกแบบให้ครอบคลุมเนื้อหาที่ใช้ในการสอบ สอวน. คอมพิวเตอร์ และการแข่งขันอื่นๆ
+
+![ฝึกเขียนโค้ดและส่งโจทย์ได้ทุกที่ผ่าน DevCommu Grader](/images/decor/keyboard.webp)
 
 ---
 
@@ -835,6 +860,8 @@ DevCommu Grader เป็นอีกหนึ่งเครื่องมื�
 หากมีข้อสงสัยหรือต้องการสอบถามเพิ่มเติม สามารถติดต่อได้ผ่าน LINE, Messenger หรือ Instagram ของ DevCommu`,
     author: "DevCommu",
     authorRole: "ทีมพัฒนา DevCommu",
+    authorImage: "/favicon.svg",
+    image: "/images/decor/mac-terminal.webp",
     date: "2026-09-14",
     category: "Product Launch",
     tags: ["Grader", "Online Judge", "Competitive Programming", "สอวน.", "เขียนโปรแกรม"],

@@ -23,6 +23,9 @@ const blogSchema = {
   headline: post.title,
   description: post.description,
   datePublished: post.date,
+  ...(post.image
+    ? { image: [new URL(post.image, Astro.site || 'https://devcommunities.github.io').href] }
+    : {}),
   author: {
     '@type': 'Organization',
     name: post.author,

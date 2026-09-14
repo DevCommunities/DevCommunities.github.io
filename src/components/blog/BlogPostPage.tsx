@@ -13,6 +13,12 @@ function renderInline(text: string): string {
   s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   // Italic (but not inside links)
   s = s.replace(/(?<!\w)\*([^*]+?)\*(?!\w)/g, '<em>$1</em>');
+  // Images (must run before links so ![alt](src) isn't captured as a link)
+  s = s.replace(
+    /!\[([^\]]*)\]\(([^)\s]+)\)/g,
+    (_, alt: string, src: string) =>
+      `<img src="${src}" alt="${alt}" class="dc-blog-inline-img" loading="lazy" decoding="async"/>`
+  );
   // Links
   s = s.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
@@ -39,6 +45,18 @@ function renderMarkdown(md: string): string {
     // Horizontal rule
     if (/^---+$/.test(line.trim())) {
       out.push('<hr/>');
+      i++;
+      continue;
+    }
+
+    // Standalone image -> figure with caption (alt text becomes the caption)
+    const fig = line.match(/^!\[([^\]]*)\]\(([^)\s]+)\)\s*$/);
+    if (fig) {
+      const [, alt, src] = fig;
+      const caption = alt ? `<figcaption>${renderInline(alt)}</figcaption>` : '';
+      out.push(
+        `<figure class="dc-blog-fig"><img src="${src}" alt="${alt}" loading="lazy" decoding="async"/>${caption}</figure>`
+      );
       i++;
       continue;
     }
@@ -130,6 +148,7 @@ function renderMarkdown(md: string): string {
       !/^- /.test(lines[i]) &&
       !/^\d+\. /.test(lines[i]) &&
       !lines[i].trim().startsWith('```') &&
+      !/^!\[([^\]]*)\]\(([^)\s]+)\)\s*$/.test(lines[i]) &&
       !(lines[i].includes('|') && lines[i].trim().startsWith('|'))
     ) {
       pLines.push(renderInline(lines[i]));
@@ -166,6 +185,17 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
         <h1 className="dc-blog-post-title">{post.title}</h1>
         <p className="dc-blog-post-desc">{post.description}</p>
         <div className="dc-blog-post-author-row">
+          {post.authorImage && (
+            <img
+              className="dc-blog-post-avatar"
+              src={post.authorImage}
+              alt={post.author}
+              width="44"
+              height="44"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
           <div>
             <span className="dc-blog-author">{post.author}</span>
             <span className="dc-blog-author-role">{post.authorRole}</span>

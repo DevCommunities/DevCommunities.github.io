@@ -36,9 +36,10 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
           ค่ายกิจกรรมและเรียนตัวต่อตัว สำหรับคนที่อยากเริ่มเขียนโปรแกรม
           เตรียมสอบ หรือสร้างพอร์ต
         </p>
-        <p className="font-lineSansTH text-slate-500 max-w-2xl mx-4 mt-2">
-          สอนพิเศษด้านคอมพิวเตอร์ สำหรับเด็กและเยาวชน เชิงลึกอันดับต้นๆ ของประเทศไทย
-          ติวเตอร์ชั้นนำที่มีประสบการณ์หลายปี เน้นการแข่งขันและพิสูจน์ผลงานจริงผ่านการแข่งขันในรายการ
+        <p className="font-lineSansTH text-slate-500 max-w-3xl mx-4 mt-2">
+          สอนพิเศษด้านคอมพิวเตอร์ สำหรับเด็กและเยาวชน เชิงลึกอันดับต้นๆ
+          ของประเทศไทย ติวเตอร์ชั้นนำที่มีประสบการณ์หลายปี
+          เน้นการแข่งขันและพิสูจน์ผลงานจริงผ่านการแข่งขัน
         </p>
         <div className="relative z-10 flex flex-wrap justify-center gap-3 my-5 font-lineSansTH">
           <motion.a
@@ -108,8 +109,11 @@ export function VideoExample() {
             {/* Play button overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
               <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-10 md:h-10 fill-white ml-1">
-                  <path d="M8 5v14l11-7z"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-8 h-8 md:w-10 md:h-10 fill-white ml-1"
+                >
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
             </div>
@@ -277,8 +281,7 @@ const DataFB: FBPage[] = [
     feedback:
       '"ลุยทั้งสายแข่งโจทย์ สอวน.คอม และการทำโครงงานจริง จนผ่านคัดเลือกระดับภาค NSC และได้รางวัลจาก AI Builders พี่ ๆ ช่วยไกด์วิธีคิดได้ดีมาก"',
     name: "น้องวิน",
-    social:
-      "สอวน.คอม ค่าย 2 · ผ่านคัดเลือกระดับภาค NSC · ผู้พัฒนา ThaiAI Lens",
+    social: "สอวน.คอม ค่าย 2 · ผ่านคัดเลือกระดับภาค NSC · ผู้พัฒนา ThaiAI Lens",
     image: "/images/students/win2.webp",
   },
   {
@@ -293,8 +296,7 @@ const DataFB: FBPage[] = [
     feedback:
       '"ฝึกการคิดเชิงตรรกะและอัลกอริทึมอย่างเป็นระบบ โจทย์ยาก ๆ ที่เคยกลัวกลายเป็นเรื่องสนุก ผ่านเข้าค่าย 2 สอวน.คอม และสอบติด IT ลาดกระบังตามเป้าหมาย"',
     name: "น้องเคน",
-    social:
-      "คณะเทคโนโลยีสารสนเทศ (IT ลาดกระบัง) · สอวน. คอมพิวเตอร์ ค่าย 2",
+    social: "คณะเทคโนโลยีสารสนเทศ (IT ลาดกระบัง) · สอวน. คอมพิวเตอร์ ค่าย 2",
     image: "/images/students/ken.webp",
   },
   {
@@ -317,16 +319,14 @@ const DataFB: FBPage[] = [
     feedback:
       '"ปูพื้นฐาน Algorithm และฝึกแก้โจทย์แข่งขันอย่างเป็นขั้นตอน ช่วยให้จับจุดข้อสอบได้แม่นยำ จนผ่านเข้าค่าย 2 สอวน.คอม และสอบติด CEDT จุฬาฯ"',
     name: "น้องทีม",
-    social:
-      "สอวน. คอมพิวเตอร์ ค่าย 2 · สอบติด CEDT จุฬาลงกรณ์มหาวิทยาลัย",
+    social: "สอวน. คอมพิวเตอร์ ค่าย 2 · สอบติด CEDT จุฬาลงกรณ์มหาวิทยาลัย",
     image: "/images/students/tim.webp",
   },
   {
     feedback:
       '"เจาะลึกทั้งพื้นฐานคอมพิวเตอร์และด้าน Cybersecurity ได้ลงมือปฏิบัติจริง ช่วยให้มั่นใจทั้งตอนทำผลงานและการสอบสัมภาษณ์เข้ามหาวิทยาลัย"',
     name: "น้องโอ๊ต",
-    social:
-      "วิศวกรรมคอมพิวเตอร์และความปลอดภัยไซเบอร์ (KMITL)",
+    social: "วิศวกรรมคอมพิวเตอร์และความปลอดภัยไซเบอร์ (KMITL)",
     image: "/images/students/oat.webp",
   },
   {
@@ -422,7 +422,9 @@ interface FBPage {
 export function FeedBackCard({ feedback, name, social, image }: FBPage) {
   return (
     <motion.section whileHover={{ y: -4 }} className="dc-review-card text-left">
-      <div className="mb-5 md:text-xl text-lg leading-relaxed text-slate-800">{feedback}</div>
+      <div className="mb-5 md:text-xl text-lg leading-relaxed text-slate-800">
+        {feedback}
+      </div>
       <div className="flex space-x-4 items-center">
         {image ? (
           <img
@@ -433,7 +435,11 @@ export function FeedBackCard({ feedback, name, social, image }: FBPage) {
             width="80"
             height="80"
             className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover shrink-0 border-2 border-primary/20 shadow-md"
-            style={image.includes("us.") ? { objectPosition: "center top" } : { objectPosition: "center 18%" }}
+            style={
+              image.includes("us.")
+                ? { objectPosition: "center top" }
+                : { objectPosition: "center 18%" }
+            }
           />
         ) : (
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-primary/10 text-primary font-bold flex items-center justify-center text-2xl shrink-0 border-2 border-primary/20 shadow-md">
@@ -441,8 +447,12 @@ export function FeedBackCard({ feedback, name, social, image }: FBPage) {
           </div>
         )}
         <div>
-          <div className="font-bold md:text-xl text-lg text-slate-900">{name}</div>
-          <div className="md:text-sm text-xs text-[#989DA5] leading-snug">{social}</div>
+          <div className="font-bold md:text-xl text-lg text-slate-900">
+            {name}
+          </div>
+          <div className="md:text-sm text-xs text-[#989DA5] leading-snug">
+            {social}
+          </div>
         </div>
       </div>
     </motion.section>

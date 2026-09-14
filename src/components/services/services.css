@@ -1939,3 +1939,40 @@ body {
   }
 }
 
+
+/* ── Blog images: inline figures, captions, author avatar ── */
+.dc-blog-fig {
+  margin: 30px 0;
+}
+.dc-blog-fig img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 520px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: 1px solid #e9e9ed;
+  background: #f1f5f9;
+}
+.dc-blog-fig figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+.dc-blog-inline-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  vertical-align: middle;
+}
+.dc-blog-post-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 2px solid #fceaf0;
+  flex-shrink: 0;
+}
