@@ -159,7 +159,7 @@ export const blogPosts: BlogPost[] = [
     author: "DevCommu",
     authorRole: "ทีม DevCommu",
     authorImage: "/favicon.svg",
-    image: "/images/camps/banners/roblox-bootcamp-nov2025.webp",
+    image: "/images/blog/parent-guide-cover.webp",
     date: "2026-09-15",
     category: "แนะแนว",
     tags: [
@@ -280,7 +280,7 @@ DevCommu มีติวเตอร์ที่เชี่ยวชาญด�
     author: "DevCommu",
     authorRole: "ทีมติวเตอร์ DevCommu",
     authorImage: "/favicon.svg",
-    image: "/images/camps/banners/posn-com-crashcourse-bootcamp-june-july-2026-by-devcommu-2.webp",
+    image: "/images/blog/posn-prep-cover.webp",
     date: "2026-09-12",
     category: "แนะแนว",
     tags: [
@@ -403,7 +403,7 @@ DevCommu มีบริการ Consult Project ที่ช่วยน้อ
     author: "DevCommu",
     authorRole: "ทีมติวเตอร์ DevCommu",
     authorImage: "/favicon.svg",
-    image: "/images/projects/sabaijai-cover.webp",
+    image: "/images/blog/portfolio-cover.webp",
     date: "2026-09-10",
     category: "แนะแนว",
     tags: [
@@ -439,7 +439,7 @@ Python เป็นภาษาโปรแกรมที่ได้รับ�
 - **ใช้ในการแข่งขัน**: ใช้สอบ สอวน. คอมพิวเตอร์ได้ (บางศูนย์) และใช้ในโปรเจกต์ AI/Data Science
 - **ตลาดงานต้องการ**: อาชีพที่ใช้ Python เช่น Data Scientist, AI Engineer, Backend Developer มีรายได้สูงและเป็นที่ต้องการ
 
-![ค่าย AI/ML ของ DevCommu ตัวอย่างการเรียน Python ผ่านโปรเจกต์จริง](/images/camps/banners/intro-to-ai-ml-bootcamp-may-2026-by-devcommu.webp)
+![Python ถูกนำมาใช้สร้าง Dashboard และวิเคราะห์ข้อมูล ซึ่งเป็นทักษะที่ตลาดงานต้องการสูง](/images/blog/python-ai-ml.webp)
 
 ---
 
@@ -525,7 +525,7 @@ DevCommu สอนเขียนโปรแกรม Python ตั้งแต
     author: "DevCommu",
     authorRole: "ทีมติวเตอร์ DevCommu",
     authorImage: "/favicon.svg",
-    image: "/images/camps/thumbnails/002-python-boot-camp-horizontal.webp",
+    image: "/images/blog/python-guide-cover.webp",
     date: "2026-09-08",
     category: "บทความสอน",
     tags: [
@@ -632,7 +632,7 @@ DevCommu เป็นสถาบันสอนเขียนโปรแก�
     author: "DevCommu",
     authorRole: "ทีม DevCommu",
     authorImage: "/favicon.svg",
-    image: "/images/camps/banners/devcommu-discover-tech-web-ai-bootcamp.webp",
+    image: "/images/blog/teaching-kids-cover.webp",
     date: "2026-09-06",
     category: "แนะแนว",
     tags: [
@@ -767,7 +767,7 @@ DevCommu มีติวเตอร์เฉพาะทางด้าน Comp
     author: "DevCommu",
     authorRole: "ทีมติวเตอร์ DevCommu",
     authorImage: "/favicon.svg",
-    image: "/images/camps/banners/posn-crashcourse-by-devcommu.webp",
+    image: "/images/blog/cp-intro-cover.webp",
     date: "2026-09-04",
     category: "บทความสอน",
     tags: [
@@ -810,7 +810,7 @@ DevCommu Grader คือระบบตรวจโค้ดออนไลน�
 - **ติดตามความก้าวหน้า** ดูสถิติการส่งโจทย์ จำนวนข้อที่ผ่าน และพัฒนาการของตัวเอง
 - **เตรียมตัวสอบ** โจทย์ถูกออกแบบให้ครอบคลุมเนื้อหาที่ใช้ในการสอบ สอวน. คอมพิวเตอร์ และการแข่งขันอื่นๆ
 
-![ฝึกเขียนโค้ดและส่งโจทย์ได้ทุกที่ผ่าน DevCommu Grader](/images/decor/keyboard.webp)
+![ฝึกแก้โจทย์ไปพร้อมกัน แลกเปลี่ยนวิธีคิด ช่วยให้เข้าใจเนื้อหาลึกยิ่งขึ้น](/images/blog/coding-practice.webp)
 
 ---
 
@@ -861,7 +861,7 @@ DevCommu Grader เป็นอีกหนึ่งเครื่องมื�
     author: "DevCommu",
     authorRole: "ทีมพัฒนา DevCommu",
     authorImage: "/favicon.svg",
-    image: "/images/decor/mac-terminal.webp",
+    image: "/images/blog/grader-release-cover.webp",
     date: "2026-09-14",
     category: "Product Launch",
     tags: ["Grader", "Online Judge", "Competitive Programming", "สอวน.", "เขียนโปรแกรม"],
