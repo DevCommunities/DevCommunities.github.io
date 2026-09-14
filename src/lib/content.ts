@@ -107,7 +107,7 @@ export const tutors: Tutor[] = About.flatMap((group) => group.people).map(
             : isMookrob
               ? "CEO บริษัท Startup 'Remetrix' Spin-off จากจุฬาลงกรณ์มหาวิทยาลัย"
               : isGuide
-                ? "เจ้าของ Software House เชี่ยวชาญงานพัฒนาเว็บและระบบ AI"
+                ? "เจ้าของ Software House เชี่ยวชาญงานพัฒนาเว็บและระบบ AI · Co-Author งานวิจัย AI ระดับ Tier 1 (ACL, EMNLP) 3 งานวิจัย"
                 : "",
     };
   },
