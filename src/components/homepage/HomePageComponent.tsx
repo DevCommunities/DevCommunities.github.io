@@ -36,6 +36,10 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
           ค่ายกิจกรรมและเรียนตัวต่อตัว สำหรับคนที่อยากเริ่มเขียนโปรแกรม
           เตรียมสอบ หรือสร้างพอร์ต
         </p>
+        <p className="font-lineSansTH text-slate-500 max-w-2xl mx-4 mt-2">
+          สอนพิเศษด้านคอมพิวเตอร์ สำหรับเด็กและเยาวชน เชิงลึกอันดับต้นๆ ของประเทศไทย
+          ติวเตอร์ชั้นนำที่มีประสบการณ์หลายปี เน้นการแข่งขันและพิสูจน์ผลงานจริงผ่านการแข่งขันในรายการ
+        </p>
         <div className="relative z-10 flex flex-wrap justify-center gap-3 my-5 font-lineSansTH">
           <motion.a
             whileHover={{ scale: 1.04 }}

@@ -9,7 +9,7 @@ export const navdata: NavData[] = [
   { title: "เรียนส่วนตัว", href: "/tutoring" },
   { title: "ความสำเร็จ", href: "/success" },
   { title: "ทีมงาน", href: "/team" },
-
+  { title: "บล็อก", href: "/blog" },
 ];
 
 // ------- Founders, Mentors, and Tutors Details -------

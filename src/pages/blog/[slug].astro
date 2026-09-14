@@ -1,0 +1,48 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import BlogPostPage from '../../components/blog/BlogPostPage';
+import { blogPosts, getBlogPostBySlug } from '../../lib/blog';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+};
+
+const { slug } = Astro.params;
+const post = getBlogPostBySlug(slug as string);
+
+if (!post) {
+  return Astro.redirect('/blog');
+}
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.description,
+  datePublished: post.date,
+  author: {
+    '@type': 'Organization',
+    name: post.author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevCommu',
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/favicon.svg', Astro.site || 'https://devcommunities.github.io').href,
+    },
+  },
+  keywords: post.tags.join(', '),
+};
+---
+<ServiceLayout
+  title={post.title}
+  description={post.description}
+  image={post.image}
+  schema={blogSchema}
+>
+  <BlogPostPage post={post} client:load />
+</ServiceLayout>

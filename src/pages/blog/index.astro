@@ -1,0 +1,10 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import BlogListPage from '../../components/blog/BlogListPage';
+---
+<ServiceLayout
+  title="บล็อก"
+  description="บทความ ข่าวสาร และอัปเดตจากทีม DevCommu — เรียนเขียนโปรแกรมผ่านการลงมือทำ"
+>
+  <BlogListPage client:idle />
+</ServiceLayout>
