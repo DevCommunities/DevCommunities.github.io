@@ -1,56 +1,146 @@
 import { motion } from "framer-motion";
 import { formatBlogDate, type BlogPost } from "../../lib/blog";
 
-function renderMarkdown(md: string): string {
-  let html = md;
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
-  // Headings
-  html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-  html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
-  html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
-
-  // Horizontal rules
-  html = html.replace(/^---$/gm, '<hr/>');
-
+function renderInline(text: string): string {
+  let s = text;
+  // Inline code
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
   // Bold
-  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-
-  // Italic
-  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
-
+  s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  // Italic (but not inside links)
+  s = s.replace(/(?<!\w)\*([^*]+?)\*(?!\w)/g, '<em>$1</em>');
   // Links
-  html = html.replace(
+  s = s.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+    (_, label: string, href: string) => {
+      const isInternal = href.startsWith('/');
+      const attrs = isInternal ? '' : ' target="_blank" rel="noopener noreferrer"';
+      return `<a href="${href}"${attrs}>${label}</a>`;
+    }
   );
+  return s;
+}
 
-  // Unordered lists (- item)
-  html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
-  html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
+function renderMarkdown(md: string): string {
+  const lines = md.split('\n');
+  const out: string[] = [];
+  let i = 0;
 
-  // Ordered lists (1. item)
-  html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+  while (i < lines.length) {
+    const line = lines[i];
 
-  // Paragraphs (double newline)
-  const blocks = html.split(/\n\n+/);
-  html = blocks
-    .map((block) => {
-      const trimmed = block.trim();
-      if (!trimmed) return '';
-      if (
-        trimmed.startsWith('<h') ||
-        trimmed.startsWith('<ul') ||
-        trimmed.startsWith('<ol') ||
-        trimmed.startsWith('<hr') ||
-        trimmed.startsWith('<li')
-      ) {
-        return trimmed;
+    // Blank line
+    if (line.trim() === '') { i++; continue; }
+
+    // Horizontal rule
+    if (/^---+$/.test(line.trim())) {
+      out.push('<hr/>');
+      i++;
+      continue;
+    }
+
+    // Headings
+    const h3 = line.match(/^### (.+)$/);
+    if (h3) { out.push(`<h3>${renderInline(h3[1])}</h3>`); i++; continue; }
+    const h2 = line.match(/^## (.+)$/);
+    if (h2) { out.push(`<h2>${renderInline(h2[1])}</h2>`); i++; continue; }
+    const h1 = line.match(/^# (.+)$/);
+    if (h1) { out.push(`<h1>${renderInline(h1[1])}</h1>`); i++; continue; }
+
+    // Fenced code block
+    if (line.trim().startsWith('```')) {
+      const lang = line.trim().slice(3).trim();
+      const codeLines: string[] = [];
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith('```')) {
+        codeLines.push(escapeHtml(lines[i]));
+        i++;
       }
-      return `<p>${trimmed.replace(/\n/g, '<br/>')}</p>`;
-    })
-    .join('\n');
+      i++; // skip closing ```
+      const cls = lang ? ` class="language-${lang}"` : '';
+      out.push(`<pre><code${cls}>${codeLines.join('\n')}</code></pre>`);
+      continue;
+    }
 
-  return html;
+    // Table
+    if (line.includes('|') && line.trim().startsWith('|')) {
+      const tableRows: string[] = [];
+      while (i < lines.length && lines[i].includes('|') && lines[i].trim().startsWith('|')) {
+        tableRows.push(lines[i]);
+        i++;
+      }
+      if (tableRows.length >= 2) {
+        const parseRow = (row: string) =>
+          row.split('|').slice(1, -1).map((c) => c.trim());
+        const headerCells = parseRow(tableRows[0]);
+        // skip separator row (row index 1)
+        const bodyRows = tableRows.slice(2);
+        let tableHtml = '<div class="dc-blog-table-wrap"><table><thead><tr>';
+        for (const cell of headerCells) {
+          tableHtml += `<th>${renderInline(cell)}</th>`;
+        }
+        tableHtml += '</tr></thead><tbody>';
+        for (const row of bodyRows) {
+          const cells = parseRow(row);
+          tableHtml += '<tr>';
+          for (const cell of cells) {
+            tableHtml += `<td>${renderInline(cell)}</td>`;
+          }
+          tableHtml += '</tr>';
+        }
+        tableHtml += '</tbody></table></div>';
+        out.push(tableHtml);
+      }
+      continue;
+    }
+
+    // Unordered list
+    if (/^- .+/.test(line)) {
+      const items: string[] = [];
+      while (i < lines.length && /^- .+/.test(lines[i])) {
+        items.push(`<li>${renderInline(lines[i].slice(2))}</li>`);
+        i++;
+      }
+      out.push(`<ul>${items.join('')}</ul>`);
+      continue;
+    }
+
+    // Ordered list
+    if (/^\d+\. .+/.test(line)) {
+      const items: string[] = [];
+      while (i < lines.length && /^\d+\. .+/.test(lines[i])) {
+        items.push(`<li>${renderInline(lines[i].replace(/^\d+\. /, ''))}</li>`);
+        i++;
+      }
+      out.push(`<ol>${items.join('')}</ol>`);
+      continue;
+    }
+
+    // Paragraph — collect consecutive non-empty, non-special lines
+    const pLines: string[] = [];
+    while (
+      i < lines.length &&
+      lines[i].trim() !== '' &&
+      !/^#{1,3} /.test(lines[i]) &&
+      !/^---+$/.test(lines[i].trim()) &&
+      !/^- /.test(lines[i]) &&
+      !/^\d+\. /.test(lines[i]) &&
+      !lines[i].trim().startsWith('```') &&
+      !(lines[i].includes('|') && lines[i].trim().startsWith('|'))
+    ) {
+      pLines.push(renderInline(lines[i]));
+      i++;
+    }
+    if (pLines.length) {
+      out.push(`<p>${pLines.join('<br/>')}</p>`);
+    }
+  }
+
+  return out.join('\n');
 }
 
 export default function BlogPostPage({ post }: { post: BlogPost }) {

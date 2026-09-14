@@ -1850,6 +1850,67 @@ body {
   border-top: 1px solid #e2e8f0;
   margin: 28px 0;
 }
+.dc-blog-post-content code {
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, monospace;
+  font-size: 0.88em;
+  background: #f1f5f9;
+  color: #c2185b;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.dc-blog-post-content pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 20px 22px;
+  overflow-x: auto;
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.dc-blog-post-content pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+.dc-blog-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+.dc-blog-post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.dc-blog-post-content th {
+  background: #f8fafc;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 2px solid #e2e8f0;
+  white-space: nowrap;
+}
+.dc-blog-post-content td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+}
+.dc-blog-post-content tbody tr:last-child td {
+  border-bottom: none;
+}
+.dc-blog-post-content tbody tr:hover {
+  background: #f8fafc;
+}
+.dc-blog-post-content em {
+  font-style: italic;
+  color: #64748b;
+}
 
 .dc-blog-post-footer {
   margin-top: 40px;
