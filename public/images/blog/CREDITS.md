@@ -27,3 +27,4 @@ and noncommercial use, no attribution required — credited here anyway).
 | grader-release-cover.webp | https://images.unsplash.com/photo-1555949963-ff9fe0c870eb |
 | python-ai-ml.webp | https://images.unsplash.com/photo-1551288049-bebda4e38f71 |
 | coding-practice.webp | https://images.unsplash.com/photo-1543269865-cbf427effbad |
+| high-school-tutoring-cover.webp | https://images.unsplash.com/photo-1555066931-4365d14bab8c |

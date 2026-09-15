@@ -1,0 +1,211 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import Pricing from '../components/services/Pricing';
+
+const faqs = [
+  {
+    q: 'ม.ปลาย ไม่เคยเขียนโค้ดมาก่อน เรียนพิเศษคอมพิวเตอร์ได้เลยไหม?',
+    a: 'ได้เลย หลักสูตรเริ่มจากศูนย์ ปูพื้นฐานตั้งแต่ตัวแปร เงื่อนไข ลูป ไปจนถึงโปรเจกต์แรก โดยเริ่มจากภาษา Python ที่อ่านง่ายที่สุดสำหรับผู้เริ่มต้น แล้วค่อยเลือกทางเดิน (เว็บ, สอวน., หรือ Data/AI) ตามเป้าหมายของแต่ละคน',
+  },
+  {
+    q: 'เรียนคอม ม.ปลาย ช่วยการเข้ามหาวิทยาลัยยังไง?',
+    a: 'ช่วยได้ 3 ทางหลัก คือ 1) สร้าง Portfolio โปรเจกต์จริงสำหรับยื่น TCAS รอบ Portfolio ของคณะวิศวะคอมฯ 2) ติวเข้มสอวน. คอมพิวเตอร์ ซึ่งเป็นข้อได้เปรียบสำคัญในการยื่น CEDT จุฬาฯ, สจล., มจธ. และ 3) มีผลงานหรือความเข้าใจจริงมาเล่าตอนสัมภาษณ์',
+  },
+  {
+    q: 'สอนวิชาอะไรบ้าง?',
+    a: 'การเขียนโปรแกรมพื้นฐาน (Python, C, C++), Web Development (HTML, CSS, JavaScript จนถึง Deploy), Data Science & AI, ติวเข้ม สอวน. คอมพิวเตอร์ / Competitive Programming และ Consult ทำโครงงานหรือ Portfolio ติดโปรแกรมยื่นมหาวิทยาลัย',
+  },
+  {
+    q: 'ราคาเรียนพิเศษคอมพิวเตอร์เท่าไหร่?',
+    a: 'เรียนตัวต่อตัวออนไลน์เริ่มต้น 450 บาท/ชั่วโมง (จ่ายรายครั้ง) หรือแพ็กเกจรายเดือน 3,400 บาทขึ้นไปตามความถี่ในการเรียน เรียนกลุ่ม 2 คนขึ้นไปราคาต่อคนถูกลง เริ่ม 350 บาท/ชั่วโมง ดูตารางราคาฉบับเต็มด้านล่างหน้านี้',
+  },
+  {
+    q: 'เรียนออนไลน์หรือออนไซต์?',
+    a: 'เลือกได้ทั้งสองแบบ ออนไลน์เรียนได้ทุกที่ทั่วประเทศ หรือออนไซต์ในโซน MRT/BTS กรุงเทพฯ (รวมค่าเดินทางแล้ว) ทั้งสองแบบเป็นคลาสตัวต่อตัวปรับตามระดับนักเรียนเหมือนกัน',
+  },
+  {
+    q: 'ผู้สอนเป็นใคร?',
+    a: 'ติวเตอร์ทุกคนเป็นนิสิตและบัณฑิตวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย (CEDT) ที่มีประสบการณ์แข่งขันจริง เช่น ตัวแทนศูนย์ สอวน. เข้าแข่ง TOI ระดับชาติ และมีผลงานพัฒนาโปรเจกต์จริง ดูรายละเอียดทีมได้ที่หน้าทีมงาน',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'DevCommu', item: 'https://devcommunities.github.io/' },
+    { '@type': 'ListItem', position: 2, name: 'เรียนส่วนตัว', item: 'https://devcommunities.github.io/tutoring/' },
+    { '@type': 'ListItem', position: 3, name: 'เรียนพิเศษคอมพิวเตอร์ ม.ปลาย' },
+  ],
+};
+---
+
+<ServiceLayout
+  title="เรียนพิเศษคอมพิวเตอร์ ม.ปลาย ตัวต่อตัว — Python, C++, สอวน., Portfolio"
+  description="เรียนพิเศษคอมพิวเตอร์สำหรับนักเรียน ม.ปลาย (ม.4-ม.6) ตัวต่อตัวกับติวเตอร์วิศวะจุฬาฯ (CEDT) ปูพื้นฐาน Python/C++ ติว สอวน. คอมพิวเตอร์ สร้าง Portfolio เข้ามหาวิทยาลัย เรียนออนไลน์ทุกที่ หรือออนไซต์ BTS/MRT"
+  image="/images/blog/high-school-tutoring-cover.webp"
+  schema={[faqSchema, breadcrumbSchema]}
+>
+  <header class="dc-heading">
+    <p class="text-primary font-bold">HIGH SCHOOL · PRIVATE TUTORING</p>
+    <h1>เรียนพิเศษคอมพิวเตอร์ ม.ปลาย ตัวต่อตัว กับติวเตอร์วิศวะจุฬาฯ</h1>
+    <p class="dc-muted">
+      สำหรับนักเรียน ม.4 – ม.6 ที่อยากปูพื้นฐานเขียนโปรแกรมจริง ติว สอวน. คอมพิวเตอร์
+      หรือสร้าง Portfolio ยื่น TCAS เข้าคณะวิศวะคอมพิวเตอร์ — เรียน 1 ต่อ 1
+      ปรับเนื้อหาตามระดับและเป้าหมายของแต่ละคน ทั้งแบบออนไลน์และออนไซต์
+    </p>
+    <div class="flex flex-wrap gap-3 mt-5">
+      <a class="dc-btn" href="https://line.me/R/ti/p/@468httmq" target="_blank" rel="noopener noreferrer">ปรึกษาฟรีทาง LINE ↗</a>
+      <a class="dc-btn secondary" href="/tutoring">ดูรายละเอียดคอร์สทั้งหมด</a>
+    </div>
+  </header>
+
+  <img
+    src="/images/blog/high-school-tutoring-cover.webp"
+    alt="นักเรียน ม.ปลาย เรียนเขียนโปรแกรมตัวต่อตัวกับ DevCommu"
+    width="1600"
+    height="1067"
+    loading="eager"
+    class="w-full rounded-2xl shadow-md my-8 object-cover"
+  />
+
+  <section class="dc-section">
+    <div class="dc-section-top">
+      <div>
+        <p class="dc-eyebrow">WHY M.PLAI</p>
+        <h2>ม.ปลาย เรียนคอมพิวเตอร์ ไปทำอะไรได้บ้าง?</h2>
+      </div>
+      <p class="dc-muted">3 เป้าหมายหลักของนักเรียน ม.ปลาย ที่มาเรียนกับเรา</p>
+    </div>
+    <div class="dc-grid">
+      <article class="dc-card">
+        <span class="text-primary font-bold">/01</span>
+        <h3 class="mt-1 font-bold">ยื่น TCAS รอบ Portfolio</h3>
+        <p class="text-xs font-semibold text-primary mb-2">CEDT · สจล. · มจธ. · IT</p>
+        <p class="dc-muted text-sm">
+          สร้างโปรเจกต์จริงที่เล่าได้ตั้งแต่ที่มา วิธีคิด จนถึงการ Deploy
+          พร้อมติวเตอร์ช่วยวางแผนผลงานให้ตอบโจทย์กรรมการ นักเรียนของเราผ่านรอบ Portfolio
+          เข้า CEDT จุฬาฯ และมหาวิทยาลัยชั้นนำมาแล้วจริง
+        </p>
+      </article>
+      <article class="dc-card">
+        <span class="text-primary font-bold">/02</span>
+        <h3 class="mt-1 font-bold">สอบ สอวน. คอมพิวเตอร์</h3>
+        <p class="text-xs font-semibold text-primary mb-2">ค่าย 1 · ค่าย 2 · TOI</p>
+        <p class="dc-muted text-sm">
+          ติวเข้มด้วยภาษา C/C++ ครอบคลุม Data Structure และ Algorithm
+          พร้อมฝึกโจทย์ผ่าน DevCommu Grader ระบบตรวจโค้ดออนไลน์ของเราเอง
+          ติวเตอร์หลายคนเคยเป็นตัวแทนศูนย์ สอวน. แข่ง TOI ระดับชาติจริง
+        </p>
+      </article>
+      <article class="dc-card">
+        <span class="text-primary font-bold">/03</span>
+        <h3 class="mt-1 font-bold">ปูพื้นฐานก่อนเรียนต่อ</h3>
+        <p class="text-xs font-semibold text-primary mb-2">Python · Web · Data &amp; AI</p>
+        <p class="dc-muted text-sm">
+          เริ่มจากศูนย์ได้ เรียนภาษาที่ใช้จริงในมหาวิทยาลัยและตลาดงาน
+          ได้ลงมือทำโปรเจกต์เป็นของตัวเอง ไม่ใช่แค่ฟังทฤษฎี
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="dc-section">
+    <div class="dc-section-top">
+      <div>
+        <p class="dc-eyebrow">CHOOSE WISELY</p>
+        <h2>เปรียบเทียบทางเลือกเรียนคอม ม.ปลาย</h2>
+      </div>
+      <p class="dc-muted">แต่ละแบบเหมาะกับคนละสถานการณ์ — เลือกให้ตรงเป้าหมายสำคัญกว่าราคา</p>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse min-w-[640px]">
+        <thead>
+          <tr class="text-left border-b-2 border-slate-200">
+            <th class="py-3 pr-4">รูปแบบ</th>
+            <th class="py-3 pr-4">จุดแข็ง</th>
+            <th class="py-3 pr-4">ข้อจำกัด</th>
+            <th class="py-3">เหมาะกับใคร</th>
+          </tr>
+        </thead>
+        <tbody class="align-top">
+          <tr class="border-b border-slate-100">
+            <td class="py-3 pr-4 font-semibold">คอร์สวิดีโอออนไลน์</td>
+            <td class="py-3 pr-4">ถูก เรียนได้ทุกเวลา</td>
+            <td class="py-3 pr-4">ไม่มีคนช่วยตอนติด คนส่วนใหญ่เลิกกลางทาง เนื้อหาตายตัว</td>
+            <td class="py-3">คนที่มีวินัยสูงมาก</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="py-3 pr-4 font-semibold">จ้างติวเตอร์ฟรีแลนซ์ทั่วไป</td>
+            <td class="py-3 pr-4">เลือกคนได้หลากหลาย ราคายืดหยุ่น</td>
+            <td class="py-3 pr-4">คุณภาพแต่ละคนต่างกันมาก ต้องคัดเองเกือบทั้งหมด</td>
+            <td class="py-3">คนที่มีเวลาคัดและทดลองหลายคน</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="py-3 pr-4 font-semibold">ค่าย Bootcamp กลุ่ม</td>
+            <td class="py-3 pr-4">สนุก ได้เพื่อน ได้ลงมือทำในเวลาสั้นๆ</td>
+            <td class="py-3 pr-4">เนื้อหาเดียวกันทุกคน ต่อยอดระยะยาวต่อเองยาก</td>
+            <td class="py-3">ผู้เริ่มต้นที่อยากลองสัมผัสก่อน</td>
+          </tr>
+          <tr class="bg-pink-50/50">
+            <td class="py-3 pr-4 font-semibold text-pink-700">ตัวต่อตัวกับสถาบันที่เชี่ยวชาญ</td>
+            <td class="py-3 pr-4">ปรับเนื้อหาตามเป้าหมาย ติวเตอร์คุณภาพคัดมาแล้ว มีเครื่องมือฝึกต่อเนื่อง</td>
+            <td class="py-3 pr-4">ราคาชั่วโมงสูงกว่าคอร์สวิดีโอ</td>
+            <td class="py-3">คนที่มีเป้าหมายชัด เช่น สอวน. / Portfolio</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="dc-small mt-4">
+      DevCommu ทำหน้าที่แบบสุดท้าย — และถ้าอยากลองก่อนแบบประหยัด
+      <a class="text-primary font-semibold" href="/bootcamps">ค่าย Bootcamp ของเรา</a>
+      เปิดหลายรอบต่อปี หรือฝึกโจทย์ฟรีด้วยตัวเองที่
+      <a class="text-primary font-semibold" href="https://grader.devcommu.org" target="_blank" rel="noopener noreferrer">DevCommu Grader</a>
+    </p>
+  </section>
+
+  <Pricing client:idle />
+
+  <section class="dc-section">
+    <div class="dc-section-top">
+      <div>
+        <p class="dc-eyebrow">FAQ</p>
+        <h2>คำถามที่พบบ่อย</h2>
+      </div>
+      <p class="dc-muted">สงสัยอะไรเพิ่มเติม ทัก LINE ถามได้ฟรี</p>
+    </div>
+    <div class="flex flex-col gap-3">
+      {faqs.map((f) => (
+        <details class="dc-card group">
+          <summary class="font-semibold cursor-pointer list-none flex justify-between items-center gap-4 [&::-webkit-details-marker]:hidden">
+            {f.q}
+            <span class="text-primary group-open:rotate-45 transition-transform text-xl leading-none">+</span>
+          </summary>
+          <p class="dc-muted text-sm mt-3">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="dc-section text-center">
+    <h2>เริ่มต้นง่ายกว่าที่คิด</h2>
+    <p class="dc-muted">
+      ทักมาเล่าเป้าหมายของน้อง ๆ ได้เลย ปรึกษาฟรี ไม่มีค่าใช้จ่าย
+      พี่ ๆ ติวเตอร์จะช่วยวางแผนเส้นทางเรียนรู้ให้เหมาะกับระดับและเวลาที่มี
+    </p>
+    <div class="flex flex-wrap gap-3 justify-center mt-5">
+      <a class="dc-btn" href="https://line.me/R/ti/p/@468httmq" target="_blank" rel="noopener noreferrer">ปรึกษาฟรีทาง LINE ↗</a>
+      <a class="dc-btn secondary" href="/success">ดูผลงานนักเรียน</a>
+    </div>
+  </section>
+</ServiceLayout>
