@@ -18,7 +18,7 @@ const {
   schema: pageSchema,
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommunities.github.io';
+const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommu.org';
 const pathname = Astro.url.pathname.endsWith('/') || Astro.url.pathname.includes('.')
   ? Astro.url.pathname
   : `${Astro.url.pathname}/`;

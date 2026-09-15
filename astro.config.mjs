@@ -3,7 +3,7 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
-const site = process.env.SITE_URL || "https://devcommunities.github.io";
+const site = process.env.SITE_URL || "https://devcommu.org";
 export default defineConfig({
   site,
   integrations: [

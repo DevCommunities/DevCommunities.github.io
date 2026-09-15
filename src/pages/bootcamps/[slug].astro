@@ -4,7 +4,7 @@ import { CampDetail } from '../../components/services/Camps';
 import { camps } from '../../lib/content';
 export function getStaticPaths(){return camps.map(camp=>({params:{slug:camp.id},props:{camp}}))}
 const {camp}=Astro.props;
-const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommunities.github.io';
+const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommu.org';
 const courseSchema = {
   '@context': 'https://schema.org',
   '@type': 'Course',

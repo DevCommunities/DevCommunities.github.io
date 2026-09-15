@@ -24,7 +24,7 @@ const blogSchema = {
   description: post.description,
   datePublished: post.date,
   ...(post.image
-    ? { image: [new URL(post.image, Astro.site || 'https://devcommunities.github.io').href] }
+    ? { image: [new URL(post.image, Astro.site || 'https://devcommu.org').href] }
     : {}),
   author: {
     '@type': 'Organization',
@@ -35,7 +35,7 @@ const blogSchema = {
     name: 'DevCommu',
     logo: {
       '@type': 'ImageObject',
-      url: new URL('/favicon.svg', Astro.site || 'https://devcommunities.github.io').href,
+      url: new URL('/favicon.svg', Astro.site || 'https://devcommu.org').href,
     },
   },
   keywords: post.tags.join(', '),
