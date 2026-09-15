@@ -60,18 +60,19 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
           </motion.a>
         </div>
 
-        {/*SideBar effect Scrolling */}
+        {/*SideBar effect Scrolling — z-10 keeps the parallax art above
+            later sections (.dc-opening sits at z-index:1) but under the navbar */}
         <motion.section
           style={{ x: side1 }}
-          className={`  pointer-events-none hidden fixed top-[13%] w-[50%] h-96 bg-[url('/images/decor/keyboard.webp')] bg-contain bg-no-repeat md:block`}
+          className={`  pointer-events-none z-10 hidden fixed top-[13%] w-[50%] h-96 bg-[url('/images/decor/keyboard.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
         <motion.section
           style={{ x: side2 }}
-          className={` pointer-events-none hidden fixed top-[25%] h-96 w-[50%] bg-[url('/images/decor/arduino.webp')] bg-contain bg-no-repeat md:block`}
+          className={` pointer-events-none z-10 hidden fixed top-[25%] h-96 w-[50%] bg-[url('/images/decor/arduino.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
         <motion.section
           style={{ x: side3 }}
-          className={` pointer-events-none hidden fixed top-[20%] h-20 w-[50%] bg-[url('/images/decor/python.webp')] bg-contain bg-no-repeat md:block`}
+          className={` pointer-events-none z-10 hidden fixed top-[20%] h-20 w-[50%] bg-[url('/images/decor/python.webp')] bg-contain bg-no-repeat md:block`}
         ></motion.section>
       </section>
     </section>
