@@ -33,13 +33,15 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
           <p className="dc-hero-subtitle">{text3}</p>
         </section>
         <p className="font-lineSansTH text-slate-500 max-w-xl mx-4 mt-3">
-          ค่ายกิจกรรมและเรียนตัวต่อตัว สำหรับคนที่อยากเริ่มเขียนโปรแกรม
-          เตรียมสอบ หรือสร้างพอร์ต
+          ถ้าคุณชอบเทคโนโลยี และอยากลองสร้างผลงานของตัวเอง —
+          เรียนเขียนโปรแกรมกับ DevCommu ได้ทั้งค่าย Bootcamp
+          และติวส่วนตัว 1 ต่อ 1
         </p>
         <p className="font-lineSansTH text-slate-500 max-w-3xl mx-4 mt-2">
-          สอนพิเศษด้านคอมพิวเตอร์ สำหรับเด็กและเยาวชน เชิงลึกอันดับต้นๆ
-          ของประเทศไทย ติวเตอร์ชั้นนำที่มีประสบการณ์หลายปี
-          เน้นการแข่งขันและพิสูจน์ผลงานจริงผ่านการแข่งขัน
+          สอนพิเศษคอมพิวเตอร์สำหรับเด็กและเยาวชน เชิงลึกอันดับต้น ๆ
+          ของประเทศไทย โดยติวเตอร์นิสิตและบัณฑิตวิศวกรรมศาสตร์
+          จุฬาลงกรณ์มหาวิทยาลัย (CEDT) ที่มีประสบการณ์แข่งขัน
+          และทำโปรเจกต์จริงทุกคน
         </p>
         <div className="relative z-10 flex flex-wrap justify-center gap-3 my-5 font-lineSansTH">
           <motion.a
@@ -166,17 +168,21 @@ export function MoreDetail() {
           </section>
         </section>
         <section className="md:w-[50%]   items-start text-start">
-          <section className="w-full text-[#64748B] font-lineSansTH text-sm md:text-xl text-left">
-            เทคโนโลยีปัญญาประดิษฐ์ (AI) หุ่นยนต์ (Robotics) หรือ
-            Metaverseเข้ามามีบทบาท โลกทุกวันนี้หมุนเร็วมาก
-            ขณะเดียวกันเด็กไทยที่สนใจสาขาวิชาชีพเหล่านี้ประสบปัญหาอุปสรรคทางภาษา
-            และการเดินตามกระบวนการคิดในห้องเรียนที่เน้นการท่องจำ
-            เราจึงพยายามนำเสนอการเรียนในด้านที่ใหม่กว่า
-            ที่เน้นการสร้างสรรค์และคิดเชิงออกแบบ ลงมือทำ
-            และเรียนรู้จากประสบการณ์จริง
-            เพื่อให้น้องๆได้รับรู้ถึงความสนุกของการเรียนรู้
-            รวมถึงสร้างการพบเจอกับเพื่อนใหม่ ที่มีความสนใจเดียวกัน
-          </section>
+          <section className="w-full font-[#64748B] font-lineSansTH text-sm md:text-xl text-left space-y-3">
+          <p>
+            เทคโนโลยีปัญญาประดิษฐ์ (AI) หุ่นยนต์ (Robotics) หรือ Metaverse
+            เข้ามามีบทบาทในโลกทุกวันนี้ โลกหมุนเร็วกว่าที่หลักสูตรปัจจุบันตามทัน
+          </p>
+          <p>
+            ขณะเดียวกัน เด็กไทยที่สนใจสาขาวิชาชีพเหล่านี้มักเจออุปสรรคทางภาษา
+            และห้องเรียนที่เน้นการท่องจำมากกว่าการคิด
+          </p>
+          <p>
+            เราจึงนำเสนอการเรียนที่เน้นการสร้างสรรค์ คิดเชิงออกแบบ ลงมือทำ
+            และเรียนรู้จากประสบการณ์จริง เพื่อให้น้อง ๆ สนุกกับการเรียนรู้
+            และเจอเพื่อนใหม่ที่มีความสนใจเดียวกัน
+          </p>
+        </section>
         </section>
       </section>
       {/* <section className="flex space-x-10  w-[90%] mx-auto ">
@@ -260,6 +266,240 @@ export interface DetailProps {
   title2: string;
 }
 
+export function IntroSection() {
+  return (
+    <section className="mx-auto w-[90%] max-w-3xl my-14 text-center font-lineSansTH">
+      <p className="dc-eyebrow">ABOUT DEVCOMMU</p>
+      <h2 className="text-3xl md:text-4xl font-lineSansTH_XB font-bold mb-6">
+        DevCommu คืออะไร?
+      </h2>
+      <div className="text-slate-600 md:text-lg space-y-4">
+        <p>
+          DevCommu คือกลุ่มสอนเขียนโปรแกรมสำหรับเด็กและเยาวชน
+          ก่อตั้งและดูแลโดยนิสิตและบัณฑิตคณะวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย
+          (CEDT)
+        </p>
+        <p>
+          เราเชื่อว่าการเรียนเขียนโปรแกรมที่ดีต้องลงมือทำจริง ไม่ใช่แค่นั่งฟัง
+          ทุกหลักสูตรจึงเน้นโปรเจกต์ที่ใช้งานได้จริง
+          ตั้งแต่เกมแรกของน้อง ๆ ไปจนถึงผลงาน Portfolio ที่ใช้ยื่นมหาวิทยาลัย
+        </p>
+        <p>
+          นักเรียนของเราผ่านเข้าค่าย 2 สอวน. คอมพิวเตอร์ คว้าเหรียญการแข่งขัน
+          และสอบติด CEDT จุฬาฯ, HKU, สจล. และ IT ลาดกระบัง มาแล้วหลายสิบคน
+        </p>
+        <p>
+          ก่อตั้งมากว่า 4 ปี เราจัดค่ายไปแล้วกว่า 50 รอบ
+          และดูแลนักเรียนกว่า 2,000 คนทั่วประเทศ
+          ทั้งแบบเจอหน้ากันและเรียนออนไลน์
+          หลายคนเริ่มจากศูนย์แล้วกลับมาเป็นพี่ติวเตอร์ให้รุ่นน้องในวันนี้
+        </p>
+        <p>
+          เลือกเรียนได้ 2 รูปแบบ คือค่าย Bootcamp ที่ลงมือทำไปกับเพื่อน
+          หรือติวส่วนตัว 1 ต่อ 1 ที่ปรับเนื้อหาตามเป้าหมายของแต่ละคน
+          และเมื่อจบคลาส น้อง ๆ ยังฝึกโจทย์ต่อได้ฟรีผ่าน DevCommu Grader
+          ระบบตรวจโค้ดออนไลน์ที่เราพัฒนาเอง
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const subjects: [string, string, string, string, string][] = [
+  [
+    "พื้นฐานเขียนโปรแกรม",
+    "Python, C, C++",
+    "เริ่มจากศูนย์ได้ ปูตั้งแต่ตัวแปร เงื่อนไข ลูป ฟังก์ชัน ไปจนถึงโปรเจกต์แรก",
+    "/tutoring",
+    "ดูคอร์สตัวต่อตัว →",
+  ],
+  [
+    "สอวน. คอมพิวเตอร์",
+    "ติวเข้ม C/C++ · Algorithm",
+    "ครอบคลุม Data Structure และ Algorithm พร้อมฝึกโจทย์ผ่าน DevCommu Grader ทุกสัปดาห์",
+    "/blog/เตรียมสอบ-สอวน-คอมพิวเตอร์-2569",
+    "อ่านคู่มือเตรียมสอบ →",
+  ],
+  [
+    "Web Development",
+    "HTML · CSS · JavaScript",
+    "ทำเว็บจริงตั้งแต่หน้าแรกจนถึงการ Deploy ให้คนอื่นใช้งานได้",
+    "/bootcamps",
+    "ดูค่ายเว็บ →",
+  ],
+  [
+    "Data Science & AI",
+    "Python · Machine Learning",
+    "วิเคราะห์ข้อมูลจริง สร้างและทดลองโมเดล AI ตั้งแต่พื้นฐาน",
+    "/bootcamps",
+    "ดูค่าย Data & AI →",
+  ],
+  [
+    "Portfolio เข้ามหาวิทยาลัย",
+    "TCAS รอบ Portfolio",
+    "วางแผนผลงานตั้งแต่เลือกหัวข้อ พัฒนา จนถึงเตรียมเล่าในการสัมภาษณ์",
+    "/blog/สร้าง-portfolio-เข้า-มหาวิทยาลัย-สาย-คอมพิวเตอร์",
+    "อ่านวิธีสร้าง Portfolio →",
+  ],
+  [
+    "เรียนพิเศษคอม ม.ปลาย",
+    "ม.4 – ม.6",
+    "คอร์สเฉพาะทางสำหรับนักเรียน ม.ปลาย ที่มีเป้าหมายชัดเจนเรื่องการเข้ามหาวิทยาลัย",
+    "/เรียนพิเศษคอมพิวเตอร์-ม-ปลาย",
+    "ดูรายละเอียด ม.ปลาย →",
+  ],
+];
+
+export function SubjectsStrip() {
+  return (
+    <section className="mx-auto w-[90%] max-w-6xl my-14 font-lineSansTH">
+      <p className="dc-eyebrow">WHAT YOU CAN LEARN</p>
+      <h2 className="text-3xl md:text-4xl font-lineSansTH_XB font-bold mb-8">
+        เรียนอะไรกับ DevCommu ได้บ้าง?
+      </h2>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 text-left">
+        {subjects.map(([title, sub, desc, href, link]) => (
+          <article
+            key={title}
+            className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:-translate-y-1 transition-transform"
+          >
+            <h3 className="font-bold text-lg">{title}</h3>
+            <p className="text-xs font-semibold text-primary mb-2">{sub}</p>
+            <p className="text-sm text-slate-500 mb-4">{desc}</p>
+            <a href={href} className="text-primary font-semibold text-sm">
+              {link}
+            </a>
+          </article>
+        ))}
+      </div>
+      <p className="text-slate-500 text-sm mt-6">
+        ไม่แน่ใจว่าควรเริ่มจากอะไร? ทักมาคุยกับพี่ ๆ ได้ฟรี
+        เราจะช่วยแนะนำเส้นทางที่เหมาะกับระดับและเป้าหมายของคุณ
+      </p>
+    </section>
+  );
+}
+
+export function WhyBand() {
+  const reasons: [string, string][] = [
+    [
+      "ผู้สอนตัวจริงจาก CEDT จุฬาฯ",
+      "ทุกคนเป็นนิสิตและบัณฑิตวิศวกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ที่ผ่านการแข่งขันและทำโปรเจกต์จริง ไม่ใช่แค่ผู้สอนตามหนังสือ",
+    ],
+    [
+      "เน้นลงมือทำ ไม่ใช่แค่ฟัง",
+      "ทุกหลักสูตรจบด้วยผลงานที่น้อง ๆ สร้างเอง ตั้งแต่เกมสั้น ๆ ไปจนถึงเว็บแอปพลิเคชันที่มีคนใช้จริง",
+    ],
+    [
+      "ผลลัพธ์พิสูจน์ได้",
+      "นักเรียนของเราผ่าน สอวน. ค่าย 2 คว้ารางวัล Hackathon ระดับประเทศ และสอบติดคณะวิศวะคอมพิวเตอร์ของมหาวิทยาลัยชั้นนำทั้งในและต่างประเทศ",
+    ],
+  ];
+  return (
+    <section className="mx-auto w-[90%] max-w-5xl my-14 font-lineSansTH">
+      <p className="dc-eyebrow">WHY DEVCOMMU</p>
+      <h2 className="text-3xl md:text-4xl font-lineSansTH_XB font-bold mb-8">
+        ทำไมน้อง ๆ และผู้ปกครองเลือกเรา?
+      </h2>
+      <div className="grid gap-4 md:grid-cols-3 text-left">
+        {reasons.map(([title, desc]) => (
+          <article
+            key={title}
+            className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm"
+          >
+            <h3 className="font-bold text-lg mb-2">{title}</h3>
+            <p className="text-sm text-slate-500">{desc}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function HowToStart() {  const steps: [string, string][] = [
+    [
+      "1. เลือกเป้าหมาย",
+      "อยากลองเขียนโค้ด เตรียมสอบ สอวน. หรือสร้างพอร์ตเข้ามหาวิทยาลัย? เริ่มจากตอบคำถามนี้ก่อน แล้วเลือกเส้นทางที่ตรงกับเป้าหมายที่สุด",
+    ],
+    [
+      "2. เริ่มจากรูปแบบที่ใช่",
+      "ถ้ายังไม่เคยเขียนโปรแกรม ค่าย Bootcamp สั้น ๆ ช่วยให้เห็นภาพก่อนได้ ถ้ามีเป้าหมายชัดแล้ว การเรียนตัวต่อตัวจะก้าวหน้าเร็วกว่า",
+    ],
+    [
+      "3. ฝึกต่อเนื่อง",
+      "ความสม่ำเสมอสำคัญกว่าความเก่ง ฝึกโจทย์บน Grader รีวิวโค้ดกับพี่ ๆ และต่อยอดเป็นผลงานจริงที่น้องเล่าได้เอง",
+    ],
+  ];
+  return (
+    <section className="mx-auto w-[90%] max-w-5xl my-14 font-lineSansTH">
+      <p className="dc-eyebrow">GET STARTED</p>
+      <h2 className="text-3xl md:text-4xl font-lineSansTH_XB font-bold mb-8">
+        เริ่มต้นอย่างไรดี?
+      </h2>
+      <div className="grid gap-4 md:grid-cols-3 text-left">
+        {steps.map(([title, desc]) => (
+          <article
+            key={title}
+            className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm"
+          >
+            <h3 className="font-bold text-lg mb-2 text-primary">{title}</h3>
+            <p className="text-sm text-slate-500">{desc}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function FaqSection() {
+  const faqs: [string, string][] = [
+    [
+      "ไม่เคยเขียนโค้ดมาก่อน เริ่มเรียนได้เลยไหม?",
+      "ได้เลย ค่าย Bootcamp และคอร์สพื้นฐานของเราออกแบบสำหรับผู้เริ่มต้นโดยเฉพาะ เริ่มตั้งแต่ตัวแปร เงื่อนไข และลูป ไม่ต้องมีพื้นฐานมาก่อน",
+    ],
+    [
+      "ควรเรียนค่ายหรือเรียนตัวต่อตัวดี?",
+      "ถ้ายังไม่แน่ใจว่าชอบหรือเปล่า แนะนำค่าย Bootcamp ก่อน เพราะสนุกและได้ลองหลายอย่างในเวลาสั้น ๆ แต่ถ้ามีเป้าหมายชัดเจน เช่น เตรียมสอบ สอวน. หรือทำ Portfolio การเรียนตัวต่อตัวจะก้าวหน้าเร็วกว่า",
+    ],
+    [
+      "อายุเท่าไหร่เริ่มเรียนได้?",
+      "นักเรียนของเรามีตั้งแต่ประถมปลายจนถึงมัธยมปลาย เนื้อหาและเครื่องมือจะปรับตามวัยและพื้นฐานของแต่ละคน",
+    ],
+    [
+      "เรียนออนไลน์ได้ไหม?",
+      "ได้ ทั้งค่ายและคลาสตัวต่อตัวมีรูปแบบออนไลน์ เรียนได้ทุกที่ทั่วประเทศ หรือเลือกเรียนออนไซต์ในกรุงเทพฯ โซน MRT/BTS",
+    ],
+    [
+      "นอกเวลาเรียนมีอะไรให้ฝึกต่อไหม?",
+      "มี น้อง ๆ ฝึกโจทย์ได้ฟรีผ่าน DevCommu Grader ระบบตรวจโค้ดออนไลน์ของเรา และส่งโค้ดกลับมาขอรีวิวกับพี่ ๆ ได้ตลอด",
+    ],
+  ];
+  return (
+    <section className="mx-auto w-[90%] max-w-3xl my-14 font-lineSansTH text-left">
+      <p className="dc-eyebrow">FAQ</p>
+      <h2 className="text-3xl md:text-4xl font-lineSansTH_XB font-bold mb-8">
+        คำถามที่พบบ่อย
+      </h2>
+      <div className="flex flex-col gap-3">
+        {faqs.map(([q, a]) => (
+          <details
+            key={q}
+            className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm group"
+          >
+            <summary className="font-semibold cursor-pointer list-none flex justify-between items-center gap-4 [&::-webkit-details-marker]:hidden">
+              {q}
+              <span className="text-primary group-open:rotate-45 transition-transform text-xl leading-none">
+                +
+              </span>
+            </summary>
+            <p className="text-sm text-slate-500 mt-3 leading-relaxed">{a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 const DataFB: FBPage[] = [
   {
     feedback:
@@ -340,7 +580,6 @@ const DataFB: FBPage[] = [
 
 export function FeedBackPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const reviews = [DataFB[DataFB.length - 1], ...DataFB, DataFB[0]];
   return (
     <section className="dc-reviews" aria-labelledby="reviews-heading">
       <div className="dc-reviews-heading">
@@ -357,7 +596,7 @@ export function FeedBackPage() {
             aria-label="รีวิวก่อนหน้า"
             onClick={() =>
               setCurrentIndex(
-                (currentIndex + DataFB.length - 1) % DataFB.length,
+                (currentIndex + DataFB.length - 1) % DataFB.length
               )
             }
           >
@@ -375,24 +614,22 @@ export function FeedBackPage() {
         </div>
       </div>
       <div className="dc-reviews-viewport">
-        <motion.div
-          className="dc-reviews-track"
-          animate={{
-            x: `calc((100% - var(--review-width)) / 2 - ${currentIndex + 1} * (var(--review-width) + 24px))`,
-          }}
-          transition={{ duration: 0.45, ease: "easeInOut" }}
-        >
-          {reviews.map((review, index) => (
+        <div className="dc-reviews-stack">
+          {DataFB.map((review, index) => (
             <div
-              key={index}
+              key={review.name}
               className="dc-review-slide"
-              aria-hidden={index !== currentIndex + 1}
-              style={{ opacity: index === currentIndex + 1 ? 1 : 0.45 }}
+              aria-hidden={index !== currentIndex}
+              style={{
+                opacity: index === currentIndex ? 1 : 0,
+                visibility: index === currentIndex ? "visible" : "hidden",
+                pointerEvents: index === currentIndex ? "auto" : "none",
+              }}
             >
               <FeedBackCard {...review} />
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
       <div className="flex justify-center items-center gap-2 mt-4">
         {DataFB.map((_, idx) => (

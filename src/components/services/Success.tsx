@@ -287,7 +287,7 @@ export function Statistics() {
 export function StoryCards({ preview = false }: { preview?: boolean }) {
   const [modalStory, setModalStory] = useState<Story | null>(null);
   const previewItems = [
-    stories[0], // น้องพร้อม
+    stories.find((s) => s.id === "story-uni-chen"), // น้องเชน (CEDT + Siriraj Hackathon) — ไม่ซ้ำกับรีวิวในหน้าแรก
     stories.find((s) => s.id === "story-award-jewelry"), // น้องจิวเวอรี่ (Change Innovation)
     stories.find((s) => s.id === "story-proj-sabaijai"), // Sabaijai
   ].filter(Boolean) as Story[];
@@ -429,10 +429,10 @@ export function NextStep() {
       </div>
       <div className="dc-next-actions">
         <a href="/bootcamps" className="dc-btn">
-          เลือกค่ายที่สนใจ ↗
+          ดูตารางค่ายทั้งหมด ↗
         </a>
         <a href="/tutoring" className="dc-text-link">
-          ปรึกษาเรื่องเรียนตัวต่อตัว →
+          ปรึกษาการเรียน 1 ต่อ 1 →
         </a>
       </div>
     </section>
