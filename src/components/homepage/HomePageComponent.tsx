@@ -451,6 +451,91 @@ export function HowToStart() {  const steps: [string, string][] = [
   );
 }
 
+export function DevCommuVerse() {
+  const platforms = [
+    {
+      href: "https://posn101.devcommu.org",
+      label: "คลังความรู้ สอวน. · ฟรี",
+      title: "POSN101",
+      subtitle: "เฉลยข้อสอบ สอวน. คอมพิวเตอร์",
+      desc: "รวมเฉลยข้อสอบ สอวน. คอมพิวเตอร์ย้อนหลัง พร้อมโค้ดตัวอย่างและวิธีคิดแบบละเอียด ทบทวนจากข้อสอบจริงได้ทุกปี ก่อนเข้าค่ายและก่อนสอบ",
+      domain: "posn101.devcommu.org",
+      image: "/images/verse/posn101.webp",
+      alt: "หน้าจอเว็บไซต์ POSN101 คลังเฉลยข้อสอบ สอวน. คอมพิวเตอร์",
+      tags: "เฉลยย้อนหลัง · โค้ดตัวอย่าง · ทบทวนก่อนสอบ",
+      cta: "อ่านเฉลยฟรี →",
+      dark: false,
+    },
+    {
+      href: "https://grader.devcommu.org",
+      label: "Online Judge · ฟรี",
+      title: "DevCommu Grader",
+      subtitle: "ระบบตรวจโค้ดออนไลน์ของเราเอง",
+      desc: "ฝึกโจทย์ภาษา C, C++ และ Python ส่งโค้ดแล้วรู้ผลทันทีแบบเรียลไทม์ โจทย์ภาษาไทยตั้งแต่ระดับเริ่มต้นจนถึงระดับแข่งขัน สอวน. และ TOI",
+      domain: "grader.devcommu.org",
+      image: "/images/verse/grader.webp",
+      alt: "หน้าจอ DevCommu Grader ระบบตรวจโค้ดออนไลน์ แดชบอร์ดสถิติการส่งโจทย์",
+      tags: "โจทย์ภาษาไทย · ตรวจเรียลไทม์ · ระดับเริ่มต้นถึงแข่งขัน",
+      cta: "เข้าฝึกโจทย์ฟรี →",
+      dark: true,
+    },
+  ];
+  return (
+    <section className="dc-verse-section font-lineSansTH text-left">
+      <div className="dc-section-top">
+        <div>
+          <p className="dc-eyebrow">OUR ECOSYSTEM</p>
+          <h2>DevCommu Verse</h2>
+        </div>
+        <p className="dc-muted">
+          Ecosystem และ platform ที่เราพัฒนามาเพื่อช่วยเหลือการเดินทางของน้อง ๆ
+        </p>
+      </div>
+      <div className="dc-verse-grid">
+        {platforms.map((p) => (
+          <a
+            key={p.domain}
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={"dc-path dc-verse" + (p.dark ? " dc-path-private" : "")}
+          >
+            <div className="dc-path-top">
+              <span>{p.label}</span>
+              <b aria-hidden="true">↗</b>
+            </div>
+            <h3>
+              {p.title}
+              <span>{p.subtitle}</span>
+            </h3>
+            <p>{p.desc}</p>
+            <div className="dc-verse-shot">
+              <div className="dc-verse-bar">
+                <i aria-hidden="true" />
+                <i aria-hidden="true" />
+                <i aria-hidden="true" />
+                <span>{p.domain}</span>
+              </div>
+              <img
+                src={p.image}
+                alt={p.alt}
+                width="1280"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="dc-path-bottom">
+              <span>{p.tags}</span>
+              <strong>{p.cta}</strong>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function FaqSection() {
   const faqs: [string, string][] = [
     [
