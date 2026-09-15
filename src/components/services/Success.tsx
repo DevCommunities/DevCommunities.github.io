@@ -438,24 +438,20 @@ export function NextStep() {
     </section>
   );
 }
-export function HomeAdditions() {
+export function LearningPaths() {
   return (
-    <div className="dc dc-home">
-      <Statistics />
-      <section className="dc-section dc-path-section">
+      <section id="learning-paths" className="dc-section dc-path-section">
         <div className="dc-section-top">
           <div>
-            <p className="dc-eyebrow">01 / FIND YOUR WAY</p>
+            <p className="dc-eyebrow">รูปแบบการเรียน</p>
             <h2>
-              เป้าหมายต่างกัน
-              <br />
-              เลือกวิธีเรียนที่ใช่สำหรับคุณ
+              เลือกวิธีเรียนที่เหมาะกับคุณ
             </h2>
           </div>
           <p className="dc-muted">
-            ไม่ต้องเก่งมาก่อน
+            ลองสิ่งใหม่ หรือโฟกัสเป้าหมายเฉพาะ
             <br />
-            แค่รู้ว่าอยากเริ่ม เราช่วยต่อยอดให้
+            เลือกได้ตามจังหวะการเรียนของคุณ
           </p>
         </div>
         <div className="dc-path-grid">
@@ -538,6 +534,11 @@ export function HomeAdditions() {
           </motion.a>
         </div>
       </section>
+  );
+}
+
+export function MentorStrip() {
+  return (
       <section className="dc-mentor-strip">
         <div className="dc-mentor-faces">
           {tutors.slice(0, 5).map((t) => (
@@ -545,20 +546,25 @@ export function HomeAdditions() {
           ))}
         </div>
         <div>
-          <p className="dc-eyebrow">YOU DON'T HAVE TO BUILD ALONE</p>
+          <p className="dc-eyebrow">เรียนกับใคร?</p>
           <h2>ติดตรงไหน มีพี่ ๆ ช่วยคิด</h2>
           <p className="dc-muted">
-            รู้จักผู้สอนและความถนัด ก่อนเริ่มเรียนด้วยกัน
+            นิสิตและบัณฑิตวิศวกรรมศาสตร์ จุฬาฯ ที่มีประสบการณ์แข่งขันและทำโปรเจกต์จริง
           </p>
         </div>
         <a className="dc-text-link" href="/team">
           รู้จักทีมผู้สอน ↗
         </a>
       </section>
+  );
+}
+
+export function StudentOutcomes() {
+  return (
       <section className="dc-section">
         <div className="dc-section-top">
           <div>
-            <p className="dc-eyebrow">02 / MADE BY OUR STUDENTS</p>
+            <p className="dc-eyebrow">ผลงานและเส้นทางของนักเรียน</p>
             <h2>เรียนแล้ว ไปต่อได้แค่ไหน?</h2>
           </div>
           <a className="dc-text-link" href="/success">
@@ -567,6 +573,5 @@ export function HomeAdditions() {
         </div>
         <StoryCards preview />
       </section>
-    </div>
   );
 }

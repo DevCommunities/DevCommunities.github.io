@@ -1,28 +1,30 @@
 ---
-import HomePageComponent, { DevCommuVerse, FaqSection, FeedBackPage, HowToStart, IntroSection, MoreDetail, SubjectsStrip, WhyBand } from "./HomePageComponent";
-import { HomeAdditions, NextStep } from "../services/Success";
+import HomePageComponent, { DevCommuVerse, FaqSection, FeedBackPage, HowToStart, SubjectsStrip } from "./HomePageComponent";
+import { LearningPaths, MentorStrip, StudentOutcomes, Statistics, NextStep } from "../services/Success";
 import "../services/services.css";
 ---
-<section class="bg-secondary overflow-hidden pt-8 text-center rounded-md">
+<section class="dc-homepage bg-secondary overflow-hidden pt-8 text-center rounded-md">
   <HomePageComponent client:load text1="ชอบเทคโนโลยี?" text2="ลองสร้างมันเลย" text3="เรียนเขียนโค้ด ให้กลายเป็นผลงานของคุณ" />
-  <div class="dc-opening dc-opening-after-hero"><MoreDetail /></div>
-  <IntroSection />
-  <HomeAdditions client:visible />
+  <div class="dc dc-home dc-home-proof"><Statistics /></div>
   <SubjectsStrip />
-  <WhyBand />
-  <HowToStart />
+  <div class="dc dc-home dc-home-block"><LearningPaths client:visible /></div>
+  <div class="dc dc-home dc-home-block"><MentorStrip /></div>
+  <div class="dc dc-home dc-home-block"><StudentOutcomes client:visible /></div>
   <FeedBackPage client:visible />
-  <div class="mx-auto w-[90%] max-w-6xl"><DevCommuVerse /></div>
+  <HowToStart />
   <FaqSection />
-  <div class="dc dc-home"><NextStep /></div>
+  <div class="dc-home-verse mx-auto w-[90%] max-w-[1120px]"><DevCommuVerse /></div>
+  <div class="dc dc-home dc-home-next"><NextStep /></div>
   <footer class="dc-footer">
     <div class="dc-footer-links flex flex-wrap gap-4 items-center">
       <a href="/" class="hover:text-slate-900 transition-colors">DevCommu</a>
       <a href="/bootcamps" class="hover:text-slate-900 transition-colors">ค่ายกิจกรรม</a>
       <a href="/tutoring" class="hover:text-slate-900 transition-colors">เรียนส่วนตัว</a>
-      <a href="/เรียนพิเศษคอมพิวเตอร์-ม-ปลาย" class="hover:text-slate-900 transition-colors">เรียนพิเศษคอม ม.ปลาย</a>
+      <a href={encodeURI("/เรียนพิเศษคอมพิวเตอร์-ม-ปลาย")} class="hover:text-slate-900 transition-colors">เรียนพิเศษคอม ม.ปลาย</a>
       <a href="/success" class="hover:text-slate-900 transition-colors">ความสำเร็จ</a>
       <a href="/team" class="hover:text-slate-900 transition-colors">ทีมงาน</a>
+      <a href="https://grader.devcommu.org" class="hover:text-slate-900 transition-colors">ฝึกโจทย์ Grader</a>
+      <a href="https://posn101.devcommu.org" class="hover:text-slate-900 transition-colors">เฉลยข้อสอบ POSN101</a>
       <a href="/blog" class="hover:text-slate-900 transition-colors">บล็อก</a>
       <a href="/privacy" class="hover:text-slate-900 transition-colors">ความเป็นส่วนตัว</a>
     </div>

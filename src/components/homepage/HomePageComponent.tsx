@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
 
 import { MoreDetailList, posterData } from "~/data/data";
@@ -33,30 +33,28 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
           <p className="dc-hero-subtitle">{text3}</p>
         </section>
         <p className="font-lineSansTH text-slate-500 max-w-xl mx-4 mt-3">
-          ถ้าคุณชอบเทคโนโลยี และอยากลองสร้างผลงานของตัวเอง
-          เรียนเขียนโปรแกรมกับ DevCommu ได้ทั้งค่าย Bootcamp
-          และติวส่วนตัว 1 ต่อ 1
+          สำหรับเด็กและเยาวชนที่อยากเริ่มเขียนโค้ด เตรียมสอบ หรือสร้างโปรเจกต์
+          เรียนผ่านการลงมือทำกับติวเตอร์มากประสบการณ์
         </p>
-        <p className="font-lineSansTH text-slate-500 max-w-3xl mx-4 mt-2">
-          สอนพิเศษคอมพิวเตอร์สำหรับเด็กและเยาวชน เชิงลึกอันดับต้น ๆ
-          ของประเทศไทย โดยติวเตอร์นิสิตและบัณฑิตวิศวกรรมศาสตร์
-          จุฬาลงกรณ์มหาวิทยาลัย (CEDT) ที่มีประสบการณ์แข่งขัน
-          และทำโปรเจกต์จริงทุกคน
-        </p>
+        <div className="dc-hero-details font-lineSansTH">
+          <span>เริ่มจากศูนย์ได้</span>
+          <span>ค่ายและเรียน 1 ต่อ 1</span>
+          <span>ออนไลน์ / ออนไซต์</span>
+        </div>
         <div className="relative z-10 flex flex-wrap justify-center gap-3 my-5 font-lineSansTH">
           <motion.a
             whileHover={{ scale: 1.04 }}
-            href="/bootcamps"
+            href="#learning-paths"
             className="dc-btn"
           >
-            เลือกค่ายที่สนใจ ↗
+            เลือกรูปแบบการเรียน ↓
           </motion.a>
           <motion.a
             whileHover={{ scale: 1.04 }}
             href="/tutoring"
             className="dc-btn secondary"
           >
-            เรียนตัวต่อตัว →
+            ปรึกษาการเรียน →
           </motion.a>
         </div>
 
@@ -349,36 +347,39 @@ const subjects: [string, string, string, string, string][] = [
     "เรียนพิเศษคอม ม.ปลาย",
     "ม.4 ถึง ม.6",
     "คอร์สเฉพาะทางสำหรับนักเรียน ม.ปลาย ที่มีเป้าหมายชัดเจนเรื่องการเข้ามหาวิทยาลัย",
-    "/เรียนพิเศษคอมพิวเตอร์-ม-ปลาย",
+    encodeURI("/เรียนพิเศษคอมพิวเตอร์-ม-ปลาย"),
     "ดูรายละเอียด ม.ปลาย →",
   ],
 ];
 
 export function SubjectsStrip() {
   return (
-    <section className="mx-auto w-[90%] max-w-6xl my-14 font-lineSansTH">
-      <p className="dc-eyebrow">WHAT YOU CAN LEARN</p>
+    <section className="dc-home-subjects mx-auto w-[90%] max-w-6xl my-14 font-lineSansTH">
+      <p className="dc-eyebrow">เริ่มจากสิ่งที่สนใจ</p>
       <h2 className="text-3xl md:text-4xl font-lineSansTH_XB font-bold mb-8">
         เรียนอะไรกับ DevCommu ได้บ้าง?
       </h2>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 text-left">
-        {subjects.map(([title, sub, desc, href, link]) => (
+      <div className="dc-subject-list">
+        {subjects.map(([title, sub, desc, href, link], index) => (
           <article
             key={title}
-            className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:-translate-y-1 transition-transform"
+            className="dc-subject-item"
           >
+            <span className="dc-subject-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <div>
             <h3 className="font-bold text-lg">{title}</h3>
             <p className="text-xs font-semibold text-primary mb-2">{sub}</p>
             <p className="text-sm text-slate-500 mb-4">{desc}</p>
             <a href={href} className="text-primary font-semibold text-sm">
               {link}
             </a>
+            </div>
           </article>
         ))}
       </div>
       <p className="text-slate-500 text-sm mt-6">
-        ไม่แน่ใจว่าควรเริ่มจากอะไร? ทักมาคุยกับพี่ ๆ ได้ฟรี
-        เราจะช่วยแนะนำเส้นทางที่เหมาะกับระดับและเป้าหมายของคุณ
+        ยังไม่แน่ใจว่าเหมาะกับอะไร?{" "}
+        <a href="/tutoring" className="dc-text-link">ให้พี่ ๆ ช่วยแนะนำ →</a>
       </p>
     </section>
   );
@@ -420,37 +421,40 @@ export function WhyBand() {
   );
 }
 
-export function HowToStart() {  const steps: [string, string][] = [
+export function HowToStart() {
+  const steps: [string, string][] = [
     [
-      "1. เลือกเป้าหมาย",
-      "อยากลองเขียนโค้ด เตรียมสอบ สอวน. หรือสร้างพอร์ตเข้ามหาวิทยาลัย? เริ่มจากตอบคำถามนี้ก่อน แล้วเลือกเส้นทางที่ตรงกับเป้าหมายที่สุด",
+      "บอกสิ่งที่อยากเรียน",
+      "เลือกค่ายที่สนใจ หรือคุยกับพี่ ๆ เรื่องพื้นฐานและเป้าหมายของคุณ ถ้ายังไม่แน่ใจ เราช่วยแนะนำได้",
     ],
     [
-      "2. เริ่มจากรูปแบบที่ใช่",
-      "ถ้ายังไม่เคยเขียนโปรแกรม ค่าย Bootcamp สั้น ๆ ช่วยให้เห็นภาพก่อนได้ ถ้ามีเป้าหมายชัดแล้ว การเรียนตัวต่อตัวจะก้าวหน้าเร็วกว่า",
+      "ดูรายละเอียดก่อนตัดสินใจ",
+      "เช็กเนื้อหา ตารางเรียน ค่าเรียน และรูปแบบออนไลน์หรือออนไซต์ให้เหมาะกับคุณ ก่อนสมัครเรียน",
     ],
     [
-      "3. ฝึกต่อเนื่อง",
-      "ความสม่ำเสมอสำคัญกว่าความเก่ง ฝึกโจทย์บน Grader รีวิวโค้ดกับพี่ ๆ และต่อยอดเป็นผลงานจริงที่น้องเล่าได้เอง",
+      "เริ่มเรียนและลงมือทำ",
+      "ฝึกเขียนโค้ดและพัฒนาโปรเจกต์กับผู้สอน แล้วฝึกต่อด้วยโจทย์บน DevCommu Grader ได้ฟรี",
     ],
   ];
   return (
-    <section className="mx-auto w-[90%] max-w-5xl my-14 font-lineSansTH">
-      <p className="dc-eyebrow">GET STARTED</p>
+    <section className="dc-home-start mx-auto w-[90%] max-w-5xl my-14 font-lineSansTH">
+      <p className="dc-eyebrow">จากความสนใจ สู่คลาสแรก</p>
       <h2 className="text-3xl md:text-4xl font-lineSansTH_XB font-bold mb-8">
         เริ่มต้นอย่างไรดี?
       </h2>
-      <div className="grid gap-4 md:grid-cols-3 text-left">
-        {steps.map(([title, desc]) => (
-          <article
+      <ol className="dc-start-steps">
+        {steps.map(([title, desc], index) => (
+          <li
             key={title}
-            className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm"
+            className="dc-start-step"
           >
+            <span className="dc-step-number" aria-hidden="true">{index + 1}</span>
             <h3 className="font-bold text-lg mb-2 text-primary">{title}</h3>
             <p className="text-sm text-slate-500">{desc}</p>
-          </article>
+          </li>
         ))}
-      </div>
+      </ol>
+      <a href="https://grader.devcommu.org" className="dc-text-link mt-6">อยากลองฝึกก่อน? เข้า Grader ฟรี →</a>
     </section>
   );
 }
@@ -564,7 +568,7 @@ export function FaqSection() {
     ],
   ];
   return (
-    <section className="mx-auto w-[90%] max-w-3xl my-14 font-lineSansTH text-left">
+    <section className="mx-auto w-[90%] max-w-[1120px] my-14 font-lineSansTH text-left">
       <p className="dc-eyebrow">FAQ</p>
       <h2 className="text-3xl md:text-4xl font-lineSansTH_XB font-bold mb-8">
         คำถามที่พบบ่อย
@@ -668,7 +672,49 @@ const DataFB: FBPage[] = [
 ];
 
 export function FeedBackPage() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ first: 1, last: 3, atStart: true, atEnd: false });
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const updatePosition = () => {
+      const slides = Array.from(viewport.querySelectorAll<HTMLElement>(".dc-review-slide"));
+      const bounds = viewport.getBoundingClientRect();
+      const visible = slides.flatMap((slide, index) => {
+        const card = slide.getBoundingClientRect();
+        return card.right > bounds.left + 1 && card.left < bounds.right - 1 ? [index + 1] : [];
+      });
+      setPosition({
+        first: visible[0] ?? 1,
+        last: visible[visible.length - 1] ?? 1,
+        atStart: viewport.scrollLeft <= 1,
+        atEnd: viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 1,
+      });
+    };
+
+    updatePosition();
+    viewport.addEventListener("scroll", updatePosition, { passive: true });
+    const observer = new ResizeObserver(updatePosition);
+    observer.observe(viewport);
+    return () => {
+      viewport.removeEventListener("scroll", updatePosition);
+      observer.disconnect();
+    };
+  }, []);
+
+  const scrollReviews = (direction: number) => {
+    const viewport = viewportRef.current;
+    const track = viewport?.querySelector<HTMLElement>(".dc-reviews-track");
+    const slide = track?.querySelector<HTMLElement>(".dc-review-slide");
+    if (!viewport || !track || !slide) return;
+    viewport.scrollBy({
+      left: direction * (slide.offsetWidth + parseFloat(getComputedStyle(track).columnGap)),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  };
+
   return (
     <section className="dc-reviews" aria-labelledby="reviews-heading">
       <div className="dc-reviews-heading">
@@ -682,57 +728,48 @@ export function FeedBackPage() {
         </div>
         <div className="dc-review-controls">
           <button
+            type="button"
             aria-label="รีวิวก่อนหน้า"
-            onClick={() =>
-              setCurrentIndex(
-                (currentIndex + DataFB.length - 1) % DataFB.length
-              )
-            }
+            aria-controls="reviews-viewport"
+            disabled={position.atStart}
+            onClick={() => scrollReviews(-1)}
           >
             ←
           </button>
           <span aria-live="polite">
-            {currentIndex + 1} / {DataFB.length}
+            {position.first === position.last ? position.first : `${position.first}–${position.last}`} / {DataFB.length}
           </span>
           <button
+            type="button"
             aria-label="รีวิวถัดไป"
-            onClick={() => setCurrentIndex((currentIndex + 1) % DataFB.length)}
+            aria-controls="reviews-viewport"
+            disabled={position.atEnd}
+            onClick={() => scrollReviews(1)}
           >
             →
           </button>
         </div>
       </div>
-      <div className="dc-reviews-viewport">
-        <div className="dc-reviews-stack">
+      <div
+        ref={viewportRef}
+        id="reviews-viewport"
+        className="dc-reviews-viewport"
+        role="region"
+        aria-label="รีวิวจากน้อง ๆ เลื่อนดูรีวิวเพิ่มเติม"
+        tabIndex={0}
+      >
+        <div className="dc-reviews-track" role="list">
           {DataFB.map((review, index) => (
             <div
               key={review.name}
               className="dc-review-slide"
-              aria-hidden={index !== currentIndex}
-              style={{
-                opacity: index === currentIndex ? 1 : 0,
-                visibility: index === currentIndex ? "visible" : "hidden",
-                pointerEvents: index === currentIndex ? "auto" : "none",
-              }}
+              role="listitem"
+              aria-label={`รีวิวที่ ${index + 1} จาก ${DataFB.length}`}
             >
               <FeedBackCard {...review} />
             </div>
           ))}
         </div>
-      </div>
-      <div className="flex justify-center items-center gap-2 mt-4">
-        {DataFB.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            aria-label={`ไปที่รีวิวที่ ${idx + 1}`}
-            className={`transition-all duration-300 rounded-full ${
-              currentIndex === idx
-                ? "w-7 h-2 bg-[#e57192] shadow-sm"
-                : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-            }`}
-          />
-        ))}
       </div>
     </section>
   );
