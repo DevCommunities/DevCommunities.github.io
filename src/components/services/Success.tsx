@@ -188,8 +188,8 @@ function StoryCard({
 }) {
   const isProject = s.category === "project";
   const [projectTitle, projectTagline] =
-    isProject && s.name.includes(" - ")
-      ? s.name.split(" - ")
+    isProject && s.name.includes(" · ")
+      ? s.name.split(" · ")
       : [s.name, ""];
 
   return (
@@ -497,7 +497,7 @@ export function HomeAdditions() {
             <p>
               วางแผนการเรียนกับผู้สอน ตั้งแต่พื้นฐาน
               <br />
-              Datasci-AI, Web, POSN ไปจนถึง Consult Project
+              Datasci AI, Web, POSN ไปจนถึง Consult Project
             </p>
             <div className="dc-path-bottom">
               <span>พื้นฐาน · AI · Web · สอวน. · Project</span>

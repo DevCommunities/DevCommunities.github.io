@@ -33,7 +33,7 @@ export default function HomePageContainer({ text1, text2, text3 }: Text) {
           <p className="dc-hero-subtitle">{text3}</p>
         </section>
         <p className="font-lineSansTH text-slate-500 max-w-xl mx-4 mt-3">
-          ถ้าคุณชอบเทคโนโลยี และอยากลองสร้างผลงานของตัวเอง —
+          ถ้าคุณชอบเทคโนโลยี และอยากลองสร้างผลงานของตัวเอง
           เรียนเขียนโปรแกรมกับ DevCommu ได้ทั้งค่าย Bootcamp
           และติวส่วนตัว 1 ต่อ 1
         </p>
@@ -343,7 +343,7 @@ const subjects: [string, string, string, string, string][] = [
   ],
   [
     "เรียนพิเศษคอม ม.ปลาย",
-    "ม.4 – ม.6",
+    "ม.4 ถึง ม.6",
     "คอร์สเฉพาะทางสำหรับนักเรียน ม.ปลาย ที่มีเป้าหมายชัดเจนเรื่องการเข้ามหาวิทยาลัย",
     "/เรียนพิเศษคอมพิวเตอร์-ม-ปลาย",
     "ดูรายละเอียด ม.ปลาย →",

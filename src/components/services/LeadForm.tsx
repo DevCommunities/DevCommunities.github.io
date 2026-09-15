@@ -23,7 +23,7 @@ export default function LeadForm({
   const quickPrompts = [
     "วางแผนทำพอร์ตยื่น CEDT จุฬาฯ",
     "ปูพื้นฐานเขียนโค้ดจาก 0",
-    "ติวเข้ม สอวน.คอมพิวเตอร์ ค่าย 1-2",
+    "ติวเข้ม สอวน.คอมพิวเตอร์ ค่าย 1 และ 2",
     "ปรึกษาทำโครงงาน / Consult Project",
     "สนใจ AI & Data Science",
   ];
@@ -44,15 +44,15 @@ export default function LeadForm({
     const v = Object.fromEntries(new FormData(e.currentTarget));
 
     const subjectTitle = camp
-      ? `[DevCommu] สอบถามและวางแผนเรียนค่าย ${camp.title} - ${v.name}`
-      : `[DevCommu] ปรึกษาและวางแผนการเรียน - ${v.name}`;
+      ? `[DevCommu] สอบถามและวางแผนเรียนค่าย ${camp.title} จาก ${v.name}`
+      : `[DevCommu] ปรึกษาและวางแผนการเรียน จาก ${v.name}`;
 
     const generated = [
       `สวัสดีครับ/ค่ะ ทีมงาน DevCommu`,
       ``,
       `ต้องการสอบถามและวางแผนการเรียน โดยมีรายละเอียดดังนี้:`,
       `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
-      `ชื่อ–นามสกุล: ${v.name}`,
+      `ชื่อ นามสกุล: ${v.name}`,
       `ระดับการศึกษา: ${v.level}`,
       `เบอร์ติดต่อ (โทร/LINE): ${v.phone}`,
       `อีเมลติดต่อกลับ: ${v.email}`,
@@ -244,7 +244,7 @@ export default function LeadForm({
             {/* Field 1: Name */}
             <div>
               <label className="block text-sm font-bold text-slate-700 mb-1.5">
-                ชื่อ–นามสกุลของผู้เรียน <span className="text-primary">*</span>
+                ชื่อ นามสกุลของผู้เรียน <span className="text-primary">*</span>
               </label>
               <input
                 name="name"
@@ -270,11 +270,11 @@ export default function LeadForm({
                 <option value="" disabled>
                   เลือกระดับการศึกษา
                 </option>
-                <option value="มัธยมศึกษาตอนต้น (ม.1 - ม.3)">
-                  มัธยมศึกษาตอนต้น (ม.1 - ม.3)
+                <option value="มัธยมศึกษาตอนต้น (ม.1 ถึง ม.3)">
+                  มัธยมศึกษาตอนต้น (ม.1 ถึง ม.3)
                 </option>
-                <option value="มัธยมศึกษาตอนปลาย (ม.4 - ม.6)">
-                  มัธยมศึกษาตอนปลาย (ม.4 - ม.6)
+                <option value="มัธยมศึกษาตอนปลาย (ม.4 ถึง ม.6)">
+                  มัธยมศึกษาตอนปลาย (ม.4 ถึง ม.6)
                 </option>
                 <option value="มหาวิทยาลัย">มหาวิทยาลัย</option>
                 <option value="บุคคลทั่วไป / วัยทำงาน">

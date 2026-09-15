@@ -88,7 +88,7 @@ export function PrivacyPolicy() {
             ไม่บันทึกข้อมูลฟอร์มลงเซิร์ฟเวอร์
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            แบบฟอร์มปรึกษาการเรียนทำงานบนเครื่องคุณ (Client-side Only) เพื่อเตรียมข้อความสำหรับคัดลอกไปส่งใน LINE เว็บไซต์ไม่มีการส่งข้อมูลดังกล่าวไปเก็บในฐานข้อมูลภายนอก
+            แบบฟอร์มปรึกษาการเรียนทำงานบนเครื่องคุณ (Client Side Only) เพื่อเตรียมข้อความสำหรับคัดลอกไปส่งใน LINE เว็บไซต์ไม่มีการส่งข้อมูลดังกล่าวไปเก็บในฐานข้อมูลภายนอก
           </p>
         </div>
 
@@ -219,7 +219,7 @@ export function PrivacyPolicy() {
                   ก. ข้อมูลที่ท่านส่งผ่านการติดต่อโดยตรง (Direct Communication)
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600">
-                  เมื่อท่านติดต่อเราผ่านทาง LINE (@468httmq), Facebook Messenger, Instagram, หรืออีเมล เช่น ชื่อ-นามสกุล, เบอร์โทรศัพท์, ข้อมูลการศึกษาของนักเรียน ข้อมูลเหล่านี้จะถูกใช้เพื่อการตอบคำถาม วางแผนหลักสูตร และประสานงานการเรียนเท่านั้น
+                  เมื่อท่านติดต่อเราผ่านทาง LINE (@468httmq), Facebook Messenger, Instagram, หรืออีเมล เช่น ชื่อ นามสกุล, เบอร์โทรศัพท์, ข้อมูลการศึกษาของนักเรียน ข้อมูลเหล่านี้จะถูกใช้เพื่อการตอบคำถาม วางแผนหลักสูตร และประสานงานการเรียนเท่านั้น
                 </p>
               </div>
 
@@ -247,18 +247,18 @@ export function PrivacyPolicy() {
           <section id="section-3" className="scroll-mt-24 p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 font-lineSansTH_XB flex items-center gap-2">
               <span className="text-[#e57192]">3.</span>
-              <span>การทำงานของแบบฟอร์มปรึกษาการเรียน (Zero-Storage Policy)</span>
+              <span>การทำงานของแบบฟอร์มปรึกษาการเรียน (Zero Storage Policy)</span>
             </h2>
             <div className="p-4 rounded-xl bg-pink-50/60 border border-pink-100 mb-4">
               <p className="text-xs sm:text-sm text-pink-900 font-medium">
-                💡 เว็บไซต์ DevCommu ออกแบบด้วยแนวคิด <strong>Privacy-First Architecture</strong> แบบฟอร์มขอคำปรึกษาไม่มีการเชื่อมต่อกับฐานข้อมูลส่วนกลางใด ๆ
+                💡 เว็บไซต์ DevCommu ออกแบบด้วยแนวคิด <strong>Privacy First Architecture</strong> แบบฟอร์มขอคำปรึกษาไม่มีการเชื่อมต่อกับฐานข้อมูลส่วนกลางใด ๆ
               </p>
             </div>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-[#e57192] font-bold">✓</span>
                 <span>
-                  <strong>การประมวลผลในเครื่อง (In-Browser Only):</strong> ข้อความที่ท่านกรอกในแบบฟอร์มจะถูกประมวลผลอยู่ภายในหน่วยความจำเบราว์เซอร์ของท่านเท่านั้น
+                  <strong>การประมวลผลในเครื่อง (In Browser Only):</strong> ข้อความที่ท่านกรอกในแบบฟอร์มจะถูกประมวลผลอยู่ภายในหน่วยความจำเบราว์เซอร์ของท่านเท่านั้น
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -280,7 +280,7 @@ export function PrivacyPolicy() {
           <section id="section-4" className="scroll-mt-24 p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 font-lineSansTH_XB flex items-center gap-2">
               <span className="text-[#e57192]">4.</span>
-              <span>คุกกี้และบริการของบุคคลที่สาม (Third-Party Services)</span>
+              <span>คุกกี้และบริการของบุคคลที่สาม (Third Party Services)</span>
             </h2>
             <p className="mb-4">
               เว็บไซต์อาจมีการเชื่อมโยงหรือใช้งานบริการจากผู้ให้บริการภายนอก เพื่ออำนวยความสะดวกและยกระดับคุณภาพบริการ ดังนี้:
@@ -356,7 +356,7 @@ export function PrivacyPolicy() {
                     onClick={handleOptOut}
                     className="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-300 transition-colors shadow-sm"
                   >
-                    ปิดการวัดผล (Opt-out)
+                    ปิดการวัดผล (Opt out)
                   </button>
                   <button
                     type="button"

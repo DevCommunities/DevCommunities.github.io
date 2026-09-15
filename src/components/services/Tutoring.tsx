@@ -31,7 +31,7 @@ export default function Tutoring({ team = false }: { team?: boolean }) {
             ],
             [
               "02",
-              "Datasci-AI",
+              "Datasci AI",
               "Data Science & AI",
               "ตั้งแต่การจัดการและวิเคราะห์ข้อมูลด้วย Python จนถึงการสร้างและทดลองโมเดล Machine Learning / AI",
             ],
