@@ -1,3 +1,4 @@
+import { FiArrowUpRight } from "react-icons/fi";
 import { useState, useEffect } from "react";
 
 export function PrivacyPolicy() {
@@ -185,7 +186,7 @@ export function PrivacyPolicy() {
                 className="inline-flex items-center gap-1.5 text-[#06C755] font-bold hover:underline"
               >
                 <span>💬 LINE: @468httmq</span>
-                <span>↗</span>
+                <span><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></span>
               </a>
             </div>
           </div>

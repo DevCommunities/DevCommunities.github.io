@@ -42,6 +42,9 @@ export function getStaticPaths() {
 }
 
 const props = Astro.props;
+if (props.type === "student-project" && props.story) {
+  return Astro.redirect(`/projects/${props.story.slug || props.story.id}/`, 301);
+}
 ---
 
 {

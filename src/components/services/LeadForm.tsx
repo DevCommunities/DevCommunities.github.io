@@ -1,3 +1,4 @@
+import { FiArrowUpRight } from "react-icons/fi";
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { categories, camps, tutors } from "../../lib/content";
@@ -458,7 +459,7 @@ export default function LeadForm({
                     className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-md shadow-red-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
                   >
                     <span>เปิดด้วย Gmail (Web)</span>
-                    <span>↗</span>
+                    <span><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></span>
                   </a>
 
                   {/* LINE Button */}

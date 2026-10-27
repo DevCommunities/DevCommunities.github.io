@@ -24,6 +24,10 @@ export function getStaticPaths() {
 }
 
 const { story } = Astro.props;
+const primaryPath = `/projects/${story.slug || story.id}/`;
+if (Astro.url.pathname.replace(/\/$/, '') !== primaryPath.replace(/\/$/, '')) {
+  return Astro.redirect(primaryPath, 301);
+}
 const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommu.org';
 const creativeWorkSchema = {
   '@context': 'https://schema.org',

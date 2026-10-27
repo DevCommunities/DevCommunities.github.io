@@ -1,3 +1,4 @@
+import { FiArrowUpRight } from "react-icons/fi";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -132,7 +133,7 @@ export default function Pricing() {
               className={"dc-btn" + (index === 1 ? "" : " secondary")}
               href="#consultation"
             >
-              ปรึกษาเรื่องเรียน ↗
+              ปรึกษาเรื่องเรียน <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
             </a>
           </motion.article>
         ))}

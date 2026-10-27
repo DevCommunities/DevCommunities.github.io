@@ -17,8 +17,8 @@ export default defineConfig({
         if (p.includes("/404")) return false;
         if (p.includes("story-proj-")) return false;
         if (p.includes("thai-ai-lens")) return false;
-        if (p === "/project/sabaijai/") return false;
-        if (p === "/project/thaiailens/") return false;
+        // Keep the legacy camp projects; student projects live under /projects/.
+        if (p.startsWith("/project/") && !/^\/project\/dev\d+\/?$/.test(p)) return false;
         return true;
       },
     }),

@@ -21,6 +21,14 @@ Run `npm run dev`, then open the local URL shown in the terminal. Run `npm run b
 
 Edit `src/lib/content.ts` to update courses, availability, statistics, and success stories, then rebuild. Course descriptions are initial proposed outlines; confirm them before opening enrollment. `planned`, `open`, and `closed` control the course status. Photos on course cards are from the existing event archive. Unknown statistics display `—`; stories remain empty until verified student content is supplied. Instructor biographies come from the original site and should be reviewed for current roles.
 
+### SEO maintenance
+
+Student project URLs use `/projects/<slug>/`. Previous `/project/` URLs and project ID aliases redirect to that primary URL; legacy camp projects such as `/project/dev1/` remain available. Static builds emit HTML redirects with a canonical tag and `noindex`; HTTP status handling depends on the hosting platform.
+
+Run `npm run build && npm run check:seo` to check sitemap URLs, canonical URLs, and project redirects. When adding or replacing local images, run `python3 scripts/generate-image-sizes.py` (requires Pillow) to refresh intrinsic dimensions used by project, camp, and tutor images.
+
+For Google Search Console HTML-tag verification, set `PUBLIC_GOOGLE_SITE_VERIFICATION` to the tag's `content` value in the build environment and redeploy. Verify the property in Search Console and submit `https://devcommu.org/sitemap-index.xml` (or the configured `SITE_URL`). DNS verification is also available independently of this setting. Actual indexing and Core Web Vitals need to be checked on the deployed site.
+
 Forms only prepare text for the visitor to copy. They do not submit, store leads, send email, or reserve seats. No database, authentication, admin CMS, or backend is included. A real contact destination has not been supplied; the visitor must send the copied message using their existing contact channel.
 
 Analytics are optional: set `PUBLIC_GA_ID` and/or `PUBLIC_META_PIXEL_ID` from `.env.example`. Scripts load only after visitor consent. Preparing a message is not counted as a successful registration. Set `SITE_URL` in the build environment for canonical URLs, sitemap, and robots.txt.

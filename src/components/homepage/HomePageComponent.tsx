@@ -1,3 +1,4 @@
+import { FiArrowUpRight } from "react-icons/fi";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
@@ -106,6 +107,8 @@ export function VideoExample() {
             <img
               src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
               alt="ภาพปกวิดีโอ DevCommu"
+              width={480}
+              height={360}
               className="w-full h-full object-cover"
               loading="lazy"
               decoding="async"
@@ -146,8 +149,8 @@ export function MarqueePoster() {
               <img
                 alt={`ภาพบรรยากาศค่ายกิจกรรม DevCommu ที่ ${index + 1}`}
                 loading={index < 2 ? "eager" : "lazy"}
-                height={"300px"}
-                width={"300px"}
+                height={300}
+                width={300}
                 src={poster.img}
                 className="object-cover h-full w-full rounded-lg"
               />
@@ -510,7 +513,7 @@ export function DevCommuVerse() {
           >
             <div className="dc-path-top">
               <span>{p.label}</span>
-              <b aria-hidden="true">↗</b>
+              <b aria-hidden="true"><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></b>
             </div>
             <h3>
               {p.title}
@@ -645,7 +648,7 @@ const DataFB: FBPage[] = [
       '"เปลี่ยนไอเดียให้กลายเป็นโซลูชันที่จับต้องได้ พี่ ๆ ช่วยแนะนำกระบวนการคิดและพัฒนาผลงานจนคว้ารางวัลชนะเลิศอันดับ 1 และต่อยอดสู่โปรเจกต์จริง"',
     name: "น้องจิวเวอรี่",
     social:
-      "1st Place Change Innovation Award 2026 · เหรียญทอง Young Innovator Hackathon 2025",
+      "สอบติดเทคโนโลยีสารสนเทศ (IT) มจธ. บางมด · 1st Place Change Innovation Award 2026 · เหรียญทอง Young Innovator Hackathon 2025",
     image: "/images/students/njew.webp",
   },
   {

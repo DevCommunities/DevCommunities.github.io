@@ -1,3 +1,5 @@
+import { imageSize } from "../../lib/image-size";
+import { FiArrowUpRight } from "react-icons/fi";
 import { useState } from "react";
 import { tutors, safeUrl } from "../../lib/content";
 import { Card, Heading } from "./shared";
@@ -69,7 +71,7 @@ export default function Tutoring({ team = false }: { team?: boolean }) {
         <div className="dc-grid">
           {items.map((t) => (
             <Card key={t.id}>
-              <img
+              <img {...imageSize(t.image)}
                 className="dc-avatar"
                 src={safeUrl(t.image)}
                 alt={t.name}
@@ -95,7 +97,7 @@ export default function Tutoring({ team = false }: { team?: boolean }) {
                       ?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
-                  เลือก{t.name} ↗
+                  เลือก{t.name} <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
                 </button>
               )}
             </Card>

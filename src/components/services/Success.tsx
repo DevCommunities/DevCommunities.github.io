@@ -1,6 +1,8 @@
+import { imageSize } from "../../lib/image-size";
+import { FiArrowUpRight } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { stats, stories, safeUrl, tutors, type Story } from "../../lib/content";
+import { stats, stories, safeUrl, tutors, projectStatusLabel, type Story } from "../../lib/content";
 import { Card } from "./shared";
 const labels: Record<string, string> = {
   university: "เส้นทางมหาวิทยาลัย",
@@ -44,7 +46,7 @@ export function StudentModal({
           ✕
         </button>
         <div className="dc-student-modal-img-container">
-          <img
+          <img {...imageSize(story.image)}
             src={safeUrl(story.image)}
             alt={story.name}
             className="dc-student-modal-img"
@@ -108,12 +110,12 @@ function StoryArt({
               <span className="dot dot-green" />
             </div>
             <span className="dc-project-mockup-url">
-              {story.slug ? `${story.slug}.app` : "project.app"}
+              {story.name.split(" · ")[0]}
             </span>
-            <span className="dc-project-mockup-tag">WEB APP</span>
+            <span className="dc-project-mockup-tag">{story.projectKind === "hardware" ? "HARDWARE" : "WEB APP"}</span>
           </div>
         )}
-        <img
+        <img {...imageSize(story.image)}
           className={`dc-cover ${isProject ? "dc-project-cover" : "dc-student-cover"}`}
           src={safeUrl(story.image)}
           alt={story.name}
@@ -202,7 +204,7 @@ function StoryCard({
           </span>
           {isProject && (
             <span className="px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-emerald-50 text-emerald-700 border border-emerald-200/80">
-              Live App
+              {projectStatusLabel(s)}
             </span>
           )}
         </div>
@@ -213,7 +215,7 @@ function StoryCard({
 
         {isProject ? (
           <>
-            <p className="dc-story-result font-semibold text-slate-800">
+            <p className="dc-story-result dc-project-tagline font-semibold text-slate-800">
               {projectTagline || s.faculty}
             </p>
             <p className="dc-small text-slate-500">
@@ -227,7 +229,7 @@ function StoryCard({
           </>
         )}
 
-        <p className="dc-muted mt-3 text-sm leading-relaxed">
+        <p className={`dc-muted mt-3 text-sm leading-relaxed ${isProject ? "dc-project-summary" : ""}`}>
           {isProject ? s.quote : `“${s.quote}”`}
         </p>
       </div>
@@ -249,7 +251,7 @@ function StoryCard({
               className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100/90 text-slate-700 hover:bg-pink-50 hover:text-[#e57192] transition-colors border border-slate-200/60"
             >
               <span>เปิดเว็บจริง</span>
-              <span className="text-[10px]">↗</span>
+              <span className="text-[10px]"><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></span>
             </a>
           )}
         </div>
@@ -262,7 +264,7 @@ function StoryCard({
               target="_blank"
               rel="noopener noreferrer"
             >
-              ดูผลงาน ↗
+              ดูผลงาน <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
             </a>
           </div>
         )
@@ -340,7 +342,7 @@ export function Success() {
           <span className="dc-feature-sticker">
             FROM FIRST LINE
             <br />
-            TO NEXT CHAPTER ↗
+            TO NEXT CHAPTER <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
           </span>
           <div className="dc-feature-code">
             &lt;dream&gt;
@@ -429,7 +431,7 @@ export function NextStep() {
       </div>
       <div className="dc-next-actions">
         <a href="/bootcamps" className="dc-btn">
-          ดูตารางค่ายทั้งหมด ↗
+          ดูตารางค่ายทั้งหมด <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
         </a>
         <a href="/tutoring" className="dc-text-link">
           ปรึกษาการเรียน 1 ต่อ 1 →
@@ -462,7 +464,7 @@ export function LearningPaths() {
           >
             <div className="dc-path-top">
               <span>ค่ายรายเดือน</span>
-              <b>↗</b>
+              <b><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></b>
             </div>
             <h3>
               Bootcamp<span>ลงมือทำไปกับเพื่อน</span>
@@ -476,7 +478,7 @@ export function LearningPaths() {
               <span>Web · AI · IoT</span>
               <strong>สำรวจค่าย →</strong>
             </div>
-            <img src="/images/decor/arduino.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <img {...imageSize("/images/decor/arduino.webp")} src="/images/decor/arduino.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           </motion.a>
           <motion.a
             whileHover={{ y: -6 }}
@@ -485,7 +487,7 @@ export function LearningPaths() {
           >
             <div className="dc-path-top">
               <span>เรียนส่วนตัวกับพี่ๆ</span>
-              <b>↗</b>
+              <b><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></b>
             </div>
             <h3>
               Private tutoring<span>โฟกัสเป้าหมายของคุณ</span>
@@ -499,7 +501,7 @@ export function LearningPaths() {
               <span>พื้นฐาน · AI · Web · สอวน. · Project</span>
               <strong>ค้นหาผู้สอน →</strong>
             </div>
-            <img src="/images/decor/keyboard.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <img {...imageSize("/images/decor/keyboard.webp")} src="/images/decor/keyboard.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           </motion.a>
           <motion.a
             whileHover={{ y: -6 }}
@@ -511,7 +513,7 @@ export function LearningPaths() {
                 <span className="w-2 h-2 rounded-full bg-[#e57192] animate-pulse" />
                 <span>ปรึกษารอบพอร์ต · TCAS รอบ 1</span>
               </span>
-              <b>↗</b>
+              <b><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></b>
             </div>
             <h3>
               Portfolio Consult<span>ปรึกษารอบพอร์ต วางแผนคณะในฝัน</span>
@@ -530,7 +532,7 @@ export function LearningPaths() {
               <span>TCAS 1 · CEDT จุฬาฯ · วิศวะคอมฯ · IT & นวัตกรรม</span>
               <strong>ปรึกษาทำพอร์ตกับพี่ ๆ →</strong>
             </div>
-            <img src="/images/decor/portfolio-doc.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <img {...imageSize("/images/decor/portfolio-doc.webp")} src="/images/decor/portfolio-doc.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           </motion.a>
         </div>
       </section>
@@ -542,7 +544,7 @@ export function MentorStrip() {
       <section className="dc-mentor-strip">
         <div className="dc-mentor-faces">
           {tutors.slice(0, 5).map((t) => (
-            <img src={t.image} alt={t.name} key={t.id} loading="lazy" decoding="async" />
+            <img {...imageSize(t.image)} src={t.image} alt={t.name} key={t.id} loading="lazy" decoding="async" />
           ))}
         </div>
         <div>
@@ -553,7 +555,7 @@ export function MentorStrip() {
           </p>
         </div>
         <a className="dc-text-link" href="/team">
-          รู้จักทีมผู้สอน ↗
+          รู้จักทีมผู้สอน <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
         </a>
       </section>
   );
@@ -568,7 +570,7 @@ export function StudentOutcomes() {
             <h2>เรียนแล้ว ไปต่อได้แค่ไหน?</h2>
           </div>
           <a className="dc-text-link" href="/success">
-            ดูเรื่องราวทั้งหมด ↗
+            ดูเรื่องราวทั้งหมด <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
           </a>
         </div>
         <StoryCards preview />

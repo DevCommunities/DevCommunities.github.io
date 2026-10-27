@@ -1,0 +1,506 @@
+{
+  "/images/about/bg-word.webp": {
+    "width": 2076,
+    "height": 604
+  },
+  "/images/about/chokdee.webp": {
+    "width": 441,
+    "height": 441
+  },
+  "/images/about/gigi.webp": {
+    "width": 1254,
+    "height": 1254
+  },
+  "/images/about/guide.webp": {
+    "width": 441,
+    "height": 441
+  },
+  "/images/about/mookrob.webp": {
+    "width": 441,
+    "height": 441
+  },
+  "/images/about/sayhi.webp": {
+    "width": 1254,
+    "height": 1254
+  },
+  "/images/blog/coding-practice.webp": {
+    "width": 1200,
+    "height": 800
+  },
+  "/images/blog/cp-intro-cover.webp": {
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/blog/grader-release-cover.webp": {
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/blog/high-school-tutoring-cover.webp": {
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/blog/parent-guide-cover.webp": {
+    "width": 1300,
+    "height": 867
+  },
+  "/images/blog/portfolio-cover.webp": {
+    "width": 1600,
+    "height": 1065
+  },
+  "/images/blog/posn-prep-cover.webp": {
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/blog/python-ai-ml.webp": {
+    "width": 1200,
+    "height": 800
+  },
+  "/images/blog/python-guide-cover.webp": {
+    "width": 1600,
+    "height": 900
+  },
+  "/images/blog/teaching-kids-cover.webp": {
+    "width": 1600,
+    "height": 996
+  },
+  "/images/branding/devcommu-dark-side.webp": {
+    "width": 1686,
+    "height": 417
+  },
+  "/images/branding/devcommu-word-dark.webp": {
+    "width": 976,
+    "height": 135
+  },
+  "/images/camps/banners/arduino-bootcamp-august-2024-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/arduino-bootcamp-nov2024.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/comeng-bootcamp-sep-2026-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/data-bootcamp-july2025-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/devcommu-3.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/devcommu-4.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/devcommu-5.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/devcommu-6-gamedev-bootcamp.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/devcommu-6.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/devcommu-7.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/devcommu-8.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/devcommu-discover-tech-web-ai-bootcamp.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/embedded-system-bootcamp-2026-2-round-1.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/embedded-system-bootcamp-2026-2-round-2.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/gamedev-bootcamp-aug2025.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/gamedev-bootcamp-jan2025.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/gamedev-bootcamp-sep-2026-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/intro-to-ai-bootcamp-9.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/intro-to-ai-bootcamp-april-2025.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/intro-to-ai-ml-bootcamp-may-2026-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/machine-learning-bootcamp-august-2024-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/machine-learning-bootcamp-jan2025.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/machine-learning-bootcamp-nlp.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/machine-learning-bootcamp-nov2024.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/nlp-fundamentals-ai-chatbot-bootcamp.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/posn-com-crashcourse-bootcamp-june-july-2026-by-devcommu-2.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/posn-crashcourse-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/roblox-bootcamp-nov2025.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/toi-zero-bootcamp-april-2026-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/toi-zero-bootcamp-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/toi-zero-bootcamp-may-2026-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/toi-zero-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/vibe-coding-bootcamp-july-2026-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/webdev-bootcamp-3.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/webdev-bootcamp-feb2025-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/webdev-bootcamp-november-2025-by-devcommu.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/banners/webdev-bootcamp-oct2024.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/camps/instructors/guide.webp": {
+    "width": 413,
+    "height": 445
+  },
+  "/images/camps/instructors/mookrob.webp": {
+    "width": 385,
+    "height": 445
+  },
+  "/images/camps/instructors/tak.webp": {
+    "width": 350,
+    "height": 356
+  },
+  "/images/camps/thumbnails/001-data-boot-camp-horizontal.webp": {
+    "width": 1600,
+    "height": 840
+  },
+  "/images/camps/thumbnails/002-python-boot-camp-horizontal.webp": {
+    "width": 577,
+    "height": 303
+  },
+  "/images/camps/thumbnails/003-ai-boot-camp-horizontal.webp": {
+    "width": 486,
+    "height": 255
+  },
+  "/images/camps/thumbnails/003-ai-boot-camp-vertical.webp": {
+    "width": 600,
+    "height": 862
+  },
+  "/images/camps/thumbnails/004-intro-to-nlp-horizontal.webp": {
+    "width": 486,
+    "height": 255
+  },
+  "/images/camps/thumbnails/004-intro-to-nlp-vertical.webp": {
+    "width": 600,
+    "height": 862
+  },
+  "/images/camps/thumbnails/005-pcshs-pl-posn-camp-horizontal.webp": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/images/camps/thumbnails/006-arduino-bootcamp-horizontal.webp": {
+    "width": 486,
+    "height": 255
+  },
+  "/images/camps/thumbnails/006-arduino-bootcamp-vertical.webp": {
+    "width": 600,
+    "height": 862
+  },
+  "/images/camps/thumbnails/007-godot-gamedev-camp-horizontal.webp": {
+    "width": 486,
+    "height": 255
+  },
+  "/images/camps/thumbnails/007-godot-gamedev-camp-vertical.webp": {
+    "width": 600,
+    "height": 862
+  },
+  "/images/camps/thumbnails/008-arduino-rc-camp-horizontal.webp": {
+    "width": 810,
+    "height": 425
+  },
+  "/images/camps/thumbnails/008-arduino-rc-camp-vertical.webp": {
+    "width": 600,
+    "height": 849
+  },
+  "/images/camps/thumbnails/009-intro-to-image-processing-horizontal.webp": {
+    "width": 486,
+    "height": 255
+  },
+  "/images/camps/thumbnails/009-intro-to-image-processing-vertical.webp": {
+    "width": 600,
+    "height": 849
+  },
+  "/images/decor/arduino-footer.webp": {
+    "width": 1000,
+    "height": 885
+  },
+  "/images/decor/arduino.webp": {
+    "width": 1721,
+    "height": 1569
+  },
+  "/images/decor/background-we-are.webp": {
+    "width": 2916,
+    "height": 1756
+  },
+  "/images/decor/dev-key.webp": {
+    "width": 784,
+    "height": 716
+  },
+  "/images/decor/devcommu-page.webp": {
+    "width": 2804,
+    "height": 1552
+  },
+  "/images/decor/keyboard-footer.webp": {
+    "width": 1206,
+    "height": 1600
+  },
+  "/images/decor/keyboard.webp": {
+    "width": 661,
+    "height": 512
+  },
+  "/images/decor/mac-terminal.webp": {
+    "width": 1546,
+    "height": 432
+  },
+  "/images/decor/portfolio-doc.webp": {
+    "width": 640,
+    "height": 640
+  },
+  "/images/decor/python.webp": {
+    "width": 607,
+    "height": 306
+  },
+  "/images/home/camp-promo.webp": {
+    "width": 1280,
+    "height": 720
+  },
+  "/images/home/picture-example.webp": {
+    "width": 2408,
+    "height": 996
+  },
+  "/images/home/poster-0.webp": {
+    "width": 1177,
+    "height": 1177
+  },
+  "/images/home/poster-1.webp": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/home/poster-2.webp": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/home/poster-3.webp": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/home/poster-4.webp": {
+    "width": 1177,
+    "height": 1177
+  },
+  "/images/home/poster-5.webp": {
+    "width": 1177,
+    "height": 1177
+  },
+  "/images/home/poster-6.webp": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/home/poster-7.webp": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/home/stand-1.webp": {
+    "width": 1154,
+    "height": 1188
+  },
+  "/images/home/stand-2.webp": {
+    "width": 1156,
+    "height": 1156
+  },
+  "/images/home/stand-3.webp": {
+    "width": 1156,
+    "height": 1156
+  },
+  "/images/home/stand-4.webp": {
+    "width": 1083,
+    "height": 1156
+  },
+  "/images/icons/arrow.png": {
+    "width": 41,
+    "height": 63
+  },
+  "/images/icons/dev-white.png": {
+    "width": 464,
+    "height": 65
+  },
+  "/images/icons/facebook.png": {
+    "width": 104,
+    "height": 110
+  },
+  "/images/icons/github-white.png": {
+    "width": 108,
+    "height": 110
+  },
+  "/images/icons/github.png": {
+    "width": 27,
+    "height": 28
+  },
+  "/images/icons/pagename.png": {
+    "width": 464,
+    "height": 64
+  },
+  "/images/icons/pdf.webp": {
+    "width": 640,
+    "height": 640
+  },
+  "/images/icons/youtube.png": {
+    "width": 132,
+    "height": 96
+  },
+  "/images/projects/fahsai-cover.webp": {
+    "width": 1600,
+    "height": 900
+  },
+  "/images/projects/histalk-cover.webp": {
+    "width": 940,
+    "height": 588
+  },
+  "/images/projects/sabaijai-cover.webp": {
+    "width": 800,
+    "height": 500
+  },
+  "/images/projects/thai-ai-lens-cover.webp": {
+    "width": 1253,
+    "height": 704
+  },
+  "/images/students/ken.webp": {
+    "width": 1600,
+    "height": 1600
+  },
+  "/images/students/khaopan.webp": {
+    "width": 1376,
+    "height": 1642
+  },
+  "/images/students/njew.webp": {
+    "width": 1200,
+    "height": 1200
+  },
+  "/images/students/oat.jpeg": {
+    "width": 1024,
+    "height": 1016
+  },
+  "/images/students/oat.webp": {
+    "width": 1024,
+    "height": 1016
+  },
+  "/images/students/pogas.webp": {
+    "width": 1010,
+    "height": 1330
+  },
+  "/images/students/prom.webp": {
+    "width": 526,
+    "height": 514
+  },
+  "/images/students/sannn.webp": {
+    "width": 560,
+    "height": 630
+  },
+  "/images/students/shane-half-body.png": {
+    "width": 1074,
+    "height": 1464
+  },
+  "/images/students/shane.png": {
+    "width": 1074,
+    "height": 1594
+  },
+  "/images/students/shane.webp": {
+    "width": 1074,
+    "height": 1594
+  },
+  "/images/students/tim.webp": {
+    "width": 550,
+    "height": 726
+  },
+  "/images/students/us.webp": {
+    "width": 620,
+    "height": 914
+  },
+  "/images/students/win.webp": {
+    "width": 2492,
+    "height": 2160
+  },
+  "/images/students/win2.webp": {
+    "width": 2492,
+    "height": 2160
+  },
+  "/images/verse/grader.webp": {
+    "width": 1280,
+    "height": 800
+  },
+  "/images/verse/posn101.webp": {
+    "width": 1280,
+    "height": 800
+  }
+}

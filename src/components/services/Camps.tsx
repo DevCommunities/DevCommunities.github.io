@@ -1,3 +1,5 @@
+import { imageSize } from "../../lib/image-size";
+import { FiArrowUpRight } from "react-icons/fi";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { camps, type Camp, safeUrl } from "../../lib/content";
@@ -21,7 +23,7 @@ function CampCard({ camp }: { camp: Camp }) {
         {/* Poster Media with Floating Badges */}
         <div className="dc-camp-media">
           {camp.image ? (
-            <img
+            <img {...imageSize(camp.image)}
               className="dc-camp-img"
               src={safeUrl(camp.image)}
               alt={camp.title}
@@ -115,7 +117,7 @@ function CampCard({ camp }: { camp: Camp }) {
                 className="dc-camp-btn dc-camp-btn-primary whitespace-nowrap"
                 title="สมัครเข้าร่วมผ่าน Google Form ทันที"
               >
-                <span>สมัครเลย ↗</span>
+                <span>สมัครเลย <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></span>
               </a>
             )}
             <a
@@ -228,7 +230,7 @@ export function Bootcamps() {
                   href={"/bootcamps/" + camp.id}
                   aria-label={"ดูรายละเอียด " + camp.title}
                 >
-                  <img
+                  <img {...imageSize(camp.image)}
                     src={safeUrl(camp.image)}
                     alt={camp.title}
                     loading="lazy"
@@ -240,7 +242,7 @@ export function Bootcamps() {
                   <h3>{camp.title}</h3>
                   <p className="dc-history-description">{camp.description}</p>
                   <a className="dc-history-link" href={"/bootcamps/" + camp.id}>
-                    อ่านเพิ่มเติม ↗
+                    อ่านเพิ่มเติม <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
                   </a>
                 </div>
               </motion.div>
@@ -281,7 +283,7 @@ export function CampDetail({ camp }: { camp: Camp }) {
         {camp.description}
       </Heading>
       {camp.image && (
-        <img
+        <img {...imageSize(camp.image)}
           className="dc-detail-poster"
           src={safeUrl(camp.image)}
           alt={camp.title}
@@ -361,7 +363,7 @@ export function CampDetail({ camp }: { camp: Camp }) {
                 className="w-full py-3 px-4 rounded-xl bg-[#e57192] hover:bg-[#d65f82] text-white font-bold text-sm text-center shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
               >
                 <span>สมัครเข้าร่วมค่าย (Google Form)</span>
-                <span>↗</span>
+                <span><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></span>
               </a>
             </div>
           )}
@@ -375,7 +377,7 @@ export function CampDetail({ camp }: { camp: Camp }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          อ่านประกาศเดิมบน CAMPHUB ↗
+          อ่านประกาศเดิมบน CAMPHUB <FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" />
         </a>
       )}
       {camp.status === "closed" ? (
@@ -400,7 +402,7 @@ export function CampDetail({ camp }: { camp: Camp }) {
               className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#e57192] hover:bg-[#d65f82] text-white font-bold text-base shadow-lg shadow-pink-500/20 hover:shadow-xl hover:-translate-y-0.5 transition-all"
             >
               <span>กรอกฟอร์มสมัครเข้าร่วม (Google Form)</span>
-              <span className="text-lg">↗</span>
+              <span className="text-lg"><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></span>
             </a>
             <a
               href="https://line.me/R/ti/p/@468httmq"

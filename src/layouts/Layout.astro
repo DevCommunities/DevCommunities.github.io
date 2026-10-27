@@ -19,6 +19,7 @@ const {
 } = Astro.props;
 
 const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://devcommu.org';
+const searchConsoleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 const pathname = Astro.url.pathname.endsWith('/') || Astro.url.pathname.includes('.')
   ? Astro.url.pathname
   : `${Astro.url.pathname}/`;
@@ -77,6 +78,7 @@ const allSchemas = pageSchema
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>{title}</title>
 <meta name="description" content={description}/>
+{searchConsoleVerification && <meta name="google-site-verification" content={searchConsoleVerification}/>}
 <meta name="theme-color" content="#E57192"/>
 {noindex ? (
   <meta name="robots" content="noindex,nofollow"/>

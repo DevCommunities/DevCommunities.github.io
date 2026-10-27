@@ -1,8 +1,8 @@
-import { type Story, safeUrl } from "../../lib/content";
+import { imageSize } from "../../lib/image-size";
+import { FiArrowUpRight, FiArrowRight, FiLayers, FiCheck } from "react-icons/fi";
+import { type Story, safeUrl, projectStatusLabel } from "../../lib/content";
 
 export function ProjectDetail({ story }: { story: Story }) {
-  // Parse details text to extract structured sections if available
-  const paragraphs = (story.details || "").split("\n\n").filter(Boolean);
 
   return (
     <article className="dc-project-detail-view pb-16 font-lineSansTH">
@@ -42,28 +42,11 @@ export function ProjectDetail({ story }: { story: Story }) {
       {/* Project Cover Banner */}
       {story.image && (
         <div className="mb-10 rounded-2xl overflow-hidden border border-slate-200/80 shadow-md bg-slate-900">
-          <img
+          <img {...imageSize(story.image)}
             src={safeUrl(story.image)}
             alt={story.name}
             className="w-full max-h-[520px] object-contain mx-auto block"
           />
-        </div>
-      )}
-
-      {/* Result / Achievement Highlight Box */}
-      {story.quote && (
-        <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-pink-50 to-rose-50/60 border border-pink-200/70 shadow-sm flex items-start gap-4">
-          <div className="text-2xl sm:text-3xl shrink-0 p-2.5 rounded-xl bg-white shadow-sm text-[#e57192]">
-            ⭐
-          </div>
-          <div>
-            <strong className="block text-sm sm:text-base font-bold text-slate-900 mb-1">
-              ผลที่ได้รับ & ความสำเร็จของโครงงาน
-            </strong>
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-              {story.quote.replace(/^ผลที่ได้รับ:\s*/i, "")}
-            </p>
-          </div>
         </div>
       )}
 
@@ -77,114 +60,35 @@ export function ProjectDetail({ story }: { story: Story }) {
           </h2>
 
           <div className="dc-project-body text-slate-700 text-sm sm:text-base leading-relaxed space-y-5">
-            {paragraphs.length > 0 ? (
-              paragraphs.map((p, idx) => {
-                // Check if this paragraph is a list of features (contains •)
-                if (p.includes("•")) {
-                  const lines = p.split("\n");
-                  const intro = lines[0];
-                  const items = lines.slice(1);
-                  return (
-                    <div
-                      key={idx}
-                      className="bg-slate-50/80 p-5 rounded-2xl border border-slate-200/70 space-y-3"
-                    >
-                      {intro && (
-                        <h3 className="font-bold text-slate-900 text-base">
-                          {intro}
-                        </h3>
-                      )}
-                      <ul className="space-y-2 pl-2">
-                        {items.map((item, itemIdx) => {
-                          const cleanItem = item.replace(/^[•\-\*]\s*/, "");
-                          const parts = cleanItem.split(":");
-                          if (parts.length > 1) {
-                            return (
-                              <li key={itemIdx} className="flex items-start gap-2">
-                                <span className="text-[#e57192] font-bold text-sm shrink-0 mt-0.5">
-                                  ▸
-                                </span>
-                                <div>
-                                  <strong className="text-slate-900">
-                                    {parts[0]}:
-                                  </strong>
-                                  <span className="text-slate-600">
-                                    {parts.slice(1).join(":")}
-                                  </span>
-                                </div>
-                              </li>
-                            );
-                          }
-                          return (
-                            <li key={itemIdx} className="flex items-start gap-2">
-                              <span className="text-[#e57192] font-bold text-sm shrink-0 mt-0.5">
-                                ▸
-                              </span>
-                              <span className="text-slate-700">{cleanItem}</span>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  );
-                }
-
-                // Check if paragraph is Tech Stack description
-                if (p.startsWith("เทคโนโลยีหลักที่นำมาใช้ในระบบ:")) {
-                  const content = p.replace("เทคโนโลยีหลักที่นำมาใช้ในระบบ:", "").trim();
-                  return (
-                    <div
-                      key={idx}
-                      className="bg-blue-50/50 p-5 rounded-2xl border border-blue-100 space-y-2"
-                    >
-                      <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-                        <span>🛠️</span>
-                        <span>เทคโนโลยีหลักที่นำมาใช้ในระบบ</span>
-                      </h3>
-                      <p className="text-slate-700 text-sm leading-relaxed whitespace-pre-line">
-                        {content}
-                      </p>
-                    </div>
-                  );
-                }
-
-                // Check if paragraph is Keywords
-                if (p.includes("คำสำคัญ (Keywords):") || p.includes("คำสำคัญ:")) {
-                  const keywordsText = p
-                    .replace(/คำสำคัญ\s*(\(Keywords\))?:\s*/i, "")
-                    .trim();
-                  const tags = keywordsText.split(",").map((k) => k.trim()).filter(Boolean);
-                  return (
-                    <div
-                      key={idx}
-                      className="mt-6 pt-5 border-t border-slate-100 space-y-3"
-                    >
-                      <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider">
-                        คำสำคัญ (Keywords)
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {tags.map((tag, tagIdx) => (
-                          <span
-                            key={tagIdx}
-                            className="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium transition-colors"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                }
-
-                // Standard narrative paragraph
-                return (
-                  <p key={idx} className="whitespace-pre-line">
-                    {p}
-                  </p>
-                );
-              })
-            ) : (
-              <p>{story.quote}</p>
+            {story.projectSections?.map((section) => (
+              <section key={section.title} className="space-y-3">
+                <h3 className="text-lg font-bold text-slate-900">{section.title}</h3>
+                {section.paragraphs?.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+                {section.items && (
+                  <ul className="list-disc pl-5 space-y-3 marker:text-[#e57192]">
+                    {section.items.map((item) => {
+                      const separator = item.indexOf(":");
+                      return (
+                        <li key={item}>
+                          {separator >= 0 ? <><strong>{item.slice(0, separator)}:</strong>{item.slice(separator + 1)}</> : item}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </section>
+            ))}
+            {!!story.keywords?.length && (
+              <section className="pt-5 border-t border-slate-100 space-y-3">
+                <h3 className="text-sm font-bold text-slate-500">คำสำคัญ</h3>
+                <div className="flex flex-wrap gap-2">
+                  {story.keywords.map((keyword) => (
+                    <span key={keyword} className="px-3 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs font-medium">{keyword}</span>
+                  ))}
+                </div>
+              </section>
             )}
           </div>
         </section>
@@ -216,6 +120,11 @@ export function ProjectDetail({ story }: { story: Story }) {
             </div>
 
             <div>
+              <span className="text-xs font-semibold text-slate-400 block uppercase">สถานะ</span>
+              <p className="font-medium text-slate-800 text-sm mt-0.5">{projectStatusLabel(story)}</p>
+            </div>
+
+            <div>
               <span className="text-xs font-semibold text-slate-400 block uppercase">
                 เวที / หมวดหมู่
               </span>
@@ -233,40 +142,38 @@ export function ProjectDetail({ story }: { story: Story }) {
                   className="w-full py-3 px-4 rounded-xl bg-[#e57192] hover:bg-[#d65f82] text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2"
                 >
                   <span>เยี่ยมชมเว็บไซต์จริง</span>
-                  <span>↗</span>
+                  <span><FiArrowUpRight aria-hidden="true" className="inline-block align-middle shrink-0" /></span>
                 </a>
               </div>
             )}
           </div>
 
-          {/* DevCommu Mentorship CTA */}
-          <div className="dc-card bg-gradient-to-br from-slate-900 to-slate-800 text-white space-y-3 p-6 rounded-2xl">
-            <span className="inline-block text-xs font-bold px-2.5 py-1 rounded bg-[#e57192] text-white">
-              PROJECT MENTORSHIP
-            </span>
-            <h4 className="text-lg font-bold font-lineSansTH_XB">
-              อยากสร้างโครงงานระดับประเทศแบบนี้?
-            </h4>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              DevCommu มีพี่ ๆ ติวเตอร์จาก CEDT จุฬาฯ และสถาบันชั้นนำ คอยไกด์ตั้งแต่การคิดหัวข้อ ออกแบบระบบ ไปจนถึงการโค้ดจริงและการทำ Portfolio เพื่อยื่น TCAS / แข่งขัน
-            </p>
-            <div className="pt-2 space-y-2">
-              <a
-                href="/tutoring"
-                className="block w-full py-2.5 text-center rounded-xl bg-white text-slate-900 font-bold text-xs hover:bg-slate-100 transition-colors"
-              >
-                ดูรายละเอียดคอร์สเรียนส่วนตัว →
-              </a>
-              <a
-                href="https://line.me/R/ti/p/@468httmq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full py-2.5 text-center rounded-xl bg-[#06C755] text-white font-bold text-xs hover:bg-[#05b34c] transition-colors"
-              >
-                ปรึกษาพี่ ๆ ทาง LINE: @468httmq (ฟรี)
-              </a>
+          <section id="project-mentorship" className="dc-project-mentor" aria-labelledby="project-mentor-title">
+            <div className="dc-project-mentor-top">
+              <span className="dc-project-mentor-icon"><FiLayers aria-hidden="true" /></span>
+              <span className="dc-project-mentor-label">PROJECT MENTORSHIP</span>
             </div>
-          </div>
+            <h3 id="project-mentor-title">มีไอเดียแล้ว<br />มาสร้างไปด้วยกัน</h3>
+            <p className="dc-project-mentor-intro">
+              พี่ ๆ DevCommu ช่วยวางทางให้โปรเจกต์ของน้อง ตั้งแต่จุดเริ่มต้นจนพร้อมเล่าในพอร์ต
+            </p>
+            <ul className="dc-project-mentor-list">
+              <li><FiCheck aria-hidden="true" /><span>หาโจทย์และวางแผนโปรเจกต์</span></li>
+              <li><FiCheck aria-hidden="true" /><span>ลงมือพัฒนา พร้อมคำแนะนำ</span></li>
+              <li><FiCheck aria-hidden="true" /><span>เตรียมผลงานสำหรับพอร์ตและแข่งขัน</span></li>
+            </ul>
+            <a
+              href="https://line.me/R/ti/p/@468httmq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dc-project-mentor-primary"
+            >
+              <span>คุยไอเดียกับพี่ ๆ ฟรี</span><FiArrowUpRight aria-hidden="true" />
+            </a>
+            <a href="/tutoring" className="dc-project-mentor-secondary">
+              ดูการเรียนแบบตัวต่อตัว<FiArrowRight aria-hidden="true" />
+            </a>
+          </section>
         </aside>
       </div>
     </article>
