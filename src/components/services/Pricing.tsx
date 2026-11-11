@@ -1,11 +1,7 @@
 import { FiArrowUpRight } from "react-icons/fi";
 import { useState } from "react";
 import { motion } from "framer-motion";
-
-const prices = {
-  solo: { online: [450, 3400, 6800], onsite: [500, 3800, 7600] },
-  group: { online: [350, 2500, 5300], onsite: [400, 2900, 6100] },
-};
+import { tutoringPrices as prices } from "../../lib/pricing";
 const plans = [
   {
     title: "รายครั้ง",

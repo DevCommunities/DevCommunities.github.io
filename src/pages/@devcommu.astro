@@ -1,0 +1,449 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EventCard from "../components/link-hub/EventCard.astro";
+import { competitions, featuredCamps, lineUrl } from "../data/link-hub";
+import { tutoringPrices } from "../lib/pricing";
+import {
+  FiArrowUpRight,
+  FiBookOpen,
+  FiCode,
+  FiShare2,
+  FiUsers,
+  FiAward,
+  FiMessageCircle,
+  FiPlus,
+} from "react-icons/fi";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLine,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
+import "../components/link-hub/link-hub.css";
+
+const today = new Intl.DateTimeFormat("sv-SE", {
+  timeZone: "Asia/Bangkok",
+}).format(new Date());
+const socials = [
+  { name: "LINE", href: lineUrl, icon: FaLine },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/DevCommu",
+    icon: FaFacebookF,
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/DevCommu",
+    icon: FaInstagram,
+  },
+  { name: "TikTok", href: "https://www.tiktok.com/@devcommu", icon: FaTiktok },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@DevCommu",
+    icon: FaYoutube,
+  },
+];
+const lessons = [
+  {
+    key: "solo",
+    title: "ติวเดี่ยว",
+    description: "เรียนตัวต่อตัว ตามจังหวะของคุณ",
+    unit: "บาท / ชั่วโมง",
+    icon: FiBookOpen,
+  },
+  {
+    key: "group",
+    title: "ติวกลุ่ม",
+    description: "ชวนเพื่อนมาตั้งแต่ 2 คนขึ้นไป",
+    unit: "บาท / ชั่วโมง / คน",
+    icon: FiUsers,
+  },
+] as const;
+const plans = [
+  "รายชั่วโมง",
+  "รายเดือน สัปดาห์ละ 1 ครั้ง",
+  "รายเดือน สัปดาห์ละ 2 ครั้ง",
+];
+---
+
+<Layout
+  title="@devcommu | ค่าย เรียนพิเศษ และงานแข่ง | DevCommu"
+  description="รวมลิงก์ DevCommu ดูค่าย Bootcamp บริการติวเดี่ยว ติวกลุ่ม ปรึกษาพอร์ต งานแข่ง และช่องทางติดต่อในที่เดียว"
+  image="/images/link-hub/workshop-banner-1280.webp"
+  standalone
+>
+  <div class="hub">
+    <a class="hub-skip" href="#hub-content">ข้ามไปยังเนื้อหา</a>
+    <header class="hub-header">
+      <div class="hub-topbar">
+        <a class="hub-brand" href="/" aria-label="DevCommu หน้าแรก"
+          ><img src="/favicon.svg" alt="" width="30" height="30" /><span
+            >DevCommu</span
+          ><small>@devcommu</small></a
+        >
+        <button class="hub-share" type="button" data-share hidden
+          ><FiShare2 aria-hidden="true" /> <span>คัดลอกลิงก์</span></button
+        >
+      </div>
+      <a
+        class="hub-banner"
+        href={lineUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="สอบถามเวิร์กชอปสำหรับโรงเรียน มหาวิทยาลัย และองค์กรทาง LINE"
+      >
+        <img
+          src="/images/link-hub/workshop-banner-1280.webp"
+          srcset="/images/link-hub/workshop-banner-800.webp 800w, /images/link-hub/workshop-banner-1280.webp 1280w"
+          sizes="(max-width: 1120px) 100vw, 1120px"
+          width="1280"
+          height="534"
+          fetchpriority="high"
+          alt="DevCommu Tech Training Workshop เรียนรู้แบบลงมือทำ สำหรับโรงเรียน มหาวิทยาลัย และองค์กร"
+        />
+      </a>
+    </header>
+    <div class="hub-intro">
+      <div>
+        <h1>เริ่มต้นสิ่งใหม่ไปด้วยกัน</h1><p>
+          ค่ายที่อยากลอง เรื่องที่อยากเรียน และสนามให้ลองฝีมือ
+        </p>
+      </div>
+      <a
+        href={lineUrl}
+        class="hub-contact"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><FiMessageCircle aria-hidden="true" /> คุยกับพี่ ๆ DevCommu <FiArrowUpRight
+          aria-hidden="true"
+        /></a
+      >
+    </div>
+    <nav class="hub-navigation" aria-label="หมวดลิงก์ DevCommu">
+      <div class="hub-tabs" data-hub-tabs>
+        <a id="camps-tab" href="#camps"><FiCode aria-hidden="true" />ค่าย</a>
+        <a id="tutoring-tab" href="#tutoring"
+          ><FiUsers aria-hidden="true" />บริการติว</a
+        >
+        <a id="competitions-tab" href="#competitions"
+          ><FiAward aria-hidden="true" />งานแข่ง</a
+        >
+      </div>
+      <a class="hub-about" href="/about/"
+        >เกี่ยวกับเรา <FiArrowUpRight aria-hidden="true" /></a
+      >
+    </nav>
+    <main id="hub-content" class="hub-content">
+      <section
+        id="camps"
+        class="hub-panel"
+        aria-labelledby="camps-heading"
+        data-hub-panel
+      >
+        <div class="hub-section-heading">
+          <h2 id="camps-heading">ค่ายที่กำลังจะมาถึง</h2><p>
+            เลือกค่าย ดูโปสเตอร์ แล้วสมัครได้เลย
+          </p>
+        </div>
+        <div class="hub-month">
+          <h3>พฤศจิกายน 2569</h3><span>{featuredCamps.length} ค่าย</span>
+        </div>
+        <div class="hub-events">
+          {
+            featuredCamps.map((event) => (
+              <EventCard event={event} today={today} />
+            ))
+          }
+        </div>
+        <a class="hub-more" href="/bootcamps/"
+          >ดูค่ายและกิจกรรมทั้งหมด <FiArrowUpRight aria-hidden="true" /></a
+        >
+      </section>
+
+      <section
+        id="tutoring"
+        class="hub-panel"
+        aria-labelledby="tutoring-heading"
+        data-hub-panel
+      >
+        <div class="hub-section-heading">
+          <h2 id="tutoring-heading">เรียนให้ตรงกับเป้าหมายของคุณ</h2><p>
+            เริ่มจากเรื่องที่สนใจ แล้วค่อย ๆ สร้างผลงานของตัวเอง
+          </p>
+        </div>
+        <details class="hub-service hub-portfolio">
+          <summary
+            ><span class="hub-service-icon"><FiCode aria-hidden="true" /></span
+            ><span
+              ><strong>ติวรอบพอร์ต</strong><span
+                >วางแผนผลงาน พัฒนาโปรเจกต์ และเตรียมสัมภาษณ์</span
+              ><b
+                >เริ่มต้นประมาณ {tutoringPrices.solo.online[0]} บาท / ชั่วโมง</b
+              ></span
+            ><span class="hub-plus" aria-hidden="true"><FiPlus /></span
+            ></summary
+          >
+          <div class="hub-service-body">
+            <p>
+              ปรึกษาแนวทางทำพอร์ตและโปรเจกต์ให้เหมาะกับเป้าหมายของคุณ
+              ราคาแพ็กเกจประเมินตามขอบเขตงาน โดยอ้างอิงราคาเรียนเดี่ยว
+            </p><a
+              class="hub-action"
+              href={lineUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              >ปรึกษารอบพอร์ตทาง LINE <FiArrowUpRight aria-hidden="true" /></a
+            >
+          </div>
+        </details>
+        <div class="hub-services">
+          {
+            lessons.map((lesson) => (
+              <details class="hub-service">
+                <summary>
+                  <>
+                    <span class="hub-service-icon">
+                      <lesson.icon aria-hidden="true" />
+                    </span>
+                    <span>
+                      <>
+                        <strong>{lesson.title}</strong>
+                        <span>{lesson.description}</span>
+                        <b>
+                          ออนไลน์ {tutoringPrices[lesson.key].online[0]}{" "}
+                          {lesson.unit}
+                        </b>
+                      </>
+                    </span>
+                    <span class="hub-plus" aria-hidden="true">
+                      <FiPlus />
+                    </span>
+                  </>
+                </summary>
+                <div class="hub-service-body">
+                  <table>
+                    <>
+                      <caption>
+                        ราคาเป็นบาท{lesson.key === "group" ? "ต่อคน" : ""}
+                      </caption>
+                      <thead>
+                        <tr>
+                          <>
+                            <th scope="col">รูปแบบ</th>
+                            <th scope="col">ออนไลน์</th>
+                            <th scope="col">ออนไซต์</th>
+                          </>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {plans.map((plan, index) => (
+                          <tr>
+                            <th scope="row">{plan}</th>
+                            <td>
+                              {tutoringPrices[lesson.key].online[
+                                index
+                              ].toLocaleString("en-US")}
+                            </td>
+                            <td>
+                              {tutoringPrices[lesson.key].onsite[
+                                index
+                              ].toLocaleString("en-US")}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </>
+                  </table>
+                  <p class="hub-note">
+                    แพ็กเกจรายเดือนเรียนครั้งละ 2 ชั่วโมง ออนไซต์โซน MRT / BTS
+                    ราคาออนไซต์รวมค่าเดินทางแล้ว
+                  </p>
+                  <a
+                    class="hub-action"
+                    href={lineUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    สอบถาม{lesson.title}ทาง LINE{" "}
+                    <FiArrowUpRight aria-hidden="true" />
+                  </a>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+        <a class="hub-more" href="/tutoring/#pricing"
+          >ดูวิชา ติวเตอร์ และรายละเอียดการเรียน <FiArrowUpRight
+            aria-hidden="true"
+          /></a
+        >
+      </section>
+
+      <section
+        id="competitions"
+        class="hub-panel"
+        aria-labelledby="competitions-heading"
+        data-hub-panel
+      >
+        <div class="hub-section-heading">
+          <h2 id="competitions-heading">เก็บไอเดียจากสนามแข่ง</h2><p>
+            รวมรายละเอียดและโปสเตอร์สำหรับดูย้อนหลัง
+          </p>
+        </div>
+        <div class="hub-month">
+          <h3>ตุลาคม 2569</h3><span>{competitions.length} รายการ</span>
+        </div>
+        <p class="hub-note hub-archive-note">
+          รายการเดือนตุลาคมปิดรับสมัครแล้ว
+          วันปิดรับและรายละเอียดอ้างอิงจากโปสเตอร์ของแต่ละงาน
+        </p>
+        <div class="hub-events">
+          {
+            competitions.map((event) => (
+              <EventCard event={event} today={today} />
+            ))
+          }
+        </div>
+      </section>
+    </main>
+    <footer class="hub-footer">
+      <p>เจอกันได้ทุกช่องทาง</p>
+      <div class="hub-socials">
+        {
+          socials.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${social.name} DevCommu (เปิดแท็บใหม่)`}
+            >
+              <>
+                <social.icon aria-hidden="true" />
+                <span>{social.name}</span>
+              </>
+            </a>
+          ))
+        }
+      </div>
+      <a class="hub-home" href="/"
+        >devcommu.org <FiArrowUpRight aria-hidden="true" /></a
+      >
+      <a class="hub-privacy" href="/privacy/">ความเป็นส่วนตัว</a>
+      <p
+        class="hub-share-status"
+        data-share-status
+        role="status"
+        aria-live="polite"
+      >
+      </p>
+      <div class="hub-share-fallback" data-share-fallback hidden>
+        <label for="hub-share-url">คัดลอกลิงก์จากช่องนี้</label><input
+          id="hub-share-url"
+          type="url"
+          readonly
+        />
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<script>
+  const tablist = document.querySelector<HTMLElement>("[data-hub-tabs]")!;
+  const tabs = Array.from(tablist.querySelectorAll<HTMLAnchorElement>("a"));
+  const panels = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-hub-panel]"),
+  );
+  tablist.setAttribute("role", "tablist");
+  tablist.setAttribute("aria-label", "เลือกหมวดลิงก์");
+
+  function selectPanel(id: string, updateUrl = false) {
+    const activeId = panels.some((panel) => panel.id === id) ? id : "camps";
+    for (const tab of tabs) {
+      const selected = tab.hash === `#${activeId}`;
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("aria-controls", tab.hash.slice(1));
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    }
+    for (const panel of panels) {
+      panel.hidden = panel.id !== activeId;
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", `${panel.id}-tab`);
+      panel.tabIndex = 0;
+    }
+    if (updateUrl) history.replaceState(null, "", `#${activeId}`);
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", (event) => {
+      event.preventDefault();
+      selectPanel(tab.hash.slice(1), true);
+    });
+    tab.addEventListener("keydown", (event) => {
+      const targets: Record<string, number> = {
+        ArrowRight: (index + 1) % tabs.length,
+        ArrowLeft: (index + tabs.length - 1) % tabs.length,
+        Home: 0,
+        End: tabs.length - 1,
+      };
+      const target = targets[event.key];
+      if (target === undefined) return;
+      event.preventDefault();
+      selectPanel(tabs[target].hash.slice(1), true);
+      tabs[target].focus();
+    });
+  });
+  selectPanel(location.hash.slice(1));
+  window.addEventListener("hashchange", () =>
+    selectPanel(location.hash.slice(1)),
+  );
+
+  // Refresh registration state when a static deployment outlives an event deadline.
+  function refreshDeadlines() {
+    const today = new Intl.DateTimeFormat("sv-SE", {
+      timeZone: "Asia/Bangkok",
+    }).format(new Date());
+    document
+      .querySelectorAll<HTMLElement>("[data-deadline]")
+      .forEach((event) => {
+        const closed = event.dataset.deadline! < today;
+        event.querySelector<HTMLElement>("[data-event-closed]")!.hidden =
+          !closed;
+        const signup = event.querySelector<HTMLElement>("[data-event-signup]");
+        if (signup) signup.hidden = closed;
+      });
+  }
+  refreshDeadlines();
+  document.addEventListener("visibilitychange", refreshDeadlines);
+
+  const share = document.querySelector<HTMLButtonElement>("[data-share]")!;
+  const status = document.querySelector<HTMLElement>("[data-share-status]")!;
+  let shareTimer: ReturnType<typeof setTimeout>;
+  share.hidden = false;
+  share.addEventListener("click", async () => {
+    clearTimeout(shareTimer);
+    const canonical = document.querySelector<HTMLLinkElement>(
+      'link[rel="canonical"]',
+    )!;
+    const url = canonical.href + location.hash;
+    const fallback = document.querySelector<HTMLElement>(
+      "[data-share-fallback]",
+    )!;
+    try {
+      await navigator.clipboard.writeText(url);
+      status.textContent = "คัดลอกลิงก์แล้ว ส่งต่อให้เพื่อนได้เลย";
+      fallback.hidden = true;
+      shareTimer = setTimeout(() => {
+        status.textContent = "";
+      }, 4000);
+    } catch {
+      status.textContent = "คัดลอกลิงก์จากช่องด้านล่างเพื่อแชร์หน้านี้";
+      fallback.hidden = false;
+      const input = fallback.querySelector("input")!;
+      input.value = url;
+      input.focus();
+      input.select();
+    }
+  });
+</script>

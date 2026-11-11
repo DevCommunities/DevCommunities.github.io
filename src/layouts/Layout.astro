@@ -4,6 +4,7 @@ interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  standalone?: boolean;
   schema?: Record<string, any> | Record<string, any>[];
 }
 import Navbar from '~/components/global/NavBar.astro';
@@ -15,6 +16,7 @@ const {
   description = 'DevCommu เรียนเขียนโปรแกรมผ่านการลงมือทำ ค่าย Bootcamp และเรียนส่วนตัว 1 ต่อ 1 กับนิสิตและบัณฑิต CEDT จุฬาฯ เพื่อพัฒนาทักษะและสร้างผลงาน',
   image = '/images/home/camp-promo.webp',
   noindex = false,
+  standalone = false,
   schema: pageSchema,
 } = Astro.props;
 
@@ -119,5 +121,5 @@ const allSchemas = pageSchema
   <script is:inline type="application/ld+json" set:html={JSON.stringify(s).replace(/</g,'\\u003c')}/>
 ))}
 </head>
-<body class="scroll-smooth"><Navbar/><slot/><FloatingContacts/><Analytics/></body>
+<body class="scroll-smooth">{!standalone && <Navbar/>}<slot/>{!standalone && <FloatingContacts/>}<Analytics/></body>
 </html>
