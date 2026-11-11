@@ -1,5 +1,15 @@
 import { verifyAccess } from "../server/access.ts";
 import {
+  identity,
+  logout,
+  manageAccount,
+  passwordLogin,
+  publicAccounts,
+  readAccounts,
+  reserveLogin,
+  sessionCookie,
+} from "../server/password-auth.ts";
+import {
   imageType,
   readBody,
   readState,
@@ -17,6 +27,38 @@ const jsonHeaders = {
 };
 function json(value: unknown, status = 200): Response {
   return new Response(JSON.stringify(value), { status, headers: jsonHeaders });
+}
+function redirect(path: string): Response {
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: path,
+      "Cache-Control": "no-store",
+      "X-Robots-Tag": "noindex, nofollow",
+    },
+  });
+}
+function securePage(response: Response): Response {
+  const secured = new Response(response.body, response);
+  secured.headers.set("Cache-Control", "private, no-store");
+  secured.headers.set("X-Robots-Tag", "noindex, nofollow");
+  secured.headers.set("X-Frame-Options", "DENY");
+  secured.headers.set("Referrer-Policy", "same-origin");
+  secured.headers.set(
+    "Content-Security-Policy",
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'",
+  );
+  return secured;
+}
+async function authBody(
+  request: Request,
+  origin: string,
+): Promise<Record<string, unknown>> {
+  if (request.headers.get("origin") !== origin)
+    throw new Error("ต้นทางคำขอไม่ถูกต้อง");
+  if (request.headers.get("content-type")?.split(";")[0] !== "application/json")
+    throw new Error("ต้องส่งข้อมูล JSON");
+  return JSON.parse(new TextDecoder().decode(await readBody(request, 4096)));
 }
 
 function rewriteHub(response: Response, content: HubContent): Response {
@@ -79,8 +121,7 @@ function rewriteHub(response: Response, content: HubContent): Response {
         if (element.getAttribute("href") === "https://line.me/R/ti/p/@468httmq")
           element.setAttribute("href", settings.lineUrl);
         const social = element.getAttribute("data-social") as
-          | keyof typeof settings.socials
-          | null;
+          keyof typeof settings.socials | null;
         if (social && social in settings.socials)
           element.setAttribute("href", settings.socials[social]);
       },
@@ -114,37 +155,142 @@ async function handle(context: Context): Promise<Response> {
   const { request, env } = context;
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/$/, "");
+  if (path === "/admin/login") {
+    if (!["GET", "HEAD"].includes(request.method))
+      return json({ error: "Method not allowed" }, 405);
+    if (await identity(request, env)) return redirect("/admin/");
+    return securePage(await context.next());
+  }
+  if (path === "/admin/staff") {
+    try {
+      await verifyAccess(request, env);
+      return redirect("/admin/");
+    } catch {
+      return json({ error: "กรุณาเข้าสู่ระบบด้วยอีเมล @devcommu.org" }, 401);
+    }
+  }
+  if (path === "/api/admin/login") {
+    if (request.method !== "POST")
+      return json({ error: "Method not allowed" }, 405);
+    if (!env.HUB_CONTENT)
+      return json({ error: "ยังไม่ได้เชื่อมต่อพื้นที่จัดเก็บ R2" }, 503);
+    let body: Record<string, unknown>;
+    try {
+      body = await authBody(request, url.origin);
+    } catch {
+      return json(
+        { error: "คำขอเข้าสู่ระบบไม่ถูกต้อง" },
+        request.headers.get("origin") !== url.origin ? 403 : 400,
+      );
+    }
+    const username =
+      typeof body.username === "string"
+        ? body.username.trim().toLowerCase()
+        : "";
+    const password = typeof body.password === "string" ? body.password : "";
+    if (username.length > 48 || password.length > 128)
+      return json({ error: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง" }, 401);
+    if (!(await reserveLogin(env.HUB_CONTENT, request, username))) {
+      const limited = json(
+        { error: "ลองเข้าสู่ระบบหลายครั้งแล้ว กรุณารอ 1 นาที" },
+        429,
+      );
+      limited.headers.set("Retry-After", "60");
+      return limited;
+    }
+    const token = await passwordLogin(env.HUB_CONTENT, username, password);
+    if (!token) return json({ error: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง" }, 401);
+    const response = json({ ok: true });
+    response.headers.set("Set-Cookie", sessionCookie(token));
+    console.log(JSON.stringify({ event: "admin_password_login", username }));
+    return response;
+  }
   const admin =
     path === "/admin" ||
     path.startsWith("/admin/") ||
     path.startsWith("/api/admin/");
   const preview =
     path === "/@devcommu" && url.searchParams.get("preview") === "1";
-  let email: string | null = null;
+  const user = admin || preview ? await identity(request, env) : null;
+  const email = user?.label || null;
   if (admin || preview) {
-    try {
-      email = await verifyAccess(request, env);
-    } catch (error) {
-      const setup =
-        error instanceof Error && error.message === "ACCESS_NOT_CONFIGURED";
-      return json(
-        {
-          error: setup
-            ? "ยังไม่ได้ตั้งค่า Cloudflare Access สำหรับผู้ดูแล"
-            : "กรุณาเข้าสู่ระบบด้วยอีเมล @devcommu.org อีกครั้ง",
-        },
-        setup ? 503 : 401,
-      );
+    if (!user) {
+      if (
+        (path === "/admin" || path.startsWith("/admin/")) &&
+        request.method === "GET"
+      )
+        return redirect("/admin/login/");
+      return json({ error: "กรุณาเข้าสู่ระบบอีกครั้ง" }, 401);
     }
   }
   if (!env.HUB_CONTENT)
     return admin
       ? json({ error: "ยังไม่ได้เชื่อมต่อพื้นที่จัดเก็บ R2" }, 503)
       : context.next();
+  if (path === "/admin/accounts" && user?.method !== "staff")
+    return redirect("/admin/");
+
+  if (path === "/api/admin/logout") {
+    if (request.method !== "POST")
+      return json({ error: "Method not allowed" }, 405);
+    if (request.headers.get("origin") !== url.origin)
+      return json({ error: "ต้นทางคำขอไม่ถูกต้อง" }, 403);
+    await logout(request, env.HUB_CONTENT);
+    const response = json({
+      redirect:
+        user?.method === "staff" ? "/cdn-cgi/access/logout" : "/admin/login/",
+    });
+    response.headers.set("Set-Cookie", sessionCookie("", true));
+    return response;
+  }
+  if (path === "/api/admin/staff/accounts") {
+    if (user?.method !== "staff")
+      return json(
+        { error: "เฉพาะทีม @devcommu.org เท่านั้นที่จัดการบัญชีได้" },
+        403,
+      );
+    if (request.method === "GET")
+      return json({
+        accounts: publicAccounts((await readAccounts(env.HUB_CONTENT)).data),
+      });
+    if (request.method !== "POST")
+      return json({ error: "Method not allowed" }, 405);
+    try {
+      const body = await authBody(request, url.origin);
+      const result = await manageAccount(
+        env.HUB_CONTENT,
+        String(body.action),
+        String(body.value),
+      );
+      console.log(
+        JSON.stringify({
+          event: "admin_account_changed",
+          actor: email,
+          action: body.action,
+          account: body.value,
+        }),
+      );
+      return json(result);
+    } catch (error) {
+      return json(
+        {
+          error:
+            error instanceof Error ? error.message : "จัดการบัญชีไม่สำเร็จ",
+        },
+        request.headers.get("origin") !== url.origin ? 403 : 400,
+      );
+    }
+  }
 
   if (path === "/api/admin/content") {
     const { state, etag } = await readState(env.HUB_CONTENT);
-    if (request.method === "GET") return json({ ...state, etag, email });
+    if (request.method === "GET")
+      return json({
+        ...state,
+        etag,
+        email,
+        manageUsers: user?.method === "staff",
+      });
     if (request.method !== "PUT")
       return json({ error: "Method not allowed" }, 405);
     if (request.headers.get("origin") !== url.origin)
@@ -200,7 +346,12 @@ async function handle(context: Context): Promise<Response> {
         revision: saved.etag,
       }),
     );
-    return json({ ...next, etag: saved.etag, email });
+    return json({
+      ...next,
+      etag: saved.etag,
+      email,
+      manageUsers: user?.method === "staff",
+    });
   }
 
   if (path === "/api/admin/media") {
@@ -243,11 +394,8 @@ async function handle(context: Context): Promise<Response> {
     const { state } = await readState(env.HUB_CONTENT);
     const published = referencedMedia(state.published).has(path);
     if (!published) {
-      try {
-        await verifyAccess(request, env);
-      } catch {
+      if (!(await identity(request, env)))
         return new Response(null, { status: 404 });
-      }
     }
     const object = await env.HUB_CONTENT.get(path.slice(1));
     if (!object) return new Response(null, { status: 404 });
@@ -296,15 +444,7 @@ async function handle(context: Context): Promise<Response> {
 
   const response = await context.next();
   if (!admin) return response;
-  const secured = new Response(response.body, response);
-  secured.headers.set("Cache-Control", "private, no-store");
-  secured.headers.set("X-Robots-Tag", "noindex, nofollow");
-  secured.headers.set("X-Frame-Options", "DENY");
-  secured.headers.set(
-    "Content-Security-Policy",
-    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'",
-  );
-  return secured;
+  return securePage(response);
 }
 
 export async function onRequest(context: Context): Promise<Response> {

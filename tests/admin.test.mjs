@@ -61,6 +61,9 @@ async function token(overrides = {}) {
 class Bucket {
   entries = new Map();
   revision = 0;
+  async delete(key) {
+    this.entries.delete(key);
+  }
   async get(key) {
     const item = this.entries.get(key);
     if (!item) return null;
@@ -157,7 +160,8 @@ test("missing Access configuration fails closed", async () => {
     env: { ...config, ACCESS_AUD: "", HUB_CONTENT: new Bucket() },
     next: async () => new Response("unsafe"),
   });
-  assert.equal(response.status, 503);
+  assert.equal(response.status, 401);
+  assert(!(await response.text()).includes("unsafe"));
 });
 
 test("Access cookie authenticates draft preview and image requests", async () => {
@@ -306,4 +310,219 @@ test("unpublished uploaded images are private until referenced by published cont
   const authenticated = await api(bucket, url);
   assert.equal(authenticated.status, 200);
   assert.equal(authenticated.headers.get("cache-control"), "private, no-store");
+});
+
+async function guest(bucket, path, options = {}) {
+  return onRequest({
+    request: new Request(`https://devcommu.org${path}`, options),
+    env: { ...config, HUB_CONTENT: bucket },
+    next: async () =>
+      new Response("login asset", { headers: { "Content-Type": "text/html" } }),
+  });
+}
+const authHeaders = {
+  origin: "https://devcommu.org",
+  "content-type": "application/json",
+};
+async function createContractor(bucket, username = "design.partner") {
+  const response = await api(bucket, "/api/admin/staff/accounts", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({ action: "create", value: username }),
+  });
+  assert.equal(response.status, 200);
+  return (await response.json()).credentials;
+}
+async function contractorLogin(bucket, credentials) {
+  return guest(bucket, "/api/admin/login", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify(credentials),
+  });
+}
+
+test("contractor passwords are generated, hashed, and hidden from account lists", async () => {
+  const bucket = new Bucket();
+  const credentials = await createContractor(bucket);
+  assert.match(credentials.password, /^[A-Za-z0-9_-]{32}$/);
+  const stored = bucket.entries.get("auth/accounts.json").body;
+  assert(!stored.includes(credentials.password));
+  const listing = await api(bucket, "/api/admin/staff/accounts");
+  const body = await listing.text();
+  assert(body.includes(credentials.username));
+  assert(!body.includes("hash"));
+  assert(!body.includes("salt"));
+  assert.equal((await createAttempt(bucket, credentials.username)).status, 400);
+});
+async function createAttempt(bucket, username) {
+  return api(bucket, "/api/admin/staff/accounts", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({ action: "create", value: username }),
+  });
+}
+
+test("password sessions edit content but cannot manage accounts, and logout revokes them", async () => {
+  const bucket = new Bucket();
+  const credentials = await createContractor(bucket);
+  assert.equal(
+    (await contractorLogin(bucket, { ...credentials, password: "wrong" }))
+      .status,
+    401,
+  );
+  const login = await contractorLogin(bucket, credentials);
+  assert.equal(login.status, 200);
+  const cookie = login.headers.get("set-cookie");
+  assert(cookie.includes("__Host-devcommu_admin="));
+  for (const flag of ["Secure", "HttpOnly", "SameSite=Strict", "Path=/"])
+    assert(cookie.includes(flag));
+  const headers = { ...authHeaders, cookie: cookie.split(";")[0] };
+  const content = await guest(bucket, "/api/admin/content", { headers });
+  assert.equal(content.status, 200);
+  const data = await content.json();
+  assert.equal(data.email, credentials.username);
+  assert.equal(data.manageUsers, false);
+  const save = await guest(bucket, "/api/admin/content", {
+    method: "PUT",
+    headers: { ...headers, "if-match": data.etag },
+    body: JSON.stringify({ action: "draft", content: data.draft }),
+  });
+  assert.equal(save.status, 200);
+  assert.equal(
+    (await guest(bucket, "/api/admin/staff/accounts", { headers })).status,
+    403,
+  );
+  assert.equal(
+    (
+      await guest(bucket, "/api/admin/staff/accounts", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ action: "create", value: "elevated" }),
+      })
+    ).status,
+    403,
+  );
+  const expiredBucket = new Bucket();
+  assert.equal(
+    (await guest(expiredBucket, "/api/admin/content", { headers })).status,
+    401,
+  );
+  const out = await guest(bucket, "/api/admin/logout", {
+    method: "POST",
+    headers,
+  });
+  assert.equal(out.status, 200);
+  assert(out.headers.get("set-cookie").includes("Max-Age=0"));
+  assert.equal(
+    (await guest(bucket, "/api/admin/content", { headers })).status,
+    401,
+  );
+});
+
+test("password reset and disabling an account invalidate existing sessions immediately", async () => {
+  const bucket = new Bucket();
+  let credentials = await createContractor(bucket);
+  let login = await contractorLogin(bucket, credentials);
+  let cookie = login.headers.get("set-cookie").split(";")[0];
+  const list = await (await api(bucket, "/api/admin/staff/accounts")).json();
+  const id = list.accounts[0].id;
+  const reset = await api(bucket, "/api/admin/staff/accounts", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({ action: "reset", value: id }),
+  });
+  const next = await reset.json();
+  assert.equal(
+    (await guest(bucket, "/api/admin/content", { headers: { cookie } })).status,
+    401,
+  );
+  assert.equal((await contractorLogin(bucket, credentials)).status, 401);
+  credentials = next.credentials;
+  login = await contractorLogin(bucket, credentials);
+  cookie = login.headers.get("set-cookie").split(";")[0];
+  assert.equal(
+    (await guest(bucket, "/api/admin/content", { headers: { cookie } })).status,
+    200,
+  );
+  await api(bucket, "/api/admin/staff/accounts", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({ action: "disable", value: id }),
+  });
+  assert.equal(
+    (await guest(bucket, "/api/admin/content", { headers: { cookie } })).status,
+    401,
+  );
+  assert.equal((await contractorLogin(bucket, credentials)).status, 401);
+});
+
+test("login rejects cross-origin requests, bounds attempts, and fails closed without a session", async () => {
+  const bucket = new Bucket();
+  const cross = await guest(bucket, "/api/admin/login", {
+    method: "POST",
+    headers: { ...authHeaders, origin: "https://attacker.example" },
+    body: "{}",
+  });
+  assert.equal(cross.status, 403);
+  for (let i = 0; i < 5; i++)
+    assert.equal(
+      (
+        await contractorLogin(bucket, {
+          username: "missing",
+          password: "wrong",
+        })
+      ).status,
+      401,
+    );
+  const limited = await contractorLogin(bucket, {
+    username: "missing",
+    password: "wrong",
+  });
+  assert.equal(limited.status, 429);
+  assert.equal(limited.headers.get("retry-after"), "60");
+  assert.equal(
+    (await guest(bucket, "/admin/")).headers.get("location"),
+    "/admin/login/",
+  );
+  assert.equal((await guest(bucket, "/admin/login/")).status, 200);
+  assert.equal((await guest(bucket, "/api/admin/content")).status, 401);
+  assert.equal((await guest(bucket, "/@devcommu/?preview=1")).status, 401);
+});
+
+test("staff Access cookies retain account-management permissions outside the email entry route", async () => {
+  const bucket = new Bucket();
+  const cookie = `CF_Authorization=${await token()}`;
+  const response = await guest(bucket, "/api/admin/content", {
+    headers: { cookie },
+  });
+  assert.equal(response.status, 200);
+  assert.equal((await response.json()).manageUsers, true);
+  assert.equal(
+    (await guest(bucket, "/api/admin/staff/accounts", { headers: { cookie } }))
+      .status,
+    200,
+  );
+});
+
+test("expired password sessions cannot read draft content or private uploads", async () => {
+  const bucket = new Bucket();
+  const credentials = await createContractor(bucket);
+  const login = await contractorLogin(bucket, credentials);
+  const cookie = login.headers.get("set-cookie").split(";")[0];
+  for (const [key, value] of bucket.entries) {
+    if (key.startsWith("auth/sessions/")) {
+      const session = JSON.parse(value.body);
+      session.expires = Date.now() - 1;
+      value.body = JSON.stringify(session);
+    }
+  }
+  assert.equal(
+    (await guest(bucket, "/@devcommu/?preview=1", { headers: { cookie } }))
+      .status,
+    401,
+  );
+  assert.equal(
+    (await guest(bucket, "/api/admin/content", { headers: { cookie } })).status,
+    401,
+  );
 });

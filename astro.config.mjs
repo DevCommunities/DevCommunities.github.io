@@ -6,6 +6,8 @@ import robotsTxt from "astro-robots-txt";
 const site = process.env.SITE_URL || "https://devcommu.org";
 export default defineConfig({
   site,
+  // Admin pages prohibit inline JavaScript through their CSP.
+  vite: { build: { assetsInlineLimit: 0 } },
   integrations: [
     react(),
     tailwind(),

@@ -1,8 +1,4 @@
-import {
-  validateHubContent,
-  type HubContent,
-  type EditableEvent,
-} from "../../lib/hub-content";
+import { validateHubContent, type HubContent } from "../../lib/hub-content";
 import { escapeHtml } from "../../lib/hub-render";
 
 type Collection = "camps" | "competitions";
@@ -12,6 +8,7 @@ type EditorState = {
   publishedAt: string | null;
   updatedAt: string | null;
   email: string;
+  manageUsers: boolean;
 };
 const editor = document.querySelector<HTMLFormElement>("#admin-editor")!;
 const status = document.querySelector<HTMLElement>("#admin-status")!;
@@ -169,6 +166,8 @@ function acceptState(state: EditorState) {
   dirty = false;
   document.querySelector<HTMLElement>("#admin-identity")!.textContent =
     state.email;
+  document.querySelector<HTMLElement>("#admin-accounts")!.hidden =
+    !state.manageUsers;
   document.querySelector<HTMLElement>("#admin-revision")!.textContent =
     state.publishedAt
       ? `เผยแพร่ล่าสุด ${new Date(state.publishedAt).toLocaleString("th-TH", { timeZone: "Asia/Bangkok" })}`
@@ -371,6 +370,16 @@ editor.addEventListener("change", async (event) => {
 });
 
 document.querySelector("#admin-reload")!.addEventListener("click", load);
+document.querySelector("#admin-logout")!.addEventListener("click", async () => {
+  if ((dirty || busy) && !confirm("ออกจากระบบโดยไม่บันทึกการแก้ไข?")) return;
+  try {
+    const result = await request("/api/admin/logout", { method: "POST" });
+    dirty = false;
+    location.assign(result.redirect);
+  } catch {
+    showError("ออกจากระบบไม่สำเร็จ กรุณาลองใหม่");
+  }
+});
 document.querySelector("#admin-preview")!.addEventListener("click", (event) => {
   if (dirty || busy) {
     event.preventDefault();

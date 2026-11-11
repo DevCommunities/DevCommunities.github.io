@@ -86,6 +86,153 @@ input:disabled {
   font-size: 12px;
   color: #705a65;
 }
+.admin-session-actions,
+.admin-account-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+}
+.admin-login-shell {
+  width: min(440px, calc(100% - 40px));
+  margin: 56px auto;
+}
+.admin-login-shell > .admin-brand {
+  margin-bottom: 28px;
+}
+.admin-login-shell > a:last-child {
+  display: inline-block;
+  margin-top: 24px;
+}
+.admin-login-card {
+  background: white;
+  border: 1px solid #e5d6dd;
+  border-radius: 16px;
+  padding: 28px;
+}
+.admin-login-card > .admin-help:first-of-type {
+  margin: 0 0 24px;
+}
+.admin-auth-form,
+.admin-credentials {
+  display: grid;
+  gap: 16px;
+}
+.admin-auth-form label,
+.admin-create-account label,
+.admin-credentials label {
+  display: grid;
+  gap: 6px;
+}
+.admin-auth-form input,
+.admin-create-account input,
+.admin-credentials input {
+  width: 100%;
+  min-height: 46px;
+  padding: 9px 12px;
+  border: 1px solid #cdbdc5;
+  border-radius: 8px;
+  background: white;
+  color: #352a30;
+  caret-color: #913b5c;
+}
+.admin-auth-form .admin-checkbox {
+  display: flex;
+  align-items: center;
+}
+.admin-auth-form .admin-checkbox input {
+  width: 18px;
+  min-height: 18px;
+}
+.admin-auth-form p:empty {
+  display: none;
+}
+.admin-login-staff {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5d6dd;
+}
+.admin-login-staff p {
+  font-size: 13px;
+  color: #705a65;
+  margin-bottom: 12px;
+}
+.admin-link-button {
+  display: block;
+  text-align: center;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #d8cbd1;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.admin-link-button:hover {
+  background: #f6e7ee;
+}
+.admin-login-help {
+  margin: 20px 0 0;
+}
+.admin-accounts-shell {
+  max-width: 920px;
+}
+.admin-create-account {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.admin-create-account label {
+  flex: 1;
+  min-width: 200px;
+}
+.admin-create-account small {
+  color: #705a65;
+  font-size: 12px;
+}
+.admin-credentials {
+  padding: 24px;
+  background: #f6e7ee;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+.admin-credentials h2,
+.admin-credentials p {
+  margin: 0;
+}
+.admin-account-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5d6dd;
+  flex-wrap: wrap;
+}
+.admin-account-row h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.admin-account-row p {
+  margin: 0;
+  color: #705a65;
+  font-size: 13px;
+}
+@media (max-width: 680px) {
+  .admin-session-actions {
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .admin-login-shell {
+    margin-top: 32px;
+  }
+  .admin-login-card {
+    padding: 24px;
+  }
+  .admin-account-actions {
+    gap: 8px;
+  }
+}
 .admin-shell {
   max-width: 1120px;
   padding: 36px 24px 80px;

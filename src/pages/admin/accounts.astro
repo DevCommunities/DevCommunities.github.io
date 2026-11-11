@@ -1,0 +1,28 @@
+---
+import "../../components/admin/admin.css";
+---
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" /><title>บัญชีผู้ร่วมงาน | DevCommu</title><link rel="icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="admin-header"><a class="admin-brand" href="/admin/"><img src="/favicon.svg" width="30" height="30" alt="" />DevCommu <span>จัดการเว็บไซต์</span></a><a href="/admin/">กลับไปแก้ไขเนื้อหา</a></header>
+    <main class="admin-shell admin-accounts-shell">
+      <h1>บัญชีผู้ร่วมงาน</h1><p class="admin-help">ให้ outsource แก้ไขและเผยแพร่เนื้อหาได้โดยไม่ต้องใช้อีเมล บัญชีเหล่านี้จัดการบัญชีผู้ใช้อื่นไม่ได้</p>
+      <p id="accounts-error" class="admin-error" role="alert" hidden></p>
+      <div class="admin-card">
+        <h2>สร้างบัญชี</h2><form id="create-account" class="admin-create-account"><label>ชื่อผู้ใช้<input name="username" autocomplete="off" autocapitalize="none" spellcheck="false" required minlength="3" maxlength="48" pattern="[a-zA-Z0-9][a-zA-Z0-9._\-]{2,47}" /><small>3–48 ตัว ใช้ a–z, 0–9, จุด ขีดกลาง หรือขีดล่าง</small></label><button class="admin-primary" type="submit">สร้างบัญชีและรหัสผ่าน</button></form>
+      </div>
+      <section id="account-credentials" class="admin-credentials" aria-labelledby="credentials-heading" hidden>
+        <h2 id="credentials-heading">ส่งข้อมูลนี้ให้ผู้ร่วมงาน</h2><p>รหัสผ่านจะแสดงครั้งนี้เท่านั้น คัดลอกเก็บไว้ก่อนปิด</p>
+        <label>ชื่อผู้ใช้<input id="issued-username" readonly autocomplete="off" /></label>
+        <label>รหัสผ่าน<input id="issued-password" readonly autocomplete="off" /></label>
+        <div class="admin-account-actions"><button id="copy-credentials" type="button" class="admin-primary">คัดลอกข้อมูลเข้าสู่ระบบ</button><button id="dismiss-credentials" type="button">ปิดข้อมูลรหัสผ่าน</button></div>
+      </section>
+      <section aria-labelledby="accounts-heading"><h2 id="accounts-heading">บัญชีทั้งหมด</h2><p id="accounts-status" class="admin-help" role="status">กำลังโหลดบัญชี…</p><div id="accounts-list"></div></section>
+    </main>
+    <script>import "../../components/admin/accounts.ts";</script>
+  </body>
+</html>
