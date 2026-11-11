@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import EventCard from "../components/link-hub/EventCard.astro";
-import { competitions, featuredCamps, lineUrl } from "../data/link-hub";
+import { defaultHubContent } from "../lib/hub-content";
 import { tutoringPrices } from "../lib/pricing";
 import {
   FiArrowUpRight,
@@ -21,11 +21,18 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import "../components/link-hub/link-hub.css";
+const {
+  camps: allFeaturedCamps,
+  competitions,
+  settings: { lineUrl },
+} = defaultHubContent;
 
 const today = new Intl.DateTimeFormat("sv-SE", {
   timeZone: "Asia/Bangkok",
 }).format(new Date());
-const currentCamps = featuredCamps.filter((event) => event.deadline >= today);
+const featuredCamps = allFeaturedCamps.filter(
+  (event) => event.visible && event.deadline >= today,
+);
 const socials = [
   { name: "LINE", href: lineUrl, icon: FaLine },
   {
@@ -148,12 +155,18 @@ const plans = [
           </p>
         </div>
         <div class="hub-month">
-          <h3>พฤศจิกายน 2569</h3><span>{currentCamps.length} ค่าย</span>
+          <h3>พฤศจิกายน 2569</h3><span>{featuredCamps.length} ค่าย</span>
         </div>
         <div class="hub-events">
-          {!currentCamps.length && <p class="hub-note">ยังไม่มีรายการในหมวดนี้ ติดตามข่าวสารได้ทางช่องทางของ DevCommu</p>}
           {
-            currentCamps.map((event) => (
+            !featuredCamps.length && (
+              <p class="hub-note">
+                ยังไม่มีรายการในหมวดนี้ ติดตามข่าวสารได้ทางช่องทางของ DevCommu
+              </p>
+            )
+          }
+          {
+            featuredCamps.map((event) => (
               <EventCard event={event} today={today} />
             ))
           }
@@ -199,7 +212,7 @@ const plans = [
         <div class="hub-services">
           {
             lessons.map((lesson) => (
-              <details class="hub-service">
+              <details class="hub-service" data-pricing={lesson.key}>
                 <summary>
                   <>
                     <span class="hub-service-icon">
@@ -221,7 +234,7 @@ const plans = [
                   </>
                 </summary>
                 <div class="hub-service-body">
-                  <table>
+                  <table data-price-table={lesson.key}>
                     <>
                       <caption>
                         ราคาเป็นบาท{lesson.key === "group" ? "ต่อคน" : ""}
@@ -316,6 +329,7 @@ const plans = [
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${social.name} DevCommu (เปิดแท็บใหม่)`}
+              data-social={social.name.toLowerCase()}
             >
               <>
                 <social.icon aria-hidden="true" />

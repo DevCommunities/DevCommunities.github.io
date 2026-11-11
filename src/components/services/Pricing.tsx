@@ -1,7 +1,7 @@
 import { FiArrowUpRight } from "react-icons/fi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { tutoringPrices as prices } from "../../lib/pricing";
+import { tutoringPrices } from "../../lib/pricing";
 const plans = [
   {
     title: "รายครั้ง",
@@ -23,6 +23,15 @@ const plans = [
   },
 ];
 export default function Pricing() {
+  const [prices, setPrices] = useState(tutoringPrices);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch('/api/hub', { signal: controller.signal })
+      .then((response) => response.ok ? response.json() : null)
+      .then((content) => { if (content?.prices) setPrices(content.prices); })
+      .catch(() => {});
+    return () => controller.abort();
+  }, []);
   const [type, setType] = useState<"solo" | "group">("solo");
   const [mode, setMode] = useState<"online" | "onsite">("online");
   return (

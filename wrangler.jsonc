@@ -1,0 +1,13 @@
+{
+  "name": "devcommunities",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-11-11",
+  "r2_buckets": [
+    { "binding": "HUB_CONTENT", "bucket_name": "devcommu-site-content" }
+  ],
+  "vars": {
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": "",
+    "ADMIN_EMAIL_DOMAIN": "devcommu.org"
+  }
+}

@@ -1,0 +1,140 @@
+---
+import "../../components/admin/admin.css";
+---
+
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>จัดการเว็บไซต์ | DevCommu</title>
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <a class="admin-brand" href="/@devcommu/"
+        ><img src="/favicon.svg" width="30" height="30" alt="" />DevCommu <span
+          >จัดการเว็บไซต์</span
+        ></a
+      >
+      <span id="admin-identity">กำลังตรวจสอบการเข้าสู่ระบบ…</span>
+    </header>
+    <main class="admin-shell">
+      <div class="admin-title">
+        <div>
+          <h1>อัปเดตหน้า @devcommu</h1><p>
+            บันทึกฉบับร่างเพื่อตรวจดูก่อน หรือเผยแพร่ให้ผู้เข้าชมเห็นได้ทันที
+          </p>
+        </div><a href="/@devcommu/" target="_blank" rel="noopener"
+          >เปิดหน้าเว็บไซต์ ↗</a>
+      </div>
+      <div
+        id="admin-status"
+        class="admin-status"
+        role="status"
+        aria-live="polite"
+      >
+        กำลังโหลดเนื้อหา…
+      </div>
+      <div id="admin-error" class="admin-error" role="alert" hidden></div>
+      <button id="admin-reload" class="admin-secondary" type="button"
+        >โหลดข้อมูลล่าสุด</button
+      >
+      <noscript><p>กรุณาเปิด JavaScript เพื่อใช้งานหน้าแอดมิน</p></noscript>
+      <form id="admin-editor" hidden>
+        <div class="admin-toolbar">
+          <p id="admin-revision"></p><div>
+            <a
+              id="admin-preview"
+              href="/@devcommu/?preview=1"
+              target="_blank"
+              rel="noopener">ดูฉบับร่าง ↗</a
+            ><button type="submit" data-action="draft" class="admin-secondary"
+              >บันทึกฉบับร่าง</button
+            ><button type="submit" data-action="publish" class="admin-primary"
+              >เผยแพร่</button>
+          </div>
+        </div>
+        <nav class="admin-nav" aria-label="หมวดจัดการเนื้อหา">
+          <button type="button" data-tab="camps" aria-pressed="true"
+            >ค่าย Bootcamp</button
+          >
+          <button type="button" data-tab="competitions" aria-pressed="false"
+            >งานแข่ง</button
+          >
+          <button type="button" data-tab="prices" aria-pressed="false"
+            >ราคาเรียน</button
+          >
+          <button type="button" data-tab="settings" aria-pressed="false"
+            >หน้าเว็บและลิงก์</button
+          >
+        </nav>
+        <section data-panel="camps" aria-labelledby="admin-camps-heading">
+          <div class="admin-section-heading">
+            <div>
+              <h2 id="admin-camps-heading">ค่าย Bootcamp</h2><p>
+                แก้วันเวลา ราคา และลิงก์สมัคร
+                ลำดับด้านล่างคือลำดับบนเว็บไซต์ ค่ายจะแสดงเมื่อเปิดใช้และยังไม่พ้นวันปิดรับสมัคร
+              </p>
+            </div><button type="button" class="admin-secondary" data-add="camps"
+              >เพิ่มค่าย</button>
+          </div><div data-events="camps"></div>
+        </section>
+        <section
+          data-panel="competitions"
+          aria-labelledby="admin-competitions-heading"
+          hidden
+        >
+          <div class="admin-section-heading">
+            <div>
+              <h2 id="admin-competitions-heading">งานแข่ง</h2><p>
+                วันปิดรับสมัครใช้เวลาไทย
+                เมื่อพ้นกำหนดระบบจะแสดงว่าปิดรับสมัครแล้ว
+              </p>
+            </div><button
+              type="button"
+              class="admin-secondary"
+              data-add="competitions">เพิ่มงานแข่ง</button>
+          </div><div data-events="competitions"></div>
+        </section>
+        <section
+          data-panel="prices"
+          aria-labelledby="admin-prices-heading"
+          hidden
+        >
+          <h2 id="admin-prices-heading">ราคาเรียน</h2><p class="admin-help">
+            ราคานี้ใช้ร่วมกันทั้งหน้า @devcommu และหน้าบริการติว
+            กรอกราคาออนไซต์ที่รวมค่าเดินทางแล้ว
+          </p><div id="admin-prices"></div>
+        </section>
+        <section
+          data-panel="settings"
+          aria-labelledby="admin-settings-heading"
+          hidden
+        >
+          <h2 id="admin-settings-heading">หน้าเว็บและลิงก์</h2><div
+            class="admin-card"
+          >
+            <h3>แบนเนอร์</h3><img
+              id="admin-banner-preview"
+              class="admin-banner-preview"
+              alt="แบนเนอร์ปัจจุบัน"
+            /><label class="admin-upload"
+              >เปลี่ยนแบนเนอร์<input
+                type="file"
+                data-upload-banner
+                accept="image/jpeg,image/png,image/webp"
+              /></label
+            ><p class="admin-help">
+              แนะนำภาพแนวนอนสัดส่วน 1280 × 534 พิกเซล ระบบจะย่อภาพก่อนอัปโหลด
+            </p>
+          </div><div id="admin-settings"></div>
+        </section>
+      </form>
+    </main>
+    <script>
+      import "../../components/admin/admin.ts";
+    </script>
+  </body>
+</html>

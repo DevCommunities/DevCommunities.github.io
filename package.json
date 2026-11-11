@@ -7,6 +7,9 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "check:seo": "node scripts/check-seo.mjs",
+    "check:backend": "mkdir -p .wrangler/types && pnpm dlx wrangler@4.160.0 types .wrangler/types/runtime.d.ts --strict-vars=false && tsc -p tsconfig.functions.json",
+    "test:admin": "node --experimental-strip-types --test tests/admin.test.mjs",
+    "dev:pages": "pnpm dlx wrangler@4.160.0 pages dev dist --ip 127.0.0.1 --port 8788",
     "preview": "astro preview",
     "astro": "astro"
   },
