@@ -9,5 +9,15 @@
     "ACCESS_TEAM_DOMAIN": "",
     "ACCESS_AUD": "",
     "ADMIN_EMAIL_DOMAIN": "devcommu.org"
+  },
+  "env": {
+    "preview": {
+      "r2_buckets": [],
+      "vars": {
+        "ACCESS_TEAM_DOMAIN": "",
+        "ACCESS_AUD": "",
+        "ADMIN_EMAIL_DOMAIN": "devcommu.org"
+      }
+    }
   }
 }
