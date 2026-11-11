@@ -30,7 +30,7 @@ Run `npm run build && npm run check:seo` to check sitemap URLs, canonical URLs, 
 
 For Google Search Console HTML-tag verification, set `PUBLIC_GOOGLE_SITE_VERIFICATION` to the tag's `content` value in the build environment and redeploy. Verify the property in Search Console and submit `https://devcommu.org/sitemap-index.xml` (or the configured `SITE_URL`). DNS verification is also available independently of this setting. Actual indexing and Core Web Vitals need to be checked on the deployed site.
 
-Forms only prepare text for the visitor to copy. They do not submit, store leads, send email, or reserve seats. No database, authentication, admin CMS, or backend is included. A real contact destination has not been supplied; the visitor must send the copied message using their existing contact channel.
+Consultation forms only prepare text for the visitor to copy. They do not submit, store leads, send email, or reserve seats. The staff editor described below manages published site content separately.
 
 Analytics are optional: set `PUBLIC_GA_ID` and/or `PUBLIC_META_PIXEL_ID` from `.env.example`. Scripts load only after visitor consent. Preparing a message is not counted as a successful registration. Set `SITE_URL` in the build environment for canonical URLs, sitemap, and robots.txt.
 
@@ -45,6 +45,8 @@ The Bootcamp pages now use 24 actual event records supplied by the owner in `src
 ## Staff admin
 
 `/admin/` manages the link hub's camps, competitions, banner, social links, and shared tutoring prices. Staff sign in through Cloudflare Access using an `@devcommu.org` address. The backend verifies the signed Access token and the email domain for every admin request.
+
+Production entry point: https://devcommu.org/admin/. Staff receive a one-time PIN in their `@devcommu.org` mailbox. The `DevCommu staff admin` Access application protects `devcommu.org/admin*` and `devcommu.org/api/admin*` with the reusable `DevCommu staff` allow policy. Access cookies are HTTP-only and scoped to the hostname so authenticated draft previews and unpublished images can load.
 
 The `HUB_CONTENT` R2 binding stores one document containing draft and published snapshots, plus uploaded images. Save a draft before opening its preview. Publishing switches the public snapshot in one conditional R2 write and updates `/@devcommu/` immediately. Stale edits return a conflict and keep the editor's changes on screen. Uploaded images remain private to staff until included in published content. Camps stop appearing after the registration deadline in Bangkok time. Competitions can remain in the archive.
 

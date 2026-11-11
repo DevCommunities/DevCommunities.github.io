@@ -6,8 +6,8 @@
     { "binding": "HUB_CONTENT", "bucket_name": "devcommu-site-content" }
   ],
   "vars": {
-    "ACCESS_TEAM_DOMAIN": "",
-    "ACCESS_AUD": "",
+    "ACCESS_TEAM_DOMAIN": "https://devcommunities.cloudflareaccess.com",
+    "ACCESS_AUD": "09301fe79ecbc5b8f2a9df48abb56212a4677382182d3a183e84b5c83744e0d4",
     "ADMIN_EMAIL_DOMAIN": "devcommu.org"
   },
   "env": {
