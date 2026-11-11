@@ -5,7 +5,7 @@ import {
   type HubEvent,
 } from "../data/link-hub.ts";
 import { tutoringPrices } from "./pricing.ts";
-import imageSizes from "../data/image-sizes.json" with { type: "json" };
+import imageSizes from "../data/image-sizes.json";
 
 export type EditableEvent = HubEvent & {
   poster: string;
