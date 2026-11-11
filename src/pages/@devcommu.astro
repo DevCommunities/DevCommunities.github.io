@@ -25,6 +25,7 @@ import "../components/link-hub/link-hub.css";
 const today = new Intl.DateTimeFormat("sv-SE", {
   timeZone: "Asia/Bangkok",
 }).format(new Date());
+const currentCamps = featuredCamps.filter((event) => event.deadline >= today);
 const socials = [
   { name: "LINE", href: lineUrl, icon: FaLine },
   {
@@ -147,18 +148,16 @@ const plans = [
           </p>
         </div>
         <div class="hub-month">
-          <h3>พฤศจิกายน 2569</h3><span>{featuredCamps.length} ค่าย</span>
+          <h3>พฤศจิกายน 2569</h3><span>{currentCamps.length} ค่าย</span>
         </div>
         <div class="hub-events">
+          {!currentCamps.length && <p class="hub-note">ยังไม่มีรายการในหมวดนี้ ติดตามข่าวสารได้ทางช่องทางของ DevCommu</p>}
           {
-            featuredCamps.map((event) => (
+            currentCamps.map((event) => (
               <EventCard event={event} today={today} />
             ))
           }
         </div>
-        <a class="hub-more" href="/bootcamps/"
-          >ดูค่ายและกิจกรรมทั้งหมด <FiArrowUpRight aria-hidden="true" /></a
-        >
       </section>
 
       <section
