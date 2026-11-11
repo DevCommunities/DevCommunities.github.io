@@ -14,6 +14,7 @@ export default defineConfig({
         const url = new URL(page);
         const p = url.pathname;
         if (p.startsWith("/admin")) return false;
+        if (p === "/about" || p === "/about/") return false;
         if (p.startsWith("/learning")) return false;
         if (p.includes("/404")) return false;
         if (p.includes("story-proj-")) return false;

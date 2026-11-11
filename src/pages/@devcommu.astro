@@ -118,15 +118,20 @@ const plans = [
           ค่ายที่อยากลอง เรื่องที่อยากเรียน และสนามให้ลองฝีมือ
         </p>
       </div>
-      <a
-        href={lineUrl}
-        class="hub-contact"
-        target="_blank"
-        rel="noopener noreferrer"
-        ><FiMessageCircle aria-hidden="true" /> คุยกับพี่ ๆ DevCommu <FiArrowUpRight
-          aria-hidden="true"
-        /></a
-      >
+      <div class="hub-intro-actions">
+        <a
+          href={lineUrl}
+          class="hub-contact"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><FiMessageCircle aria-hidden="true" /> คุยกับพี่ ๆ DevCommu <FiArrowUpRight
+            aria-hidden="true"
+          /></a
+        >
+        <a class="hub-about" href="/team/"
+          >เกี่ยวกับเรา <FiArrowUpRight aria-hidden="true" /></a
+        >
+      </div>
     </div>
     <nav class="hub-navigation" aria-label="หมวดลิงก์ DevCommu">
       <div class="hub-tabs" data-hub-tabs>
@@ -138,9 +143,6 @@ const plans = [
           ><FiAward aria-hidden="true" />งานแข่ง</a
         >
       </div>
-      <a class="hub-about" href="/about/"
-        >เกี่ยวกับเรา <FiArrowUpRight aria-hidden="true" /></a
-      >
     </nav>
     <main id="hub-content" class="hub-content">
       <section
